@@ -1,0 +1,9 @@
+.prose .anchor {
+  @apply relative;
+}
+.prose .anchor > svg {
+  @apply absolute -left-5 top-2 opacity-0 ease-in-out duration-300;
+}
+.prose :is(h1,h2,h3,h4,h5,h6):hover .anchor > svg {
+  @apply opacity-100;
+}
