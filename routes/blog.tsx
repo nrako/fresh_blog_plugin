@@ -1,6 +1,6 @@
 import { type BlogOptions } from '../mod.ts'
 import { FreshContext } from '$fresh/server.ts'
-import { getPosts } from '../post.ts'
+import { getPosts } from '../data.ts'
 import PostCard from '../components/PostCard.tsx'
 import Footer from '../components/Footer.tsx'
 

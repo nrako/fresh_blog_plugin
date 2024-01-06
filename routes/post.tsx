@@ -1,7 +1,7 @@
 import { type BlogOptions } from '../mod.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
-import { getPost, type Post } from '../post.ts'
+import { getPost, type Post } from '../data.ts'
 import { CSS, KATEX_CSS, render } from 'gfm/mod.ts'
 import Time from '../components/Time.tsx'
 import Footer from '../components/Footer.tsx'

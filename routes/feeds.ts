@@ -1,6 +1,6 @@
 import { Handlers } from '$fresh/server.ts'
 import { Feed, type Item as FeedItem } from 'https://esm.sh/feed@4.2.2'
-import { getPosts } from '../post.ts'
+import { getPosts } from '../data.ts'
 import { BlogOptions } from '../mod.ts'
 
 export function createFeedHandler(options: Required<BlogOptions>): Handlers {

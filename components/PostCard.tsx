@@ -1,4 +1,4 @@
-import { type Post } from '../post.ts'
+import { type Post } from '../data.ts'
 import Time from './Time.tsx'
 
 export default function PostCard(
