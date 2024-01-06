@@ -4,7 +4,7 @@ import { getPosts } from '../post.ts'
 import PostCard from '../components/PostCard.tsx'
 import Footer from '../components/Footer.tsx'
 
-export default function createBlog(options: BlogOptions) {
+export default function createBlog(options: Required<BlogOptions>) {
   return async function Blog(_req: Request, ctx: FreshContext) {
     const posts = await getPosts(options.contentDir)
     return (

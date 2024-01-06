@@ -1,0 +1,143 @@
+export const snapshot = {};
+
+snapshot[`Atom 1.0 feed match snapshot 1`] = `
+{
+  feed: {
+    "@xmlns": "http://www.w3.org/2005/Atom",
+    entry: [
+      {
+        id: "http://127.0.0.1/Post X",
+        link: {
+          "#text": null,
+          "@href": "http://127.0.0.1/blog/post_x",
+        },
+        published: "2024-01-06T22:38:45.000Z",
+        rights: "Copyright YYYY http://127.0.0.1",
+        summary: {
+          "#text": "desc",
+          "@type": "html",
+        },
+        title: {
+          "#text": "Post X",
+          "@type": "html",
+        },
+        updated: "2024-01-06T22:38:45.000Z",
+      },
+      {
+        id: "http://127.0.0.1/Hello World",
+        link: {
+          "#text": null,
+          "@href": "http://127.0.0.1/blog/hello_world",
+        },
+        published: "2024-01-02T22:38:45.000Z",
+        rights: "Copyright YYYY http://127.0.0.1",
+        summary: {
+          "#text": "yello, description",
+          "@type": "html",
+        },
+        title: {
+          "#text": "Hello World",
+          "@type": "html",
+        },
+        updated: "2024-01-02T22:38:45.000Z",
+      },
+    ],
+    generator: "Feed (https://github.com/jpmonette/feed) for Deno",
+    icon: "http://127.0.0.1/favicon.ico",
+    id: "http://127.0.0.1/blog",
+    link: [
+      {
+        "#text": null,
+        "@href": "http://127.0.0.1/blog",
+        "@rel": "alternate",
+      },
+      {
+        "#text": null,
+        "@href": "http://127.0.0.1/blog/atom",
+        "@rel": "self",
+      },
+    ],
+    rights: "Copyright YYYY http://127.0.0.1",
+    subtitle: "This is a Fresh Blog",
+    title: "Blog",
+    updated: "2024-01-06T22:38:45.000Z",
+  },
+  xml: {
+    "@encoding": "utf-8",
+    "@version": 1,
+  },
+}
+`;
+
+snapshot[`JSON Feed 1.0 feed match snapshot 1`] = `
+'{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Blog",
+    "home_page_url": "http://127.0.0.1/blog",
+    "feed_url": "http://127.0.0.1/blog/json",
+    "description": "This is a Fresh Blog",
+    "items": [
+        {
+            "id": "http://127.0.0.1/Post X",
+            "url": "http://127.0.0.1/blog/post_x",
+            "title": "Post X",
+            "summary": "desc",
+            "date_modified": "2024-01-06T22:38:45.000Z",
+            "date_published": "2024-01-06T22:38:45.000Z"
+        },
+        {
+            "id": "http://127.0.0.1/Hello World",
+            "url": "http://127.0.0.1/blog/hello_world",
+            "title": "Hello World",
+            "summary": "yello, description",
+            "date_modified": "2024-01-02T22:38:45.000Z",
+            "date_published": "2024-01-02T22:38:45.000Z"
+        }
+    ]
+}'
+`;
+
+snapshot[`RSS 2.0 feed match snapshot 1`] = `
+{
+  rss: {
+    "@version": 2,
+    "@xmlns:atom": "http://www.w3.org/2005/Atom",
+    channel: {
+      "atom:link": {
+        "#text": null,
+        "@href": "http://127.0.0.1/blog/rss",
+        "@rel": "self",
+        "@type": "application/rss+xml",
+      },
+      copyright: "Copyright 2024 http://127.0.0.1",
+      description: "This is a Fresh Blog",
+      docs: "https://validator.w3.org/feed/docs/rss2.html",
+      generator: "Feed (https://github.com/jpmonette/feed) for Deno",
+      item: [
+        {
+          description: "desc",
+          guid: "http://127.0.0.1/Post X",
+          link: "http://127.0.0.1/blog/post_x",
+          pubDate: "Sat, 06 Jan 2024 22:38:45 GMT",
+          title: "Post X",
+        },
+        {
+          description: "yello, description",
+          guid: "http://127.0.0.1/Hello World",
+          link: "http://127.0.0.1/blog/hello_world",
+          pubDate: "Tue, 02 Jan 2024 22:38:45 GMT",
+          title: "Hello World",
+        },
+      ],
+      language: "en",
+      lastBuildDate: "Sat, 06 Jan 2024 22:38:45 GMT",
+      link: "http://127.0.0.1/blog",
+      title: "Blog",
+    },
+  },
+  xml: {
+    "@encoding": "utf-8",
+    "@version": 1,
+  },
+}
+`;

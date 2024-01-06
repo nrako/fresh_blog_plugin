@@ -12,7 +12,9 @@ interface Data {
   html: string
 }
 
-export function createPostHandler(options: BlogOptions): Handlers<Data> {
+export function createPostHandler(
+  options: Required<BlogOptions>,
+): Handlers<Data> {
   return {
     async GET(req, ctx) {
       const post = await getPost(options.contentDir, ctx.params.slug)
@@ -49,7 +51,7 @@ export function createPostHandler(options: BlogOptions): Handlers<Data> {
   }
 }
 
-export function createPostPage(options: BlogOptions) {
+export function createPostPage(options: Required<BlogOptions>) {
   return function PostPage(props: PageProps<Data>) {
     const { post, html } = props.data
     return (

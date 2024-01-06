@@ -3,7 +3,7 @@ import { Feed, type Item as FeedItem } from 'https://esm.sh/feed@4.2.2'
 import { getPosts } from '../post.ts'
 import { BlogOptions } from '../mod.ts'
 
-export function createFeedHandler(options: BlogOptions): Handlers {
+export function createFeedHandler(options: Required<BlogOptions>): Handlers {
   return {
     async GET(req, _ctx) {
       const url = new URL(req.url)
@@ -12,6 +12,8 @@ export function createFeedHandler(options: BlogOptions): Handlers {
         '{{year}}',
         `${new Date().getFullYear()}`,
       ).replace('{{url}}', origin)
+
+      const posts = await getPosts(options.contentDir)
 
       const feed = new Feed({
         title: options.title,
@@ -27,9 +29,8 @@ export function createFeedHandler(options: BlogOptions): Handlers {
           rss: `${origin}${options.feedPathPrefix}/rss`,
           json: `${origin}${options.feedPathPrefix}/json`,
         },
+        updated: posts[0].date,
       })
-
-      const posts = await getPosts(options.contentDir)
 
       posts.map((post) => {
         const item: FeedItem = {

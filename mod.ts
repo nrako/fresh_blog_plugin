@@ -4,15 +4,15 @@ import { createPostHandler, createPostPage } from './routes/post.tsx'
 import { createFeedHandler } from './routes/feeds.ts'
 
 export interface BlogOptions {
-  title: string
-  description: string
-  language: string
-  contentDir: string
-  path: string
-  feedPathPrefix: string // default same as `path` but can be set to empty i.e `''` to have feeds on `/rss`, `/atom`, `/json`
-  favicon: string
-  copyright: string
-  generator: string
+  title?: string
+  description?: string
+  language?: string
+  contentDir?: string
+  path?: string
+  feedPathPrefix?: string // default same as `path` but can be set to empty i.e `''` to have feeds on `/rss`, `/atom`, `/json`
+  favicon?: string
+  copyright?: string
+  generator?: string
 }
 
 const defaultOption = {
@@ -27,7 +27,11 @@ const defaultOption = {
   generator: 'Feed (https://github.com/jpmonette/feed) for Deno',
 }
 
-export default function blogPlugin(options = defaultOption): Plugin {
+export default function blogPlugin(
+  partialOptions: BlogOptions = defaultOption,
+): Plugin {
+  const options = { ...defaultOption, ...partialOptions }
+
   return {
     name: 'fresh-blog-plugin',
     routes: [

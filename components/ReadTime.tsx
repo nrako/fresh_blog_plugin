@@ -1,7 +1,5 @@
 import { render } from 'gfm/mod.ts'
-import {
-  DOMParser,
-} from 'https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts'
+import { DOMParser } from '$deno_dom/deno-dom-wasm.ts'
 
 // 200 word-per-minute is on the lower range of the average reading speed 200-300 wpm
 const WPM = 200
