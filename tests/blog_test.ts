@@ -81,5 +81,5 @@ Deno.test('display empty posts', async () => {
     contentDir: './tests/fixture/empty_posts/',
   })
   const doc = await docForPath(handler, '/blog')
-  assertStringIncludes(doc.textContent, 'There\'s no posts yet.')
+  assertStringIncludes(doc.textContent, "There's no posts yet.")
 })

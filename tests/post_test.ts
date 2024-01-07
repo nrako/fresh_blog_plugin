@@ -19,11 +19,17 @@ Deno.test('render markdown', async () => {
   const doc = await docForPath(handler, '/blog/post_x')
 
   assertEquals(doc?.querySelector('h2')?.textContent, 'Heading 2')
-  assertEquals(doc?.querySelector('blockquote')?.textContent, '\nThis is a blockquote\n')
+  assertEquals(
+    doc?.querySelector('blockquote')?.textContent,
+    '\nThis is a blockquote\n',
+  )
 })
 
 Deno.test('render on specified path', async () => {
-  const handler = await createFreshBlogHandler({ ...blogOptions, path: '/rants' })
+  const handler = await createFreshBlogHandler({
+    ...blogOptions,
+    path: '/rants',
+  })
   const doc = await docForPath(handler, '/rants/hello_world')
 
   assertEquals(doc?.querySelector('h1')?.textContent, 'Hello World')

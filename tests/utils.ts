@@ -2,9 +2,11 @@ import { createHandler, ServeHandlerInfo } from '$fresh/server.ts'
 import { DOMParser } from '$deno_dom/deno-dom-wasm.ts'
 import blogPlugin, { type BlogOptions } from '../mod.ts'
 
-type Handler =  (req: Request, connInfo?: ServeHandlerInfo) => Promise<Response>
+type Handler = (req: Request, connInfo?: ServeHandlerInfo) => Promise<Response>
 
-export async function createFreshBlogHandler(blogOptions: BlogOptions): Promise<Handler> {
+export async function createFreshBlogHandler(
+  blogOptions: BlogOptions,
+): Promise<Handler> {
   const handler = await createHandler({
     routes: {},
     islands: {},
