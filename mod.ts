@@ -13,6 +13,9 @@ export interface BlogOptions {
   favicon?: string
   copyright?: string
   generator?: string
+  highlighter?: {
+    theme: string
+  }
 }
 
 const defaultOption = {
@@ -25,6 +28,7 @@ const defaultOption = {
   favicon: '/favicon.ico',
   copyright: 'Copyright {{year}} {{url}}',
   generator: 'Feed (https://github.com/jpmonette/feed) for Deno',
+  highlighter: { theme: 'nord' }
 }
 
 export default function blogPlugin(

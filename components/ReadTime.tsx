@@ -1,13 +1,11 @@
-import { render } from 'gfm/mod.ts'
 import { DOMParser } from '$deno_dom/deno-dom-wasm.ts'
 
 // 200 word-per-minute is on the lower range of the average reading speed 200-300 wpm
 const WPM = 200
 
 export default function ReadTime({ content }: { content: string }) {
-  const htmlContent = render(content)
   const textContent =
-    new DOMParser().parseFromString(htmlContent, 'text/html')?.textContent ?? ''
+    new DOMParser().parseFromString(content, 'text/html')?.textContent ?? ''
 
   // Strip characters that would skew the word count
   const wordCount =

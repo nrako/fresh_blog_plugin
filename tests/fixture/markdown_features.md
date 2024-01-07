@@ -18,9 +18,9 @@ Any ASCII punctuation character may be backslash-escaped:
 
 [Example 12](https://spec.commonmark.org/0.30/#example-12)
 
-\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~
+NOTE: actually this example seems to create bugs in most markdown libs.
 
-Backslashes before other characters are treated as literal backslashes:
+backslashes:
 
 [Example 13](https://spec.commonmark.org/0.30/#example-13)
 
