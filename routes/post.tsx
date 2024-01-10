@@ -41,6 +41,7 @@ export function createPostPage(options: Required<BlogOptions>) {
           <style dangerouslySetInnerHTML={{ __html: CSS }} />
           <style dangerouslySetInnerHTML={{ __html: KATEX_CSS }} />
           {/* TODO use post.attrs.enableTwitterEmbed ? */}
+          <link rel='stylesheet' href='https://esm.sh/shikiji-twoslash@0.9.18/style-rich.css' />
           <script
             async
             src='https://platform.twitter.com/widgets.js'

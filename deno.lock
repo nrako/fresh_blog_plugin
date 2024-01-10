@@ -2,16 +2,147 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "npm:@types/node": "npm:@types/node@18.16.19"
+      "npm:@types/node": "npm:@types/node@18.16.19",
+      "npm:markdown-it-katex@2": "npm:markdown-it-katex@2.0.3",
+      "npm:markdown-it-shikiji@0.9": "npm:markdown-it-shikiji@0.9.18",
+      "npm:markdown-it@14": "npm:markdown-it@14.0.0",
+      "npm:shikiji-transformers": "npm:shikiji-transformers@0.9.18",
+      "npm:shikiji-twoslash@0.9": "npm:shikiji-twoslash@0.9.18"
     },
     "npm": {
+      "@types/lz-string@1.5.0": {
+        "integrity": "sha512-s84fKOrzqqNCAPljhVyC5TjAo6BH4jKHw9NRNFNiRUY5QSgZCmVm5XILlWbisiKl+0OcS7eWihmKGS5akc2iQw==",
+        "dependencies": {
+          "lz-string": "lz-string@1.5.0"
+        }
+      },
       "@types/node@18.16.19": {
         "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      },
+      "@typescript/twoslash@3.2.4_typescript@5.3.3": {
+        "integrity": "sha512-/TCIOuPQaKltzUUT1qJo6mplYwjbAxkaSFvkeZD3FeFt3Ovt+HJi8xisu8rcLyDRmM3VJ0+jAx+AAICwn4Zlhw==",
+        "dependencies": {
+          "@types/lz-string": "@types/lz-string@1.5.0",
+          "@typescript/vfs": "@typescript/vfs@1.5.0",
+          "debug": "debug@4.3.4",
+          "lz-string": "lz-string@1.5.0",
+          "typescript": "typescript@5.3.3"
+        }
+      },
+      "@typescript/vfs@1.5.0": {
+        "integrity": "sha512-AJS307bPgbsZZ9ggCT3wwpg3VbTKMFNHfaY/uF0ahSkYYrPF2dSSKDNIDIQAHm9qJqbLvCsSJH7yN4Vs/CsMMg==",
+        "dependencies": {
+          "debug": "debug@4.3.4"
+        }
+      },
+      "argparse@2.0.1": {
+        "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
+        "dependencies": {}
+      },
+      "debug@4.3.4": {
+        "integrity": "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==",
+        "dependencies": {
+          "ms": "ms@2.1.2"
+        }
+      },
+      "entities@4.5.0": {
+        "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
+        "dependencies": {}
+      },
+      "katex@0.6.0": {
+        "integrity": "sha512-rS4mY3SvHYg5LtQV6RBcK0if7ur6plyEukAOV+jGGPqFImuzu8fHL6M752iBmRGoUyF0bhZbAPoezehn7xYksA==",
+        "dependencies": {
+          "match-at": "match-at@0.1.1"
+        }
+      },
+      "linkify-it@5.0.0": {
+        "integrity": "sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==",
+        "dependencies": {
+          "uc.micro": "uc.micro@2.0.0"
+        }
+      },
+      "lz-string@1.5.0": {
+        "integrity": "sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==",
+        "dependencies": {}
+      },
+      "markdown-it-katex@2.0.3": {
+        "integrity": "sha512-nUkkMtRWeg7OpdflamflE/Ho/pWl64Lk9wNBKOmaj33XkQdumhXAIYhI0WO03GeiycPCsxbmX536V5NEXpC3Ng==",
+        "dependencies": {
+          "katex": "katex@0.6.0"
+        }
+      },
+      "markdown-it-shikiji@0.9.18": {
+        "integrity": "sha512-x//ts6CkzwDkNHZCdFcaeWzJ8pvQ906il0JV7A3FyDjO270lsxKjymi5MUDxZFN9k7CRwvjnXkvBsJkIxmPxIQ==",
+        "dependencies": {
+          "markdown-it": "markdown-it@14.0.0",
+          "shikiji": "shikiji@0.9.18"
+        }
+      },
+      "markdown-it@14.0.0": {
+        "integrity": "sha512-seFjF0FIcPt4P9U39Bq1JYblX0KZCjDLFFQPHpL5AzHpqPEKtosxmdq/LTVZnjfH7tjt9BxStm+wXcDBNuYmzw==",
+        "dependencies": {
+          "argparse": "argparse@2.0.1",
+          "entities": "entities@4.5.0",
+          "linkify-it": "linkify-it@5.0.0",
+          "mdurl": "mdurl@2.0.0",
+          "punycode.js": "punycode.js@2.3.1",
+          "uc.micro": "uc.micro@2.0.0"
+        }
+      },
+      "match-at@0.1.1": {
+        "integrity": "sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==",
+        "dependencies": {}
+      },
+      "mdurl@2.0.0": {
+        "integrity": "sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==",
+        "dependencies": {}
+      },
+      "ms@2.1.2": {
+        "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==",
+        "dependencies": {}
+      },
+      "punycode.js@2.3.1": {
+        "integrity": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==",
+        "dependencies": {}
+      },
+      "shikiji-core@0.9.18": {
+        "integrity": "sha512-PKTXptbrp/WEDjNHV8OFG9KkfhmR0pSd161kzlDDlgQ0HXAnqJYNDSjqsy1CYZMx5bSvLMy42yJj9oFTqmkNTQ==",
+        "dependencies": {}
+      },
+      "shikiji-transformers@0.9.18": {
+        "integrity": "sha512-lvKVfgx1ETDqUNxqiUn+whlnjQiunsAg76DOpzjjxkHE/bLcwa+jrghcMxQhui86SLR1tzCdM4Imh+RxW0LI2Q==",
+        "dependencies": {
+          "shikiji": "shikiji@0.9.18"
+        }
+      },
+      "shikiji-twoslash@0.9.18": {
+        "integrity": "sha512-+Np6QAdV244p6CVofefszrRWdcmbUNvTXaGV4V+wjKRyfp8jVTUtxjuVjtG7e3vyA8Nu989K99CCjhcTQOuEaw==",
+        "dependencies": {
+          "@typescript/twoslash": "@typescript/twoslash@3.2.4_typescript@5.3.3",
+          "shikiji-core": "shikiji-core@0.9.18"
+        }
+      },
+      "shikiji@0.9.18": {
+        "integrity": "sha512-/tFMIdV7UQklzN13VjF0/XFzmii6C606Jc878hNezvB8ZR8FG8FW9j0I4J9EJre0owlnPntgLVPpHqy27Gs+DQ==",
+        "dependencies": {
+          "shikiji-core": "shikiji-core@0.9.18"
+        }
+      },
+      "typescript@5.3.3": {
+        "integrity": "sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==",
+        "dependencies": {}
+      },
+      "uc.micro@2.0.0": {
+        "integrity": "sha512-DffL94LsNOccVn4hyfRe5rdKa273swqeA5DJpMOeFmEn1wCDc7nAbbB0gXlgBCL7TNzeTv6G7XVWzan7iJtfig==",
         "dependencies": {}
       }
     }
   },
   "redirects": {
+    "https://esm.sh/markdown-it-shikiji@0.9": "https://esm.sh/markdown-it-shikiji@0.9.18",
+    "https://esm.sh/shikiji-twoslash@0": "https://esm.sh/shikiji-twoslash@0.9.18",
+    "https://esm.sh/shikiji-twoslash@0.9": "https://esm.sh/shikiji-twoslash@0.9.18",
     "https://esm.sh/v135/@types/babel__helper-validator-identifier@^7/index.d.ts": "https://esm.sh/v135/@types/babel__helper-validator-identifier@7.15.2/index.d.ts",
     "https://esm.sh/v135/@types/he@~1.2/index.d.ts": "https://esm.sh/v135/@types/he@1.2.3/index.d.ts",
     "https://esm.sh/v135/@types/katex@~0.16/index.d.ts": "https://esm.sh/v135/@types/katex@0.16.7/index.d.ts",
