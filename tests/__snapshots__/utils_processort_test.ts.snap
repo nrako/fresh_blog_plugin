@@ -1,24 +1,10 @@
 export const snapshot = {};
 
 snapshot[`produce the expected HTML result for CommonMark markdown 1`] = `
-'<pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#E53935;--shiki-dark:#F07178">title</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Markdown Features</span></span>
+'<div class="block"><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#E53935;--shiki-dark:#F07178">title</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Markdown Features</span></span>
 <span class="line"><span style="color:#E53935;--shiki-dark:#F07178">description</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> catalogue of markdown features</span></span>
 <span class="line"><span style="color:#E53935;--shiki-dark:#F07178">date</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 2024-01-01 22:40:45 +0002</span></span>
-<span class="line"></span></code></pre>
-<p>This file demo all Markdown features which should be supported by the processor.</p>
-<h1>1 CommonMark</h1>
-<p>First of all the processor supports the <a href="https://commonmark.org" rel="noopener">CommonMark</a> specss.</p>
-<h2>1.2 Preliminaries</h2>
-<h3>1.2.4 Backslashes escapes</h3>
-<p>Any ASCII punctuation character may be backslash-escaped:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-12" rel="noopener">Example 12</a></p>
-<p>NOTE: actually this example seems to create bugs in most markdown libs.</p>
-<p>backslashes:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-13" rel="noopener">Example 13</a></p>
-<p>\\\\→\\\\A\\\\a\\\\ \\\\3\\\\φ\\\\«</p>
-<p>Escaped characters are treated as regular characters and do not have their usual Markdown meanings:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-14" rel="noopener">Example 14</a></p>
-<p>*not emphasized*
+<span class="line"></span></code></pre><p>This file demo all Markdown features which should be supported by the processor.</p><h1 id="id-1-commonmark">1 CommonMark</h1><p>First of all the processor supports the <a href="https://commonmark.org" rel="noopener">CommonMark</a> specss.</p><h2 id="id-1-2-preliminaries">1.2 Preliminaries</h2><h3 id="id-1-2-4-backslashes-escapes">1.2.4 Backslashes escapes</h3><p>Any ASCII punctuation character may be backslash-escaped:</p><p><a href="https://spec.commonmark.org/0.30/#example-12" rel="noopener">Example 12</a></p><p>NOTE: actually this example seems to create bugs in most markdown libs.</p><p>backslashes:</p><p><a href="https://spec.commonmark.org/0.30/#example-13" rel="noopener">Example 13</a></p><p>\\\\→\\\\A\\\\a\\\\ \\\\3\\\\φ\\\\«</p><p>Escaped characters are treated as regular characters and do not have their usual Markdown meanings:</p><p><a href="https://spec.commonmark.org/0.30/#example-14" rel="noopener">Example 14</a></p><p>*not emphasized*
 &#x3C;br/> not a tag
 [not a link](/foo)
 \`not code\`
@@ -26,131 +12,40 @@ snapshot[`produce the expected HTML result for CommonMark markdown 1`] = `
 * not a list
 # not a heading
 [foo]: /url “not a reference”
-&#x26;ouml; not a character entity</p>
-<h3>1.2.5 Entity and numeric character references</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-25" rel="noopener">Example 25</a></p>
-<p>  &#x26; © Æ Ď
+&#x26;ouml; not a character entity</p><h3 id="id-1-2-5-entity-and-numeric-character-references">1.2.5 Entity and numeric character references</h3><p><a href="https://spec.commonmark.org/0.30/#example-25" rel="noopener">Example 25</a></p><p>  &#x26; © Æ Ď
 ¾ ℋ ⅆ
-∲ ≧̸</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-26" rel="noopener">Example 26</a></p>
-<p># Ӓ Ϡ �</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-27" rel="noopener">Example 27</a></p>
-<p>" ആ ಫ</p>
-<h2>1.3 Block and inlines</h2>
-<p>Indicators of block structure always take precedence over indicators of inline structure.</p>
-<h3>1.3.1 Precedence</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-42" rel="noopener">Example 42</a></p>
-<ul>
+∲ ≧̸</p><p><a href="https://spec.commonmark.org/0.30/#example-26" rel="noopener">Example 26</a></p><p># Ӓ Ϡ �</p><p><a href="https://spec.commonmark.org/0.30/#example-27" rel="noopener">Example 27</a></p><p>" ആ ಫ</p><h2 id="id-1-3-block-and-inlines">1.3 Block and inlines</h2><p>Indicators of block structure always take precedence over indicators of inline structure.</p><h3 id="id-1-3-1-precedence">1.3.1 Precedence</h3><p><a href="https://spec.commonmark.org/0.30/#example-42" rel="noopener">Example 42</a></p><ul>
 <li>
 \`one
 </li>
 <li>
 two\`
 </li>
-</ul>
-<h2>1.4 Leaf Blocks</h2>
-<p>This section describes the different kinds of leaf block that make up a Markdown document.</p>
-<h3>1.4.1 Thematic breaks</h3>
-<p>Do <code>&#x3C;hr/></code> with:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-43" rel="noopener">Example 43</a></p>
-<hr>
-<hr>
-<hr>
-<p>More than three characters may be used:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-50" rel="noopener">Example 50</a></p>
-<hr>
-<p>Spaces and tabs are allowed between the characters:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-51" rel="noopener">Example 51-53</a></p>
-<hr>
-<hr>
-<hr>
-<h3>1.4.2 ATX Headings</h3>
-<p>Simple headings:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-62" rel="noopener">Example 62</a></p>
-<h1>Foo</h1>
-<h2>Foo</h2>
-<h3>Foo</h3>
-<h4>Foo</h4>
-<h5>Foo</h5>
-<h6>Foo</h6>
-<p>Up to three spaces of indentation are allowed:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-68" rel="noopener">Example 68</a></p>
-<h3>Foo</h3>
-<h2>Foo</h2>
-<h1>Foo</h1>
-<h3>1.4.3 Setext headings</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-80" rel="noopener">Example 80</a></p>
-<h1>Foo <em>bar</em></h1>
-<h2>Foo <em>bar</em></h2>
-<p>The content of the header may span more than one line:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-81" rel="noopener">Example 81</a></p>
-<h1>Foo <em>bar
-baz</em></h1>
-<p>The underlining can be any length:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-83" rel="noopener">Example 83</a></p>
-<h2>Foo</h2>
-<h1>Foo</h1>
-<h3>1.4.4 Indented code blocks</h3>
-<p>An indented code block cannot interrupt a paragraph, so there must be a blank line between a paragraph and a following indented code block. (A blank line is not needed, however, between a code block and a following paragraph.)</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-107" rel="noopener">Example 107</a></p>
-<pre><code>a simple
+</ul><h2 id="id-1-4-leaf-blocks">1.4 Leaf Blocks</h2><p>This section describes the different kinds of leaf block that make up a Markdown document.</p><h3 id="id-1-4-1-thematic-breaks">1.4.1 Thematic breaks</h3><p>Do <code>&#x3C;hr/></code> with:</p><p><a href="https://spec.commonmark.org/0.30/#example-43" rel="noopener">Example 43</a></p><hr><hr><hr><p>More than three characters may be used:</p><p><a href="https://spec.commonmark.org/0.30/#example-50" rel="noopener">Example 50</a></p><hr><p>Spaces and tabs are allowed between the characters:</p><p><a href="https://spec.commonmark.org/0.30/#example-51" rel="noopener">Example 51-53</a></p><hr><hr><hr><h3 id="id-1-4-2-atx-headings">1.4.2 ATX Headings</h3><p>Simple headings:</p><p><a href="https://spec.commonmark.org/0.30/#example-62" rel="noopener">Example 62</a></p><h1 id="foo">Foo</h1><h2 id="foo">Foo</h2><h3 id="foo">Foo</h3><h4 id="foo">Foo</h4><h5 id="foo">Foo</h5><h6 id="foo">Foo</h6><p>Up to three spaces of indentation are allowed:</p><p><a href="https://spec.commonmark.org/0.30/#example-68" rel="noopener">Example 68</a></p><h3 id="foo">Foo</h3><h2 id="foo">Foo</h2><h1 id="foo">Foo</h1><h3 id="id-1-4-3-setext-headings">1.4.3 Setext headings</h3><p><a href="https://spec.commonmark.org/0.30/#example-80" rel="noopener">Example 80</a></p><h1 id="foo-bar">Foo <em>bar</em></h1><h2 id="foo-bar">Foo <em>bar</em></h2><p>The content of the header may span more than one line:</p><p><a href="https://spec.commonmark.org/0.30/#example-81" rel="noopener">Example 81</a></p><h1 id="foo-bar-baz">Foo <em>bar
+baz</em></h1><p>The underlining can be any length:</p><p><a href="https://spec.commonmark.org/0.30/#example-83" rel="noopener">Example 83</a></p><h2 id="foo">Foo</h2><h1 id="foo">Foo</h1><h3 id="id-1-4-4-indented-code-blocks">1.4.4 Indented code blocks</h3><p>An indented code block cannot interrupt a paragraph, so there must be a blank line between a paragraph and a following indented code block. (A blank line is not needed, however, between a code block and a following paragraph.)</p><p><a href="https://spec.commonmark.org/0.30/#example-107" rel="noopener">Example 107</a></p><pre><code>a simple
   indented code block
-</code></pre>
-<h3>1.4.5 Fenced code blocks</h3>
-<p>With backticks:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-119" rel="noopener">Example 119</a></p>
-<pre><code>&#x3C;
+</code></pre><h3 id="id-1-4-5-fenced-code-blocks">1.4.5 Fenced code blocks</h3><p>With backticks:</p><p><a href="https://spec.commonmark.org/0.30/#example-119" rel="noopener">Example 119</a></p><pre><code>&#x3C;
  >
-</code></pre>
-<p>With tildes:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-120" rel="noopener">Example 120</a></p>
-<pre><code>&#x3C;
+</code></pre><p>With tildes:</p><p><a href="https://spec.commonmark.org/0.30/#example-120" rel="noopener">Example 120</a></p><pre><code>&#x3C;
  >
-</code></pre>
-<p><a href="https://spec.commonmark.org/0.30/#example-142" rel="noopener">Example 142</a></p>
-<pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">def</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> foo</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#90A4AE;--shiki-dark:#EEFFFF;font-style:italic;--shiki-dark-font-style:italic">x</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+</code></pre><p><a href="https://spec.commonmark.org/0.30/#example-142" rel="noopener">Example 142</a></p><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">def</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> foo</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#90A4AE;--shiki-dark:#EEFFFF;font-style:italic;--shiki-dark-font-style:italic">x</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
 <span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">  return</span><span style="color:#F76D47;--shiki-dark:#F78C6C"> 3</span></span>
 <span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">end</span></span>
-<span class="line"></span></code></pre>
-<p><a href="https://spec.commonmark.org/0.30/#example-143" rel="noopener">Example 143</a></p>
-<pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">def</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> foo</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#90A4AE;--shiki-dark:#EEFFFF;font-style:italic;--shiki-dark-font-style:italic">x</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
+<span class="line"></span></code></pre><p><a href="https://spec.commonmark.org/0.30/#example-143" rel="noopener">Example 143</a></p><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">def</span><span style="color:#6182B8;--shiki-dark:#82AAFF"> foo</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">(</span><span style="color:#90A4AE;--shiki-dark:#EEFFFF;font-style:italic;--shiki-dark-font-style:italic">x</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">)</span></span>
 <span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">  return</span><span style="color:#F76D47;--shiki-dark:#F78C6C"> 3</span></span>
 <span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF;font-style:italic;--shiki-dark-font-style:italic">end</span></span>
-<span class="line"></span></code></pre>
-<h3>1.4.6 HTML blocks</h3>
-<p>For instance, <code>&#x3C;pre></code> within an HTML block started by <code>&#x3C;table></code> will not affect the parser state; as the HTML block was started in by start condition 6, it will end at any blank line. This can be surprising:</p>
-<p><a href="https://spec.commonmark.org/0.30/#example-148" rel="noopener">Example 149</a></p>
-<table><tbody><tr><td>
-<pre>**Hello**,
-<p><em>world</em>.
-</p></pre><p></p>
-</td></tr></tbody></table>
-<p><a href="https://spec.commonmark.org/0.30/#example-167" rel="noopener">Example 167</a></p>
-<del>
-<p><em>foo</em></p>
-</del>
-<p><a href="https://spec.commonmark.org/0.30/#example-169" rel="noopener">Example 169</a></p>
-<pre language="haskell"><code>
+<span class="line"></span></code></pre><h3 id="id-1-4-6-html-blocks">1.4.6 HTML blocks</h3><p>For instance, <code>&#x3C;pre></code> within an HTML block started by <code>&#x3C;table></code> will not affect the parser state; as the HTML block was started in by start condition 6, it will end at any blank line. This can be surprising:</p><p><a href="https://spec.commonmark.org/0.30/#example-148" rel="noopener">Example 149</a></p><table><tbody><tr><td>
+<pre>**Hello**,<p><em>world</em>.
+</p></pre><p></p></td></tr></tbody></table><p><a href="https://spec.commonmark.org/0.30/#example-167" rel="noopener">Example 167</a></p><del><p><em>foo</em></p></del><p><a href="https://spec.commonmark.org/0.30/#example-169" rel="noopener">Example 169</a></p><pre language="haskell"><code>
 import Text.HTML.TagSoup
 
 main :: IO ()
 main = print \$ parseTags tags
-</code></pre>
-<p>okay</p>
-<h3>1.4.7 Link reference definitions</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-192" rel="noopener">Example 192</a></p>
-<p><a href="/url" title="title">foo</a></p>
-<h2>1.5 Container block</h2>
-<h3>1.5.1 Block quotes</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-228" rel="noopener">Example 228</a></p>
-<blockquote>
-<h1>Foo</h1>
+</code></pre><p>okay</p><h3 id="id-1-4-7-link-reference-definitions">1.4.7 Link reference definitions</h3><p><a href="https://spec.commonmark.org/0.30/#example-192" rel="noopener">Example 192</a></p><p><a href="/url" title="title">foo</a></p><h2 id="id-1-5-container-block">1.5 Container block</h2><h3 id="id-1-5-1-block-quotes">1.5.1 Block quotes</h3><p><a href="https://spec.commonmark.org/0.30/#example-228" rel="noopener">Example 228</a></p><blockquote>
+<h1 id="foo">Foo</h1>
 <p>bar
 baz</p>
-</blockquote>
-<h3>1.5.2 List items</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-281" rel="noopener">Example 281</a></p>
-<ul>
+</blockquote><h3 id="id-1-5-2-list-items">1.5.2 List items</h3><p><a href="https://spec.commonmark.org/0.30/#example-281" rel="noopener">Example 281</a></p><ul>
 <li>
 foo
 </li>
@@ -158,9 +53,7 @@ foo
 <li>
 bar
 </li>
-</ul>
-<p><a href="https://spec.commonmark.org/0.30/#example-283" rel="noopener">Example 283</a></p>
-<ol>
+</ul><p><a href="https://spec.commonmark.org/0.30/#example-283" rel="noopener">Example 283</a></p><ol>
 <li>
 foo
 </li>
@@ -168,9 +61,7 @@ foo
 <li>
 bar
 </li>
-</ol>
-<p><a href="https://spec.commonmark.org/0.30/#example-296" rel="noopener">Example 296</a></p>
-<ol start="10">
+</ol><p><a href="https://spec.commonmark.org/0.30/#example-296" rel="noopener">Example 296</a></p><ol start="10">
 <li>
 foo
 <ul>
@@ -179,41 +70,29 @@ bar
 </li>
 </ul>
 </li>
-</ol>
-<h3>1.5.3 Lists</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-301" rel="noopener">Example 301</a></p>
-<ul>
+</ol><h3 id="id-1-5-3-lists">1.5.3 Lists</h3><p><a href="https://spec.commonmark.org/0.30/#example-301" rel="noopener">Example 301</a></p><ul>
 <li>
 foo
 </li>
 <li>
 bar
 </li>
-</ul>
-<ul>
+</ul><ul>
 <li>
 baz
 </li>
-</ul>
-<p><a href="https://spec.commonmark.org/0.30/#example-302" rel="noopener">Example 302</a></p>
-<ol>
+</ul><p><a href="https://spec.commonmark.org/0.30/#example-302" rel="noopener">Example 302</a></p><ol>
 <li>
 foo
 </li>
 <li>
 bar
 </li>
-</ol>
-<ol start="3">
+</ol><ol start="3">
 <li>
 baz
 </li>
-</ol>
-<h2>1.6 Inlines</h2>
-<h3>1.6.1 Code spans</h3>
-<p>Inline <code>code</code></p>
-<h3>1.6.2 Emphasis and strong emphasis</h3>
-<table>
+</ol><h2 id="id-1-6-inlines">1.6 Inlines</h2><h3 id="id-1-6-1-code-spans">1.6.1 Code spans</h3><p>Inline <code>code</code></p><h3 id="id-1-6-2-emphasis-and-strong-emphasis">1.6.2 Emphasis and strong emphasis</h3><table>
 <thead>
 <tr>
 <th>option 1</th>
@@ -230,38 +109,8 @@ baz
 <td><strong>Bold</strong></td>
 </tr>
 </tbody>
-</table>
-<h3>1.6.3 Links</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-481" rel="noopener">Example 481</a></p>
-<p><a href="/uri" title="title">link</a></p>
-<p><a href="https://spec.commonmark.org/0.30/#example-483" rel="noopener">Example 483</a></p>
-<p><a href="./target.md"></a></p>
-<p><a href="https://spec.commonmark.org/0.30/#example-526" rel="noopener">Example 526</a></p>
-<p><a href="/url" title="title">foo</a></p>
-<h3>1.6.4 Images</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-571" rel="noopener">Example 571</a></p>
-<img src="/url" alt="foo" title="title">
-<p><a href="https://spec.commonmark.org/0.30/#example-572" rel="noopener">Example 572</a></p>
-<img src="train.jpg" alt="foo bar" title="train &#x26; tracks">
-<h3>1.6.5 Autolinks</h3>
-<p><a href="https://spec.commonmark.org/0.30/#example-593" rel="noopener">Example 593</a></p>
-<p><a href="http://foo.bar.baz" rel="noopener">http://foo.bar.baz</a></p>
-<p><a href="https://spec.commonmark.org/0.30/#example-603" rel="noopener">Example 603</a></p>
-<p><a href="mailto:foo@bar.example.com">foo@bar.example.com</a></p>
-<h3>1.6.6 Raw HTML</h3>
-<h4>1.6.6.1 It support YouTube Embed through iFrame:</h4>
-<iframe class="w-full aspect-video" src="https://www.youtube.com/embed/4boXExbbGCk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>Pro-tip: use <code>class="w-full aspect-video</code> instead of <code>width="560" height="315"</code></p>
-<h4>1.6.6.2 Embed Twitter (X)</h4>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">WHAT<br> M A K E S<br>YOU<br>H A P P Y ? <a href="https://t.co/Q2YWFkuuk6" rel="noopener">pic.twitter.com/Q2YWFkuuk6</a></p>— DR. Kek (@Thekeksociety) <a href="https://twitter.com/Thekeksociety/status/1742170879285711130?ref_src=twsrc%5Etfw" rel="noopener">January 2, 2024</a></blockquote> 
-<p>Use the snippet provided by <a href="https://publish.twitter.com/" rel="noopener">https://​publish​.twitter​.com​/</a> but remove the Twitter widget <code>&#x3C;script /></code> tag. The <code>PostPage.tsx</code> already import it for you (if you set <code>enableTwitterWidget</code>?)</p>
-<pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">&#x3C;</span><span style="color:#E53935;--shiki-dark:#F07178">script</span><span style="color:#9C3EDA;--shiki-dark:#C792EA"> async</span><span style="color:#9C3EDA;--shiki-dark:#C792EA"> src</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">=</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">https://platform.twitter.com/widgets.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#9C3EDA;--shiki-dark:#C792EA"> charset</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">=</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">utf-8</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">>&#x3C;/</span><span style="color:#E53935;--shiki-dark:#F07178">script</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span></span>
-<span class="line"></span></code></pre>
-<h1>2 GitHub Flavored Markdown Spec (GFM)</h1>
-<p>The processor also support the Github Flavored Markdown extensions.</p>
-<h2>2.1 Table GFM extension</h2>
-<p><a href="https://github.github.com/gfm/#example-198" rel="noopener">Example GFM 198</a></p>
-<table>
+</table><h3 id="id-1-6-3-links">1.6.3 Links</h3><p><a href="https://spec.commonmark.org/0.30/#example-481" rel="noopener">Example 481</a></p><p><a href="/uri" title="title">link</a></p><p><a href="https://spec.commonmark.org/0.30/#example-483" rel="noopener">Example 483</a></p><p><a href="./target.md"></a></p><p><a href="https://spec.commonmark.org/0.30/#example-526" rel="noopener">Example 526</a></p><p><a href="/url" title="title">foo</a></p><h3 id="id-1-6-4-images">1.6.4 Images</h3><p><a href="https://spec.commonmark.org/0.30/#example-571" rel="noopener">Example 571</a></p><img src="/url" alt="foo" title="title"><p><a href="https://spec.commonmark.org/0.30/#example-572" rel="noopener">Example 572</a></p><img src="train.jpg" alt="foo bar" title="train &#x26; tracks"><h3 id="id-1-6-5-autolinks">1.6.5 Autolinks</h3><p><a href="https://spec.commonmark.org/0.30/#example-593" rel="noopener">Example 593</a></p><p><a href="http://foo.bar.baz" rel="noopener">http://foo.bar.baz</a></p><p><a href="https://spec.commonmark.org/0.30/#example-603" rel="noopener">Example 603</a></p><p><a href="mailto:foo@bar.example.com">foo@bar.example.com</a></p><h3 id="id-1-6-6-raw-html">1.6.6 Raw HTML</h3><h4 id="id-1-6-6-1-it-support-youtube-embed-through-iframe">1.6.6.1 It support YouTube Embed through iFrame:</h4><iframe class="w-full aspect-video" src="https://www.youtube.com/embed/4boXExbbGCk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Pro-tip: use <code>class="w-full aspect-video</code> instead of <code>width="560" height="315"</code></p><h4 id="id-1-6-6-2-embed-twitter-x">1.6.6.2 Embed Twitter (X)</h4><blockquote class="twitter-tweet"><p lang="en" dir="ltr">WHAT<br> M A K E S<br>YOU<br>H A P P Y ? <a href="https://t.co/Q2YWFkuuk6" rel="noopener">pic.twitter.com/Q2YWFkuuk6</a></p>— DR. Kek (@Thekeksociety) <a href="https://twitter.com/Thekeksociety/status/1742170879285711130?ref_src=twsrc%5Etfw" rel="noopener">January 2, 2024</a></blockquote> <p>Use the snippet provided by <a href="https://publish.twitter.com/" rel="noopener">https://​publish​.twitter​.com​/</a> but remove the Twitter widget <code>&#x3C;script /></code> tag. The <code>PostPage.tsx</code> already import it for you (if you set <code>enableTwitterWidget</code>?)</p><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#39ADB5;--shiki-dark:#89DDFF">&#x3C;</span><span style="color:#E53935;--shiki-dark:#F07178">script</span><span style="color:#9C3EDA;--shiki-dark:#C792EA"> async</span><span style="color:#9C3EDA;--shiki-dark:#C792EA"> src</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">=</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">https://platform.twitter.com/widgets.js</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#9C3EDA;--shiki-dark:#C792EA"> charset</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">=</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#91B859;--shiki-dark:#C3E88D">utf-8</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">"</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">>&#x3C;/</span><span style="color:#E53935;--shiki-dark:#F07178">script</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">></span></span>
+<span class="line"></span></code></pre><h1 id="id-2-github-flavored-markdown-spec-gfm">2 GitHub Flavored Markdown Spec (GFM)</h1><p>The processor also support the Github Flavored Markdown extensions.</p><h2 id="id-2-1-table-gfm-extension">2.1 Table GFM extension</h2><p><a href="https://github.github.com/gfm/#example-198" rel="noopener">Example GFM 198</a></p><table>
 <thead>
 <tr>
 <th>foo</th>
@@ -274,9 +123,7 @@ baz
 <td>bim</td>
 </tr>
 </tbody>
-</table>
-<p><a href="https://github.github.com/gfm/#example-199" rel="noopener">Example GFM 199</a></p>
-<table>
+</table><p><a href="https://github.github.com/gfm/#example-199" rel="noopener">Example GFM 199</a></p><table>
 <thead>
 <tr>
 <th>abc</th>
@@ -289,10 +136,7 @@ baz
 <td>baz</td>
 </tr>
 </tbody>
-</table>
-<h2>2.2 Task list items GFM extension</h2>
-<p><a href="https://github.github.com/gfm/#example-279" rel="noopener">Example GMF 279</a></p>
-<ul class="contains-task-list">
+</table><h2 id="id-2-2-task-list-items-gfm-extension">2.2 Task list items GFM extension</h2><p><a href="https://github.github.com/gfm/#example-279" rel="noopener">Example GMF 279</a></p><ul class="contains-task-list">
 <li class="task-list-item">
 <p><input type="checkbox" disabled></p>
 foo
@@ -301,9 +145,7 @@ foo
 <p><input type="checkbox" checked disabled></p>
 bar
 </li>
-</ul>
-<p><a href="https://github.github.com/gfm/#example-280" rel="noopener">Example GMF 280</a></p>
-<ul class="contains-task-list">
+</ul><p><a href="https://github.github.com/gfm/#example-280" rel="noopener">Example GMF 280</a></p><ul class="contains-task-list">
 <li class="task-list-item">
 <p><input type="checkbox" checked disabled></p>
 foo
@@ -322,40 +164,18 @@ baz
 <p><input type="checkbox" disabled></p>
 bim
 </li>
-</ul>
-<h2>6.5 Striketrough GFM extension</h2>
-<p><a href="https://github.github.com/gfm/#example-491" rel="noopener">Example GMF 491</a></p>
-<p>~~Hi~~ Hello, ~there~ world!</p>'
+</ul><h2 id="id-6-5-striketrough-gfm-extension">6.5 Striketrough GFM extension</h2><p><a href="https://github.github.com/gfm/#example-491" rel="noopener">Example GMF 491</a></p><p>~~Hi~~ Hello, ~there~ world!</p></div>'
 `;
 
 snapshot[`produce the expected HTML result for MyST markdown 1`] = `
-\`<pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#E53935;--shiki-dark:#F07178">title</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> MyST Features</span></span>
+\`<div class="block"><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#E53935;--shiki-dark:#F07178">title</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> MyST Features</span></span>
 <span class="line"><span style="color:#E53935;--shiki-dark:#F07178">description</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> catalogue of MyST features</span></span>
 <span class="line"><span style="color:#E53935;--shiki-dark:#F07178">date</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 2024-01-23 22:40:45 +0002</span></span>
-<span class="line"></span></code></pre>
-<h2>Typography</h2>
-<h3>Line Breaks</h3>
-<p>Fleas <br>
+<span class="line"></span></code></pre><h2 id="typography">Typography</h2><h3 id="line-breaks">Line Breaks</h3><p>Fleas <br>
 Adam <br>
-Had 'em.</p>
-<p>By Strickland Gillilan</p>
-<h3>Subscript &#x26; Superscript</h3>
-<p>H<sub>2</sub>O, and 4<sup>th</sup> of July</p>
-<h3>Abbreviations</h3>
-<p>Well <abbr title="Markedly Structured Text">MyST</abbr> is cool!</p>
-<h3>Quotations</h3>
-<blockquote>
+Had 'em.</p><p>By Strickland Gillilan</p><h3 id="subscript-superscript">Subscript &#x26; Superscript</h3><p>H<sub>2</sub>O, and 4<sup>th</sup> of July</p><h3 id="abbreviations">Abbreviations</h3><p>Well <abbr title="Markedly Structured Text">MyST</abbr> is cool!</p><h3 id="quotations">Quotations</h3><figure class="numbered"><blockquote>
 <p>We know what we are, but know not what we may be.</p>
-<ul>
-<li>
-Hamlet act 4, Scene 5
-</li>
-</ul>
-</blockquote>
-<h3>Definition Lists</h3>
-<dl><dt>Term 1</dt><dd>Definition</dd><dt>Term 2</dt><dd>Definition</dd></dl>
-<h3>Footnotes</h3>
-<ul>
+</blockquote><figcaption><p>Hamlet act 4, Scene 5</p></figcaption></figure><h3 id="definition-lists">Definition Lists</h3><dl><dt>Term 1</dt><dd>Definition</dd><dt>Term 2</dt><dd>Definition</dd></dl><h3 id="footnotes">Footnotes</h3><ul>
 <li>
 A footnote reference
 <sup><a href="#user-content-fn-myref" id="user-content-fnref-myref" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>
@@ -364,34 +184,40 @@ A footnote reference
 Manually-numbered footnote reference
 <sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>
 </li>
-</ul>
-<h2>Callouts</h2>
-<aside class="admonition tip"><p class="admonition-title">Tip</p><p>Try changing <code>tip</code> to <code>warning</code>!</p></aside>
-<h2>Images, figures &#x26; videos</h2>
-<h3>Image directive</h3>
-<img src="https://source.unsplash.com/random/500x150?sunset" alt="Beautiful Sunset" class="align-center" width="500px">
-<h3>Figure directive</h3>
-<figure id="myfigure" class="numbered"><img src="https://source.unsplash.com/random/400x200?beach,ocean" alt="Random image of the beach or ocean!" class="align-center"><p>Relaxing at the beach 🏝 🌊 😎</p></figure>
-<h3>YouTube Video</h3>
-<figure class="numbered"><div class="iframe"></div><figcaption><p>Get up and running with MyST in Jupyter!</p></figcaption></figure>
-<h2>Math and equations</h2>
-<h3>Inline Math</h3>
-<p>This math is a role, <span class="math inline">e=mc^2</span>, while this math is wrapped in dollar signs, <span class="math inline">Ax=b</span>.</p>
-<h3>Equations</h3>
-<h4>Math directives</h4>
-<div id="my-equation" class="math block">w_{t+1} = (1 + r_{t+1}) s(w_t) + y_{t+1}</div>
-<p>See <a href="#my-equation"></a> for more information!</p>
-<h4>Dollar math equations</h4>
-<pre><div class="math block">\\\\label{maxwell}
-\\\\begin{aligned}
+</ul><h2 id="callouts">Callouts</h2><aside class="admonition tip"><p class="admonition-title">Tip</p><p class="admonition-title">Tip</p><p>Try changing <code>tip</code> to <code>warning</code>!</p></aside><h2 id="images-figures-videos">Images, figures &#x26; videos</h2><h3 id="image-directive">Image directive</h3><img src="https://source.unsplash.com/random/500x150?sunset" alt="Beautiful Sunset" class="align-center" width="500px"><h3 id="figure-directive">Figure directive</h3><figure id="myfigure" class="numbered"><img src="https://source.unsplash.com/random/400x200?beach,ocean" alt="Random image of the beach or ocean!" class="align-center"><figcaption><p><span class="caption-number">Figure 1</span>Relaxing at the beach 🏝 🌊 😎</p></figcaption></figure><h3 id="youtube-video">YouTube Video</h3><figure class="numbered"><div class="iframe"></div><figcaption><p>Get up and running with MyST in Jupyter!</p></figcaption></figure><h2 id="math-and-equations">Math and equations</h2><h3 id="inline-math">Inline Math</h3><p>This math is a role, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">e=mc^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>, while this math is wrapped in dollar signs, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">Ax=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>.</p><h3 id="equations">Equations</h3><h4 id="math-directives">Math directives</h4><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>w</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><msub><mi>r</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mi>s</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo>+</mo><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">w_{t+1} = (1 + r_{t+1}) s(w_t) + y_{t+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></span><p>See <a href="#my-equation"></a> for more information!</p><h4 id="dollar-math-equations">Dollar math equations</h4><pre><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">∇</mi><mo>×</mo><mover accent="true"><mi>e</mi><mo>⃗</mo></mover><mo>+</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mover accent="true"><mi>b</mi><mo>⃗</mo></mover></mrow><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>0</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">∇</mi><mo>×</mo><mover accent="true"><mi>h</mi><mo>⃗</mo></mover><mo>−</mo><mover accent="true"><mi>j</mi><mo>⃗</mo></mover></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mover accent="true"><mi>s</mi><mo>⃗</mo></mover><mi mathvariant="normal">_</mi><mi>e</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\\\\begin{aligned}
 \\\\nabla \\\\times \\\\vec{e}+\\\\frac{\\\\partial \\\\vec{b}}{\\\\partial t}&#x26;=0 \\\\\\\\
 \\\\nabla \\\\times \\\\vec{h}-\\\\vec{j}&#x26;=\\\\vec{s}\\\\_{e}
-\\\\end{aligned}</div></pre>
-<div class="math block">\\\\label{one-liner} Ax=b</div>
-<p>See <a href="#maxwell"></a> for enlightenment and <a href="#one-liner"></a> to do things on one line!</p>
-<h2>Tables</h2>
-<h3>Adding a Caption</h3>
-<figure id="table" class="numbered"><figcaption><p><span class="caption-number">Table 1</span>Table caption</p></figcaption><table>
+\\\\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.2779em;vertical-align:-1.8889em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.3889em;"><span style="top:-4.3889em;"><span class="pstrut" style="height:3.6544em;"></span><span class="mord"><span class="mord">∇</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6544em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9774em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">b</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.4255em;"><span class="pstrut" style="height:3.6544em;"></span><span class="mord"><span class="mord">∇</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9774em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">h</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9425em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span><span style="top:-3.2285em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8889em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.3889em;"><span style="top:-4.3889em;"><span class="pstrut" style="height:3.6544em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span><span style="top:-2.4255em;"><span class="pstrut" style="height:3.6544em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"></path></svg></span></span></span></span></span></span></span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord"><span class="mord mathnormal">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8889em;"><span></span></span></span></span></span></span></span></span></span></span></span></pre><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">Ax=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span><p>See <a href="#maxwell"></a> for enlightenment and <a href="#one-liner"></a> to do things on one line!</p><h2 id="tables">Tables</h2><h3 id="adding-a-caption">Adding a Caption</h3><figure id="table" class="numbered"><figcaption><p><span class="caption-number">Table 1</span>Table caption</p></figcaption><table>
 <thead>
 <tr>
 <th>foo</th>
@@ -404,9 +230,7 @@ Manually-numbered footnote reference
 <td>bim</td>
 </tr>
 </tbody>
-</table></figure>
-<h3>List Tables</h3>
-<figure id="example-table" class="numbered"><figcaption><p><span class="caption-number">Table 2</span>This table title</p></figcaption><table>
+</table></figure><h3 id="list-tables">List Tables</h3><figure id="example-table" class="numbered"><figcaption><p><span class="caption-number">Table 2</span>This table title</p></figcaption><table>
 <thead>
 <tr>
 <th>Training</th>
@@ -423,28 +247,16 @@ Manually-numbered footnote reference
 <td>2744</td>
 </tr>
 </tbody>
-</table></figure>
-<h2>External References</h2>
-<h3>Wikipedia Links</h3>
-<p>Primordial <a href="https://en.wikipedia.org/wiki/gravitational_waves" rel="noopener">gravitational waves</a> are hypothesized to arise from <a href="https://en.wikipedia.org/wiki/cosmic_inflation" rel="noopener">cosmic inflation</a>, a faster-than-light expansion just after the <a href="https://en.wikipedia.org/wiki/big_bang" rel="noopener">big bang</a>.</p>
-<ul>
+</table></figure><h2 id="external-references">External References</h2><h3 id="wikipedia-links">Wikipedia Links</h3><p>Primordial <a href="https://en.wikipedia.org/wiki/gravitational_waves" rel="noopener">gravitational waves</a> are hypothesized to arise from <a href="https://en.wikipedia.org/wiki/cosmic_inflation" rel="noopener">cosmic inflation</a>, a faster-than-light expansion just after the <a href="https://en.wikipedia.org/wiki/big_bang" rel="noopener">big bang</a>.</p><ul>
 <li>
 <a href="https://en.wikipedia.org/wiki/The_Big_Bang_Theory" rel="noopener">big bang</a>
 </li>
 <li>
 <a href="https://en.wikipedia.org/wiki/big_bang" rel="noopener">big bang</a>
 </li>
-</ul>
-<h3>Github</h3>
-<p><a href="https://github.com/executablebooks/myst-theme/pull/87" rel="noopener">#87</a></p>
-<h3>Research Resource Identifiers</h3>
-<p><a href="https://scicrunch.org/resolver/SCR_008394" rel="noopener">SCR_008394</a></p>
-<p><a href="https://scicrunch.org/resolver/SCR_008394" rel="noopener">SCR_008394</a></p>
-<h2>Citations and bibliography</h2>
-<p>This is a link in markdown: <a href="https://doi.org/10.5281/zenodo.6476040" rel="noopener">Cockett, 2022</a>.</p>
-<p>It is also possible to to drop the link text, that is:
+</ul><h3 id="github">Github</h3><p><a href="https://github.com/executablebooks/myst-theme/pull/87" rel="noopener">#87</a></p><h3 id="research-resource-identifiers">Research Resource Identifiers</h3><p><a href="https://scicrunch.org/resolver/SCR_008394" rel="noopener">SCR_008394</a></p><p><a href="https://scicrunch.org/resolver/SCR_008394" rel="noopener">SCR_008394</a></p><h2 id="citations-and-bibliography">Citations and bibliography</h2><p>This is a link in markdown: <a href="https://doi.org/10.5281/zenodo.6476040" rel="noopener">Cockett, 2022</a>.</p><p>It is also possible to to drop the link text, that is:
 <a href="https://doi.org/10.5281/zenodo.6476040" rel="noopener">doi:10​.5281​/zenodo​.6476040</a> or <a href="https://doi.org/10.5281/zenodo.6476040" rel="noopener"></a>,
-which will insert the citation text in the correct format (e.g. adding an italic “et al.”, etc.).</p>
+which will insert the citation text in the correct format (e.g. adding an italic “et al.”, etc.).</p></div>
 <section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-myref">
