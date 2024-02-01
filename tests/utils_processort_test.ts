@@ -1,8 +1,10 @@
 import processor from '../utils/processor.ts'
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
 
-const commonmarkMD = await Deno.readTextFile('./tests/fixture/markdown_features.md')
-const mystMD = await Deno.readTextFile('./tests/fixture/myst_features.md')
+const commonmarkMD = await Deno.readTextFile(
+  './tests/fixture/specs/markdown_features.md',
+)
+const mystMD = await Deno.readTextFile('./tests/fixture/specs/myst_features.md')
 
 Deno.test('produce the expected HTML result for CommonMark markdown', async (t) => {
   const html = await processor(commonmarkMD)

@@ -8,8 +8,8 @@ date: 2024-01-23 22:40:45 +0002
 
 ### Line Breaks
 
-Fleas \
-Adam \
+Fleas\
+Adam\
 Had 'em.
 
 By Strickland Gillilan
@@ -25,29 +25,30 @@ Well {abbr}`MyST (Markedly Structured Text)` is cool!
 ### Quotations
 
 > We know what we are, but know not what we may be.
+>
 > - Hamlet act 4, Scene 5
 
 ### Definition Lists
 
-Term 1
-: Definition
+Term 1 : Definition
 
-Term 2
-: Definition
+Term 2 : Definition
 
 ### Footnotes
 
 - A footnote reference[^myref]
 - Manually-numbered footnote reference[^3]
 
-[^myref]: This is an auto-numbered footnote definition.
-[^3]: This is a manually-numbered footnote definition.
+[^myref]: This is an auto-numbered footnote definition. [^3]: This is a
+manually-numbered footnote definition.
 
 ## Callouts
 
+<!-- deno-fmt-ignore-start -->
 :::{tip}
 Try changing `tip` to `warning`!
 :::
+<!-- deno-fmt-ignore-end -->
 
 ## Images, figures & videos
 
@@ -71,16 +72,15 @@ Relaxing at the beach 🏝 🌊 😎
 
 ### YouTube Video
 
-:::{iframe} https://www.youtube.com/embed/F3st8X0L1Ys
-:width: 100%
-Get up and running with MyST in Jupyter!
-:::
+:::{iframe} https://www.youtube.com/embed/F3st8X0L1Ys :width: 100% Get up and
+running with MyST in Jupyter! :::
 
 ## Math and equations
 
 ### Inline Math
 
-This math is a role, {math}`e=mc^2`, while this math is wrapped in dollar signs, $Ax=b$.
+This math is a role, {math}`e=mc^2`, while this math is wrapped in dollar signs,
+$Ax=b$.
 
 ### Equations
 
@@ -95,13 +95,9 @@ See [](#my-equation) for more information!
 
 #### Dollar math equations
 
-$$
-\label{maxwell}
-\begin{aligned}
-\nabla \times \vec{e}+\frac{\partial \vec{b}}{\partial t}&=0 \\
-\nabla \times \vec{h}-\vec{j}&=\vec{s}\_{e}
-\end{aligned}
-$$
+$$ \label{maxwell} \begin{aligned} \nabla \times \vec{e}+\frac{\partial
+\vec{b}}{\partial t}&=0 \\ \nabla \times \vec{h}-\vec{j}&=\vec{s}\_{e}
+\end{aligned} $$
 
 $$ \label{one-liner} Ax=b $$
 
@@ -111,9 +107,7 @@ See [](#maxwell) for enlightenment and [](#one-liner) to do things on one line!
 
 ### Adding a Caption
 
-:::{table} Table caption
-:label: table
-:align: center
+:::{table} Table caption :label: table :align: center
 
 | foo | bar |
 | --- | --- |
@@ -139,10 +133,12 @@ See [](#maxwell) for enlightenment and [](#one-liner) to do things on one line!
 
 ### Wikipedia Links
 
-Primordial <wiki:gravitational_waves> are hypothesized to arise from <wiki:cosmic_inflation>, a faster-than-light expansion just after the <wiki:big_bang>.
+Primordial <wiki:gravitational_waves> are hypothesized to arise from
+<wiki:cosmic_inflation>, a faster-than-light expansion just after the
+<wiki:big_bang>.
 
-* [big bang](wiki:The_Big_Bang_Theory)
-* [](wiki:big_bang)
+- [big bang](wiki:The_Big_Bang_Theory)
+- [](wiki:big_bang)
 
 ### Github
 
@@ -156,8 +152,10 @@ Primordial <wiki:gravitational_waves> are hypothesized to arise from <wiki:cosmi
 
 ## Citations and bibliography
 
-This is a link in markdown: [Cockett, 2022](https://doi.org/10.5281/zenodo.6476040).
+This is a link in markdown:
+[Cockett, 2022](https://doi.org/10.5281/zenodo.6476040).
 
 It is also possible to to drop the link text, that is:
-<doi:10.5281/zenodo.6476040> or [](doi:10.5281/zenodo.6476040),
-which will insert the citation text in the correct format (e.g. adding an italic “et al.”, etc.).
+<doi:10.5281/zenodo.6476040> or [](doi:10.5281/zenodo.6476040), which will
+insert the citation text in the correct format (e.g. adding an italic “et al.”,
+etc.).
