@@ -1,5 +1,5 @@
 import { createHandler, ServeHandlerInfo } from '$fresh/server.ts'
-import { DOMParser } from '$deno_dom/deno-dom-wasm.ts'
+import { DOMParser } from '../deps.ts'
 import blogPlugin, { type BlogOptions } from '../mod.ts'
 
 type Handler = (req: Request, connInfo?: ServeHandlerInfo) => Promise<Response>
