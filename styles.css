@@ -1,3 +1,14 @@
+.shiki { position: relative; padding-left: 0; padding-right: 0 }
+.shiki code { display: block; min-width: 100%; width: fit-content; line-height: 1.7; }
+.shiki .line:not(:empty) { padding-left: 1.5em; padding-right: 1.5em; }
+.shiki.has-diff .line:not(:empty) { padding-left: 2.5em; }
+.shiki .diff { display: inline-block; width: 100%; }
+.shiki .diff.add { background-color: #0505; }
+.shiki .diff.remove { background-color: #8005; }
+.shiki .diff:before { position: absolute; left: 1em; }
+.shiki .diff.add:before { content: "+"; color: green;}
+.shiki .diff.remove:before { content: "-"; color: red; }
+
 /* For shikiji dual themes support, see https://shikiji.netlify.app/guide/dual-themes */
 @media (prefers-color-scheme: dark) {
   .shiki {
@@ -12,14 +23,3 @@
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
 }
-
-.shiki { position: relative; padding-left: 0; padding-right: 0 }
-.shiki code { display: block; min-width: 100%; width: fit-content; line-height: 1.7; }
-.shiki .line:not(:empty) { padding-left: 1.5em; padding-right: 1.5em; }
-.shiki.has-diff .line:not(:empty) { padding-left: 2.5em; }
-.shiki .diff { display: inline-block; width: 100%; }
-.shiki .diff.add { background-color: #0505; }
-.shiki .diff.remove { background-color: #8005; }
-.shiki .diff:before { position: absolute; left: 1em; }
-.shiki .diff.add:before { content: "+"; color: green;}
-.shiki .diff.remove:before { content: "-"; color: red; }

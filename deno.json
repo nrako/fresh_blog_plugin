@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run --watch main.ts",
+    "example": "cd example && deno run -A --watch=static/,routes/,../styles.css dev.ts"
   },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.6.3/",
