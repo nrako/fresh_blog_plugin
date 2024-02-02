@@ -39,8 +39,10 @@ Term 2 : Definition
 - A footnote reference[^myref]
 - Manually-numbered footnote reference[^3]
 
-[^myref]: This is an auto-numbered footnote definition. [^3]: This is a
-manually-numbered footnote definition.
+<!-- deno-fmt-ignore-start -->
+[^myref]: This is an auto-numbered footnote definition.
+[^3]: This is a manually-numbered footnote definition.
+<!-- deno-fmt-ignore-end -->
 
 ## Callouts
 
@@ -72,8 +74,12 @@ Relaxing at the beach 🏝 🌊 😎
 
 ### YouTube Video
 
-:::{iframe} https://www.youtube.com/embed/F3st8X0L1Ys :width: 100% Get up and
-running with MyST in Jupyter! :::
+<!-- deno-fmt-ignore-start -->
+:::{iframe} https://www.youtube.com/embed/F3st8X0L1Ys
+:width: 100%
+Get up and running with MyST in Jupyter!
+:::
+<!-- deno-fmt-ignore-end -->
 
 ## Math and equations
 
@@ -107,13 +113,17 @@ See [](#maxwell) for enlightenment and [](#one-liner) to do things on one line!
 
 ### Adding a Caption
 
-:::{table} Table caption :label: table :align: center
+<!-- deno-fmt-ignore-start -->
+:::{table} Table caption
+:label: table
+:align: center
 
 | foo | bar |
 | --- | --- |
 | baz | bim |
 
 :::
+<!-- deno-fmt-ignore-end -->
 
 ### List Tables
 
