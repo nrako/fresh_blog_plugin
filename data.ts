@@ -1,6 +1,6 @@
 // Importing two new std lib functions to help with parsing front matter and joining file paths.
 import { extract } from '$std/front_matter/yaml.ts'
-import { join } from '$std/path/mod.ts'
+import { extname, join } from '$std/path/mod.ts'
 
 export interface Post {
   slug: string
@@ -14,7 +14,10 @@ export interface Post {
 export async function getPosts(dir = './posts'): Promise<Post[]> {
   const files = Deno.readDir(dir)
   const promises = []
-  for await (const file of files) {
+  for await (const fileOrFolder of files) {
+    if (fileOrFolder.isDirectory) continue
+    if (extname(fileOrFolder.name) !== '.md') continue
+    const file = fileOrFolder
     const slug = file.name.replace('.md', '')
     promises.push(getPost(dir, slug))
   }

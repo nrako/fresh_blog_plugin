@@ -3,6 +3,7 @@ title: Markdown Features
 description: catalogue of markdown features
 date: 2024-01-01 22:40:45 +0002
 ---
+<!-- deno-fmt-ignore-file -->
 
 This file demo all Markdown features which should be supported by the processor.
 

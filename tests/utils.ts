@@ -1,7 +1,6 @@
 import { createHandler, ServeHandlerInfo } from '$fresh/server.ts'
 import { DOMParser } from '../deps.ts'
 import blogPlugin, { type BlogOptions } from '../mod.ts'
-import * as path from '$std/path/mod.ts'
 import * as colors from '$std/fmt/colors.ts'
 
 type Handler = (req: Request, connInfo?: ServeHandlerInfo) => Promise<Response>
