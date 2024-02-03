@@ -1,4 +1,4 @@
-import { type BlogOptions } from '../mod.ts'
+import { type BlogOptions } from '../../mod.ts'
 import { FreshContext } from '$fresh/server.ts'
 import { getPosts } from '../data.ts'
 import PostCard from '../components/PostCard.tsx'

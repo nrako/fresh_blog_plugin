@@ -1,4 +1,4 @@
-import { type BlogOptions } from '../mod.ts'
+import { type BlogOptions } from '../../mod.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
 import { getPost, type Post } from '../data.ts'

@@ -1,7 +1,7 @@
 import { Plugin, type PluginMiddleware } from '$fresh/server.ts'
-import createBlog from './routes/blog.tsx'
-import { createPostHandler, createPostPage } from './routes/post.tsx'
-import { createFeedHandler } from './routes/feeds.ts'
+import createBlog from './src/routes/blog.tsx'
+import { createPostHandler, createPostPage } from './src/routes/post.tsx'
+import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
 
 export interface BlogOptions {

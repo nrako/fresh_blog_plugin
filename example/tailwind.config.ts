@@ -5,7 +5,7 @@ export default {
   plugins: [typographyPlugin],
   content: [
     '{routes,islands,components}/**/*.{ts,tsx}',
-    '../{routes,islands,components}/**/*.{ts,tsx}',
+    '../src/{routes,islands,components}/**/*.{ts,tsx}',
     '../tests/fixture/**/*.md', // this should match `options.contentDir`
   ],
 } satisfies Config

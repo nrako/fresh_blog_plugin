@@ -1,4 +1,4 @@
-import processor from '../utils/processor.ts'
+import processor from '../src/utils/processor.ts'
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
 
 const commonmarkMD = await Deno.readTextFile(
