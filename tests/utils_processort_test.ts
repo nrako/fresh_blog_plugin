@@ -1,5 +1,6 @@
 import processor from '../src/utils/processor.ts'
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
+import { assertStringIncludes } from '$std/assert/assert_string_includes.ts'
 
 const commonmarkMD = await Deno.readTextFile(
   './tests/fixture/specs/markdown_features.md',
