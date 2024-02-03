@@ -31,10 +31,33 @@
 .footnotes .data-footnote-backref {
   font-family: monospace;
 }
-.footnotes :target {
+.footnotes ol :target {
   background: yellow;
 }
 .footnotes li, .footnotes p {
   margin: 0;
   font-size: 0.9em;
+}
+
+/* # anchor prepending headings */
+.anchorsign {
+  color: gray;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.anchorsign::before {
+  content: "#";
+  position: absolute;
+  left: -1.1rem;
+  top: 0;
+  transition: opacity 0.3s, color 0.3s;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+:is(h1, h2, h3, h4, h5, h6):hover .anchorsign {
+  opacity: 1;
+  color: inherit;
 }

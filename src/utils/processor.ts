@@ -18,6 +18,8 @@ import rehypeStringify from 'https://esm.sh/v135/rehype-stringify@8'
 import rehypeParse from 'https://esm.sh/rehype-parse@8'
 import rehypeExternalLinks from 'https://esm.sh/rehype-external-links@3'
 import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
+import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
+import { h } from 'https://esm.sh/hastscript@9'
 
 async function parse(text: string) {
   const file = new VFile()
@@ -67,6 +69,13 @@ async function parse(text: string) {
     .use(rehypeExternalLinks, { rel: ['noopener'] })
     // @ts-ignore required until unified can be upgrade to v11 when mystmd plays fair
     .use(rehypeKatex)
+    .use(rehypeAutolinkHeadings, {
+      content() {
+        return [
+          h('span.anchorsign', { ariaHidden: 'true' }),
+        ]
+      },
+    })
     // @ts-ignore required until unified can be upgrade to v11 when mystmd plays fair
     .use(rehypeStringify)
     .process(htmlString)
