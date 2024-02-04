@@ -3,8 +3,16 @@ title: MyST Features
 description: catalogue of MyST features
 date: 2024-01-23 22:40:45 +0002
 ---
+<!-- deno-fmt-ignore-file -->
 
 ## Typography
+
+### Inline Text Formatting
+
+<!-- Note sure why but we can't use double backticks as in MyST doc else this
+adds double backslages before all double quotes -->
+strikethrough
+: Use the `del` or `strike` role, for example, "\{del}`text` " yields {del}`text`
 
 ### Line Breaks
 
@@ -39,18 +47,14 @@ Term 2 : Definition
 - A footnote reference[^myref]
 - Manually-numbered footnote reference[^3]
 
-<!-- deno-fmt-ignore-start -->
 [^myref]: This is an auto-numbered footnote definition.
 [^3]: This is a manually-numbered footnote definition.
-<!-- deno-fmt-ignore-end -->
 
 ## Callouts
 
-<!-- deno-fmt-ignore-start -->
 :::{tip}
 Try changing `tip` to `warning`!
 :::
-<!-- deno-fmt-ignore-end -->
 
 ## Images, figures & videos
 
@@ -74,12 +78,10 @@ Relaxing at the beach 🏝 🌊 😎
 
 ### YouTube Video
 
-<!-- deno-fmt-ignore-start -->
 :::{iframe} https://www.youtube.com/embed/F3st8X0L1Ys
 :width: 100%
 Get up and running with MyST in Jupyter!
 :::
-<!-- deno-fmt-ignore-end -->
 
 ## Math and equations
 
@@ -113,7 +115,6 @@ See [](#maxwell) for enlightenment and [](#one-liner) to do things on one line!
 
 ### Adding a Caption
 
-<!-- deno-fmt-ignore-start -->
 :::{table} Table caption
 :label: table
 :align: center
@@ -123,7 +124,6 @@ See [](#maxwell) for enlightenment and [](#one-liner) to do things on one line!
 | baz | bim |
 
 :::
-<!-- deno-fmt-ignore-end -->
 
 ### List Tables
 
