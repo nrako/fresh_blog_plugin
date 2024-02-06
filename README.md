@@ -19,35 +19,37 @@ export default defineConfig({
 TailwindCSS is used by the components, you are free to omit `tailwind()` if you
 choose to use your own components.
 
-Otherwise, you must add new `content` rules for `fresh-blog-plugin`'s CSS and
-any HTML you may use in your posts:
+When using TailwindCSS you must add new `content` rules for
+`fresh-blog-plugin`'s CSS and any HTML you may use in your posts:
 
 ```typescript
 import { type Config } from 'tailwindcss'
+import typographyPlugin from 'npm:@tailwindcss/typography'
 
 export default {
+  plugins: [typographyPlugin],
   content: [
     '{routes,islands,components}/**/*.{ts,tsx}',
     '../fresh_blog_plugin/components/**/*.tsx', // TODO replace by node_modules/fresh_blog_plugin ... ?
+    '../fresh_blog_plugin/routes/**/*.tsx', // TODO replace by node_modules/fresh_blog_plugin ... ?
     'posts/*.md', // this must match `options.contentDir`
   ],
 } satisfies Config
 ```
 
+The last rule matching options.contentDir is optional and only recommended if
+you use TailwindCSS utilities in your markdown files.
+
+Additionally add `/freshblog.css` to the layout file(s) which will be used to
+display your blog(s):
+
+```html
+<!-- Add to your routes/_app.tsx -->
+<link rel="stylesheet" href="/freshblog.css" />
+```
+
+The content of `/freshblog.css` is in `./styles.css`.
+
 ## Options
 
 TODO
-
-## Extensibility
-
-By default syntax highlighting for JavaScript, Markdown, and HTML is included.
-You can include more languages importing them:
-
-import { CSS, render } from "https://deno.land/x/gfm/mod.ts";
-
-// Add support for TypeScript, Bash, and Rust. import
-"https://esm.sh/prismjs@1.29.0/components/prism-typescript?no-check"; import
-"https://esm.sh/prismjs@1.29.0/components/prism-bash?no-check"; import
-"https://esm.sh/prismjs@1.29.0/components/prism-rust?no-check"; A full list of
-supported languages is available here:
-https://unpkg.com/browse/prismjs@1.29.0/components/

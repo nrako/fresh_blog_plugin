@@ -3,6 +3,7 @@ title: Markdown Features
 description: catalogue of markdown features
 date: 2024-01-01 22:40:45 +0002
 ---
+<!-- deno-fmt-ignore-file -->
 
 This file demo all Markdown features which should be supported by the processor.
 
@@ -18,9 +19,9 @@ Any ASCII punctuation character may be backslash-escaped:
 
 [Example 12](https://spec.commonmark.org/0.30/#example-12)
 
-\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~
+NOTE: actually this example seems to create bugs in most markdown libs.
 
-Backslashes before other characters are treated as literal backslashes:
+backslashes:
 
 [Example 13](https://spec.commonmark.org/0.30/#example-13)
 
@@ -221,15 +222,15 @@ _world_.
 </del>
 
 
-[Example 169](https://spec.commonmark.org/0.30/#example-169)
+[Example 171](https://spec.commonmark.org/0.30/#example-171)
 
-<pre language="haskell"><code>
-import Text.HTML.TagSoup
+<textarea>
 
-main :: IO ()
-main = print $ parseTags tags
-</code></pre>
-okay
+*foo*
+
+_bar_
+
+</textarea>
 
 ### 1.4.7 Link reference definitions
 

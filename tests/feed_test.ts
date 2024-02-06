@@ -1,8 +1,7 @@
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
 import { type BlogOptions } from '../mod.ts'
 import { createFreshBlogHandler } from './utils.ts'
-import { parse } from '$xml/mod.ts'
-import { type ParserOptions } from '$xml/utils/types.ts'
+import { parse, type ParserOptions } from '../deps.ts'
 
 const blogOptions: BlogOptions = {
   contentDir: './tests/fixture/posts/',
