@@ -13,13 +13,14 @@
     "lineWidth": 80,
     "indentWidth": 2,
     "semiColons": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "exclude": ["./docs"]
   },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
   "lint": {
-    "exclude": ["./example/_fresh"]
+    "exclude": ["./example/_fresh", "./docs"]
   }
 }

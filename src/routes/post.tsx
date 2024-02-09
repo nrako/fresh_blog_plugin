@@ -20,7 +20,7 @@ export function createPostHandler(
       const post = await getPost(options.contentDir, ctx.params.slug)
       if (!post) return ctx.renderNotFound()
 
-      const html = await processor(post.content)
+      const html = await processor(post.content, options)
 
       return ctx.render({ post, html })
     },
