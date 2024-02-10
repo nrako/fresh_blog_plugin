@@ -1,22 +1,46 @@
-🚧 WIP! This is an early work in progress. Use or contribute at your own peril.
+🚧 Work in Progress! This is still an early-stage project. Engage with it or
+contribute at your own risk.
 
 # Fresh Blog Plugin
 
-A [🍋 Fresh](https://fresh.deno.dev) plugin designed to add blog functionalities
-with simple markdown files powered by **[MyST](https://mystmd.org)**.
+**A [🍋 Fresh](https://fresh.deno.dev) plugin designed to add blog
+functionalities with markdown files powered by [MyST](https://mystmd.org)**.
 
 ## Features
 
-- **[MyST](https://mystmd.org) Markdown syntax**: For technical and scientific
-  writtings, including code syntax highlight and LaTeX support. Of course, good
-  old standard Markdown aka [CommonMark](https://mystmd.org/guide/commonmark) is
-  fully supported.
-- **Automatic Feed Syndication**: Automatically generate feeds for RSS 2.0, JSON
-  Feed 1.0, and Atom 1.0, making your writings easily accessible and
-  distributable on the open web.
-- **Modular Design**: Minmal and ESM coomponents, so if you don't like the
-  default TailwindCSS component, build your routes with your own components and
-  only re-use the data and processed HTML content for each mardown files.
+- **[MyST](https://mystmd.org) Markdown syntax**: Offers an extended and richer
+  Markdown syntax that caters not only to technical and scientific writing but
+  also perfectly suits any kind of authoring and blogging. Naturally, it fully
+  supports the standard Markdown, also known as
+  [CommonMark](https://mystmd.org/guide/commonmark).
+- **Code & Math**: Features code syntax highlighting and Tex Math rendering
+  support out of the box, thanks to [Shiki](https://shiki.style) and
+  [Katex](https://www.npmjs.com/package/rehype-katex).
+- **Automatic Feed Syndication**: Seamlessly generates feeds for JSON Feed 1.0,
+  Atom 1.0 and RSS 2.0. Ensures your content is readily consumable through any
+  feed syndicate readers.
+- **Modular Design**: Minimal, re-usable, ESM, functional components. If the
+  default TailwindCSS component doesn't suit your taste, you have the freedom to
+  craft your routes with your custom components. You can still leverage the data
+  and processed HTML content from each markdown file.
+
+## How It Works
+
+This plugin exposes multiple configurable routes:
+
+- Blog Index Route (default `/blog`): listing all posts sorted by their `date`
+- Blog Post Route (default `/blog/:slug`): showing the detail of a post
+  identified by the `:slug` which is inferred from the markdown file name
+- Atom 1.0 Feed Route (default `/blog/atom`)
+- JSON Feed 1.0 Feed Route (default `/blog/json`)
+- RSS 2.0 Feed Route (default `/blog/rss`)
+
+This plugin doesn't assume any assumption about your layout (i.e
+`routes/_app.tsx`).
+
+For customization of the default routes, please refer to the
+"[Options](https://github.com/nrako/fresh_blog_plugin?tab=readme-ov-file#options)"
+section below.
 
 ## Getting Started
 
@@ -40,9 +64,9 @@ to omit `tailwind()` if you choose to use your own components.
 
 ### TailwindCSS Configuration
 
-When opting for the default TailwindCSS setup, ensure your `tailwind.config.ts`
-file includes the following `content` rules to ensures the necessary TailwindCSS
-utilities aren't pruned.
+When opting for the default route handlers, components and TailwindCSS setup,
+ensure your `tailwind.config.ts` file includes the following `content` rules to
+ensure the necessary TailwindCSS utilities aren't pruned.
 
 ```typescript
 import { type Config } from 'tailwindcss'
@@ -61,21 +85,21 @@ export default {
 } satisfies Config
 ```
 
-**Note**: The last rule to match `options.contentDir` is recommended and allow
-you to use TailwindCSS utilities in your markdown files.
+**Note**: It's advisable to align the last rule with `options.contentDir` to
+enable the use of TailwindCSS utilities within your markdown files.
 
 ### Additional Styling
 
-Incorporate `/freshblog.css` in your layout files to apply CSS rules specific to
-code syntax highlighting and various MyST features:
+To apply CSS rules specific to code syntax highlighting and various MyST
+features, include `/freshblog.css` in your layout files:
 
 ```html
 <!-- Add to your routes/_app.tsx -->
 <link rel="stylesheet" href="/freshblog.css" />
 ```
 
-The `/freshblog.css` file will be served during development and automatically
-exported at build time. You can inspect its content in
+The `/freshblog.css` file is served during development and automatically
+exported to your static files at build time. You can inspect its content in
 [`./styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/styles.css).
 
 ## Options
@@ -84,7 +108,23 @@ https://github.com/nrako/fresh_blog_plugin/blob/8c065f16088328e9e3f43300d2bafea9
 
 ## Example
 
-Browse the `/example` folder to see how `blogPlugin()` is used. You will see
-that a Fresh website can contain multiple blogs.
+Explore the
+[`/example`](https://github.com/nrako/fresh_blog_plugin/tree/main/example)
+directory to understand how `blogPlugin()` can be implemented. The example
+demonstrates that a Fresh website can host multiple blogs.
 
 You can also run the example with `deno task example`.
+
+## Provisional License Statement:
+
+This software is currently not open-source licensed; however, the intention is
+to officially license it under the
+[GNU Lesser General Public License (LGPLv3)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+in the near future. Past a certain project maturity, the
+[Unlicense](https://unlicense.org) or the
+[ISC License](https://en.wikipedia.org/wiki/ISC_license) might be adopted. Until
+a license is formally applied, all rights are reserved by the author(s).
+
+This provisional statement does not constitute a license and provides no rights
+to use, distribute, or modify the software. It is merely an expression of
+intent. Interested parties should check back for updates or contact the
