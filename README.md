@@ -1,6 +1,7 @@
 # Fresh Blog Plugin
 
-A [🍋 Fresh] plugin to add blog functionalities powered by markdown files.
+A [🍋 Fresh](https://fresh.deno.dev) plugin to add blog functionalities powered
+by markdown files with the power of [MyST](https://mystmd.org).
 
 ## Getting Started
 

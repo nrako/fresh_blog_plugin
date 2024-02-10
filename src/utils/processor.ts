@@ -20,8 +20,11 @@ import rehypeExternalLinks from 'https://esm.sh/rehype-external-links@3'
 import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
+import { BlogOptions, defaultOption } from '../../mod.ts'
 
-async function parse(text: string) {
+type ParseOptions = Required<Omit<BlogOptions, 'feedPathPrefix'>>
+
+async function parse(text: string, options: ParseOptions) {
   const file = new VFile()
   const mdast = mystParse(text, {
     markdownit: { linkify: true },
@@ -57,10 +60,7 @@ async function parse(text: string) {
   const r = await unified()
     .use(rehypeParse, { fragment: true })
     .use(rehypeShiki, {
-      themes: {
-        light: 'material-theme-lighter',
-        dark: 'material-theme-darker',
-      },
+      ...options.highlighter,
       transformers: [
         transformerNotationDiff(),
       ],
@@ -85,7 +85,10 @@ async function parse(text: string) {
   return { html }
 }
 
-export default async function processor(content: string) {
-  const { html } = await parse(content)
+export default async function processor(
+  content: string,
+  options: ParseOptions = defaultOption,
+) {
+  const { html } = await parse(content, options)
   return html
 }

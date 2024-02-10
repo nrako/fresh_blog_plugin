@@ -1,7 +1,8 @@
 {
   "tasks": {
     "example": "cd example && deno run -A --watch=static/,routes/,../styles.css dev.ts",
-    "check": "deno check src/**/*.ts src/**/*.tsx tests/**/*.ts"
+    "check": "deno check src/**/*.ts src/**/*.tsx tests/**/*.ts",
+    "docs": "deno doc --html --name='Fresh Blog Plugin' ./mod.ts"
   },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.6.3/",
@@ -13,13 +14,14 @@
     "lineWidth": 80,
     "indentWidth": 2,
     "semiColons": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "exclude": ["./docs"]
   },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
   "lint": {
-    "exclude": ["./example/_fresh"]
+    "exclude": ["./example/_fresh", "./docs"]
   }
 }
