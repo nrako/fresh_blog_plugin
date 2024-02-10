@@ -33,7 +33,7 @@ jobs:
 
       - name: Build gh-pages
         run: |
-          deno tasks docs
+          deno task docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
