@@ -115,16 +115,24 @@ demonstrates that a Fresh website can host multiple blogs.
 
 You can also run the example with `deno task example`.
 
-## Provisional License Statement:
+## Provisional License Statement
 
-This software is currently not open-source licensed; however, the intention is
-to officially license it under the
-[GNU Lesser General Public License (LGPLv3)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-in the near future. Past a certain project maturity, the
-[Unlicense](https://unlicense.org) or the
-[ISC License](https://en.wikipedia.org/wiki/ISC_license) might be adopted. Until
-a license is formally applied, all rights are reserved by the author(s).
+### Current License
 
-This provisional statement does not constitute a license and provides no rights
-to use, distribute, or modify the software. It is merely an expression of
-intent. Interested parties should check back for updates or contact the
+This project is licensed under the
+[GNU Lesser General Public License (LGPLv3)](LICENSE.md), selected for its
+framework that encourages open contributions to the project while facilitating
+the use of this library/project in both open source and proprietary software.
+This licensing approach aims to foster a collaborative development environment
+and maximize the library's/project's applicability and impact across diverse
+software ecosystems.
+
+### Future Licensing
+
+Upon reaching maturity and stability milestones, consideration will be given to
+adopting a more permissive license, such as the
+[ISC License](https://en.wikipedia.org/wiki/ISC_license). Such change would aim
+to eliminate obligations and extend permissions, fully unleashing the project's
+potential. Meanwhile, contributors are encouraged to work within the current
+LGPLv3 licensing framework, ensuring that enhancements and modifications
+continue to serve the greater good.
