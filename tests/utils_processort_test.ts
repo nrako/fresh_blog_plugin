@@ -19,7 +19,7 @@ Deno.test('produce the expected HTML result for MyST markdown', async (t) => {
 
 // TODO fix thix test, right now the link is not automatically formatted
 // In the myst-cli this is handled here https://github.com/executablebooks/mystmd/blob/4d4116c59479f717bff456f5e3117584df9e1553/packages/myst-cli/src/transforms/dois.ts#L19-L32
-Deno.test('transforms doi linmks for citations', { ignore: true }, async () => {
+Deno.test('transforms doi links for citations', { ignore: true }, async () => {
   const html = await processor('[](doi:10.5281/zenodo.6476040)')
   assertStringIncludes(
     html,
@@ -27,8 +27,10 @@ Deno.test('transforms doi linmks for citations', { ignore: true }, async () => {
   )
 })
 
-// TODO fix thix test, right now the admnoition-title appear twice for unclear reason
-Deno.test('transforms doi linmks for citations', { ignore: true }, async () => {
+// TODO fix thix test, right now the admonition-title appear twice for unclear reason
+Deno.test('transforms callouts (admonition) without double titles', {
+  ignore: true,
+}, async () => {
   const src = `:::{tip}
   Test Callout
   :::`
@@ -39,7 +41,7 @@ Deno.test('transforms doi linmks for citations', { ignore: true }, async () => {
   )
 })
 
-// TODO fix thix test, right now the admnoition-title appear twice for unclear reason
+// TODO fix thix test, right now the input is wrapped in an undesired paragraph block
 Deno.test('transforms task list', { ignore: true }, async () => {
   const src = `- [ ] foo`
   const html = await processor(src)
