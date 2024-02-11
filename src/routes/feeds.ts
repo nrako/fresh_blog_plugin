@@ -13,7 +13,7 @@ export function createFeedHandler(options: Required<BlogOptions>): Handlers {
         `${new Date().getFullYear()}`,
       ).replace('{{url}}', origin)
 
-      const posts = await getPosts(options.contentDir)
+      const posts = await getPosts(options)
 
       const feed = new Feed({
         title: options.title,

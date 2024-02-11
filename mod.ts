@@ -74,7 +74,7 @@ export interface BlogOptions {
 /**
  * @ignore
  */
-export const defaultOption = {
+export const defaultOptions = {
   title: 'Blog',
   description: 'This is a Fresh Blog',
   language: 'en',
@@ -107,12 +107,12 @@ export const defaultOption = {
  * Fresh](https://fresh.deno.dev) plugin interface
  */
 export default function blogPlugin(
-  partialOptions: BlogOptions = defaultOption,
+  partialOptions: BlogOptions = defaultOptions,
 ): Plugin {
   const options = {
     feedPathPrefix: partialOptions.feedPathPrefix ??
-      `${partialOptions.path ?? defaultOption.path}`,
-    ...defaultOption,
+      `${partialOptions.path ?? defaultOptions.path}`,
+    ...defaultOptions,
     ...partialOptions,
   }
 
@@ -175,7 +175,7 @@ export default function blogPlugin(
     middlewares,
     routes: [
       {
-        path: options.path ?? defaultOption.path!,
+        path: options.path ?? defaultOptions.path!,
         component: createBlog(options),
       },
       {
@@ -191,7 +191,7 @@ export default function blogPlugin(
         handler: createFeedHandler(options),
       },
       {
-        path: `${options.path ?? defaultOption.path!}/:slug`,
+        path: `${options.path ?? defaultOptions.path!}/:slug`,
         handler: createPostHandler(options),
         component: createPostPage(options),
       },
