@@ -60,3 +60,14 @@ Deno.test('transforms GFM striketrough', { ignore: true }, async () => {
     '<p><del>Hi</del> Hello, <del>there</del> world!</p>',
   )
 })
+
+
+// TODO fix thix test, why does myst transform this to a <h1> ?!?
+Deno.test('transform headings as expected', { ignore: false, only: true }, async () => {
+  const src = `## Heading two, with two pound signs!`
+  const html = await processor(src)
+  assertStringIncludes(
+    html,
+    '<h2 id="heading-two-with-two-pound-signs">',
+  )
+})

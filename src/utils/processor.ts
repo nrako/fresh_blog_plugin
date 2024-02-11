@@ -9,7 +9,7 @@ import {
   linksPlugin,
   RRIDTransformer,
   WikiTransformer,
-} from 'https://esm.sh/myst-transforms@1.1.19'
+} from 'https://esm.sh/myst-transforms@1.2.0'
 import { unified } from 'https://esm.sh/unified@10'
 import { visit } from 'https://esm.sh/unist-util-visit@5'
 import { mystToHtml } from 'https://esm.sh/myst-to-html@1.0.22'
