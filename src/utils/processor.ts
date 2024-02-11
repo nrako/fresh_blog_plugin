@@ -22,7 +22,7 @@ import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
 import { BlogOptions, defaultOption } from '../../mod.ts'
 
-type ParseOptions = Required<Omit<BlogOptions, 'feedPathPrefix'>>
+export type ParseOptions = Required<Pick<BlogOptions, 'highlighter'>>
 
 async function parse(text: string, options: ParseOptions) {
   const file = new VFile()

@@ -1,6 +1,7 @@
 // Importing two new std lib functions to help with parsing front matter and joining file paths.
 import { extract } from '$std/front_matter/yaml.ts'
 import { extname, join } from '$std/path/mod.ts'
+import processor, { ParseOptions } from './utils/processor.ts'
 
 export interface Post {
   slug: string
@@ -8,7 +9,6 @@ export interface Post {
   date: Date
   content: string
   description: string
-  enableTeX: boolean
 }
 
 export async function getPosts(dir = './posts'): Promise<Post[]> {
@@ -29,19 +29,26 @@ export async function getPosts(dir = './posts'): Promise<Post[]> {
 export async function getPost(
   dir = './posts',
   slug: string,
+  options?: ParseOptions,
 ): Promise<Post | null> {
   try {
     const text = await Deno.readTextFile(join(dir, `${slug}.md`))
     const { attrs, body } = extract<Partial<Post>>(text)
+
+    const content = await processor(body, options)
+
     return {
       slug,
       title: attrs.title ?? '',
       date: new Date(attrs.date ?? ''),
-      content: body,
+      content,
       description: attrs.description ?? '',
-      enableTeX: attrs.enableTeX ?? false,
     }
-  } catch {
-    return null
+  } catch (error) {
+    if (error instanceof Deno.errors.NotFound) {
+      return null
+    }
+
+    throw error
   }
 }
