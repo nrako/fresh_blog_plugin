@@ -106,6 +106,10 @@ exported to your static files at build time. You can inspect its content in
 
 https://github.com/nrako/fresh_blog_plugin/blob/8c065f16088328e9e3f43300d2bafea9c9df84cb/mod.ts#L7-L67
 
+## API
+
+The API documentation available on https://nrako.github.io/fresh_blog_plugin/
+
 ## Example
 
 Explore the

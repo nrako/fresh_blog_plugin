@@ -8,9 +8,12 @@ import { encodeHex } from '$std/encoding/hex.ts'
 import { BlogOptions } from '../mod.ts'
 
 export interface Post {
+  /** slug of the post, derived from the filename */
   slug: string
   title: string
   date: Date
+
+  /** HTML content of the post */
   content: string
   description: string
 }
@@ -64,6 +67,16 @@ async function cleanupCacheFiles(
   }
 }
 
+/**
+ * `getPosts` returns all the posts at the given `options.contentDir`
+ *
+ * @todo support paginations
+ *
+ * @export
+ * @async
+ * @param {Required<BlogOptions>} options
+ * @returns {Promise<Post[]>}
+ */
 export async function getPosts(
   options: Required<BlogOptions>,
 ): Promise<Post[]> {
@@ -81,6 +94,15 @@ export async function getPosts(
   return posts
 }
 
+/**
+ * `getPost` returns a post located in `options.contentDir` for the given `slug`
+ *
+ * @export
+ * @async
+ * @param {string} slug
+ * @param {Required<BlogOptions>} options
+ * @returns {Promise<Post | null>}
+ */
 export async function getPost(
   slug: string,
   options: Required<BlogOptions>,

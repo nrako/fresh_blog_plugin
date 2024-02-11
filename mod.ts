@@ -105,6 +105,23 @@ export const defaultOptions = {
  * options allow for customization of paths, filenames, and blog attributes.
  * @returns {Plugin} An object conforming to the [🍋
  * Fresh](https://fresh.deno.dev) plugin interface
+ *
+ * @example Simple Example
+ * ```ts
+ * import { defineConfig } from '$fresh/server.ts'
+ * import tailwind from '$fresh/plugins/tailwind.ts'
+ * import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
+ *
+ * export default defineConfig({
+ *   plugins: [
+ *      tailwind(),
+ *      blogPlugin({
+ *        path: '/thoughts',
+ *        title: 'My Thoughts',
+ *        description: 'A collection of my thoughts',
+ *      }),
+ * })
+ * ```
  */
 export default function blogPlugin(
   partialOptions: BlogOptions = defaultOptions,
