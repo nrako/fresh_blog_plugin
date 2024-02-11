@@ -23,6 +23,13 @@ Deno.test('Atom 1.0 feed match snapshot', async (t) => {
     new Request('http://127.0.0.1/blog/atom'),
   )
   const body = parse(await resp.text(), parserOptions)
+
+  // We don't assert the html content, this is covered in tests for the processor
+  // @ts-ignore-next-line
+  body.feed.entry.forEach((entry) =>
+    entry.content['#text'] = '<!-- HTML CONTENT -->'
+  )
+
   await assertSnapshot(t, body)
 })
 
@@ -31,7 +38,12 @@ Deno.test('JSON Feed 1.0 feed match snapshot', async (t) => {
   const resp = await handler(
     new Request('http://127.0.0.1/blog/json'),
   )
-  const body = await resp.text()
+  const body = JSON.parse(await resp.text())
+
+  // We don't assert the html content, this is covered in tests for the processor
+  // @ts-ignore-next-line
+  body.items.forEach((item) => item.content_html = '<!-- HTML CONTENT -->')
+
   await assertSnapshot(t, body)
 })
 
@@ -41,5 +53,12 @@ Deno.test('RSS 2.0 feed match snapshot', async (t) => {
     new Request('http://127.0.0.1/blog/rss'),
   )
   const body = parse(await resp.text(), parserOptions)
+
+  // We don't assert the html content, this is covered in tests for the processor
+  // @ts-ignore-next-line
+  body.rss.channel.item.forEach((item) =>
+    item['content:encoded'] = '<!-- HTML CONTENT -->'
+  )
+
   await assertSnapshot(t, body)
 })
