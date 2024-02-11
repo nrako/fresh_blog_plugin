@@ -6,6 +6,10 @@ snapshot[`Atom 1.0 feed match snapshot 1`] = `
     "@xmlns": "http://www.w3.org/2005/Atom",
     entry: [
       {
+        content: {
+          "#text": "<!-- HTML CONTENT -->",
+          "@type": "html",
+        },
         id: "http://127.0.0.1/Post X",
         link: {
           "#text": null,
@@ -24,6 +28,10 @@ snapshot[`Atom 1.0 feed match snapshot 1`] = `
         updated: "2024-01-06T22:38:45.000Z",
       },
       {
+        content: {
+          "#text": "<!-- HTML CONTENT -->",
+          "@type": "html",
+        },
         id: "http://127.0.0.1/Hello World",
         link: {
           "#text": null,
@@ -70,31 +78,33 @@ snapshot[`Atom 1.0 feed match snapshot 1`] = `
 `;
 
 snapshot[`JSON Feed 1.0 feed match snapshot 1`] = `
-'{
-    "version": "https://jsonfeed.org/version/1",
-    "title": "Blog",
-    "home_page_url": "http://127.0.0.1/blog",
-    "feed_url": "http://127.0.0.1/blog/json",
-    "description": "This is a Fresh Blog",
-    "items": [
-        {
-            "id": "http://127.0.0.1/Post X",
-            "url": "http://127.0.0.1/blog/post_x",
-            "title": "Post X",
-            "summary": "desc",
-            "date_modified": "2024-01-06T22:38:45.000Z",
-            "date_published": "2024-01-06T22:38:45.000Z"
-        },
-        {
-            "id": "http://127.0.0.1/Hello World",
-            "url": "http://127.0.0.1/blog/hello_world",
-            "title": "Hello World",
-            "summary": "yello, description",
-            "date_modified": "2024-01-02T22:38:45.000Z",
-            "date_published": "2024-01-02T22:38:45.000Z"
-        }
-    ]
-}'
+{
+  description: "This is a Fresh Blog",
+  feed_url: "http://127.0.0.1/blog/json",
+  home_page_url: "http://127.0.0.1/blog",
+  items: [
+    {
+      content_html: "<!-- HTML CONTENT -->",
+      date_modified: "2024-01-06T22:38:45.000Z",
+      date_published: "2024-01-06T22:38:45.000Z",
+      id: "http://127.0.0.1/Post X",
+      summary: "desc",
+      title: "Post X",
+      url: "http://127.0.0.1/blog/post_x",
+    },
+    {
+      content_html: "<!-- HTML CONTENT -->",
+      date_modified: "2024-01-02T22:38:45.000Z",
+      date_published: "2024-01-02T22:38:45.000Z",
+      id: "http://127.0.0.1/Hello World",
+      summary: "yello, description",
+      title: "Hello World",
+      url: "http://127.0.0.1/blog/hello_world",
+    },
+  ],
+  title: "Blog",
+  version: "https://jsonfeed.org/version/1",
+}
 `;
 
 snapshot[`RSS 2.0 feed match snapshot 1`] = `
@@ -102,6 +112,8 @@ snapshot[`RSS 2.0 feed match snapshot 1`] = `
   rss: {
     "@version": 2,
     "@xmlns:atom": "http://www.w3.org/2005/Atom",
+    "@xmlns:content": "http://purl.org/rss/1.0/modules/content/",
+    "@xmlns:dc": "http://purl.org/dc/elements/1.1/",
     channel: {
       "atom:link": {
         "#text": null,
@@ -115,6 +127,7 @@ snapshot[`RSS 2.0 feed match snapshot 1`] = `
       generator: "Feed (https://github.com/jpmonette/feed) for Deno",
       item: [
         {
+          "content:encoded": "<!-- HTML CONTENT -->",
           description: "desc",
           guid: "http://127.0.0.1/Post X",
           link: "http://127.0.0.1/blog/post_x",
@@ -122,6 +135,7 @@ snapshot[`RSS 2.0 feed match snapshot 1`] = `
           title: "Post X",
         },
         {
+          "content:encoded": "<!-- HTML CONTENT -->",
           description: "yello, description",
           guid: "http://127.0.0.1/Hello World",
           link: "http://127.0.0.1/blog/hello_world",

@@ -41,6 +41,7 @@ export function createFeedHandler(options: Required<BlogOptions>): Handlers {
           link: `${origin}${options.path}/${post.slug}`,
           copyright,
           published: post.date,
+          content: post.content,
         }
         feed.addItem(item)
       })
