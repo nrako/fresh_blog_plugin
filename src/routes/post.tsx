@@ -5,11 +5,9 @@ import { getPost, type Post } from '../data.ts'
 import Time from '../components/Time.tsx'
 import Footer from '../components/Footer.tsx'
 import ReadTime from '../components/ReadTime.tsx'
-import processor from '../utils/processor.ts'
 
 interface Data {
   post: Post
-  html: string
 }
 
 export function createPostHandler(
@@ -19,17 +17,14 @@ export function createPostHandler(
     async GET(_req, ctx) {
       const post = await getPost(options.contentDir, ctx.params.slug)
       if (!post) return ctx.renderNotFound()
-
-      const html = await processor(post.content, options)
-
-      return ctx.render({ post, html })
+      return ctx.render({ post })
     },
   }
 }
 
 export function createPostPage(options: Required<BlogOptions>) {
   return function PostPage(props: PageProps<Data>) {
-    const { post, html } = props.data
+    const { post } = props.data
     return (
       <>
         <Head>
@@ -51,13 +46,13 @@ export function createPostPage(options: Required<BlogOptions>) {
           <h1 class='text-5xl font-bold'>{post.title}</h1>
           <div class='text-gray-500 space-x-8'>
             <Time date={post.date} language={options.language} />
-            <ReadTime content={html} />
+            <ReadTime content={post.content} />
           </div>
           <div
             class='mt-8 prose'
             data-light-theme='light'
             data-dark-theme='dark'
-            dangerouslySetInnerHTML={{ __html: html }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </main>
         <Footer feedPathPrefix={options.feedPathPrefix} />
