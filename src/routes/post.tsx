@@ -15,7 +15,7 @@ export function createPostHandler(
 ): Handlers<Data> {
   return {
     async GET(_req, ctx) {
-      const post = await getPost(options.contentDir, ctx.params.slug)
+      const post = await getPost(ctx.params.slug, options)
       if (!post) return ctx.renderNotFound()
       return ctx.render({ post })
     },

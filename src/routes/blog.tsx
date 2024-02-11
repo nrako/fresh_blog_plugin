@@ -6,7 +6,7 @@ import Footer from '../components/Footer.tsx'
 
 export default function createBlog(options: Required<BlogOptions>) {
   return async function Blog(_req: Request, ctx: FreshContext) {
-    const posts = await getPosts(options.contentDir)
+    const posts = await getPosts(options)
     return (
       <>
         <main class='max-w-screen-md px-4 pt-16 mx-auto'>

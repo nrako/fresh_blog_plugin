@@ -20,7 +20,7 @@ import rehypeExternalLinks from 'https://esm.sh/rehype-external-links@3'
 import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
-import { BlogOptions, defaultOption } from '../../mod.ts'
+import { BlogOptions, defaultOptions } from '../../mod.ts'
 
 export type ParseOptions = Required<Pick<BlogOptions, 'highlighter'>>
 
@@ -87,7 +87,7 @@ async function parse(text: string, options: ParseOptions) {
 
 export default async function processor(
   content: string,
-  options: ParseOptions = defaultOption,
+  options: ParseOptions = defaultOptions,
 ) {
   const { html } = await parse(content, options)
   return html
