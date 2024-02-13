@@ -168,6 +168,7 @@ baz
 bim
 </li>
 </ul><h2 id="id-6-5-striketrough-gfm-extension"><a aria-hidden="true" tabindex="-1" href="#id-6-5-striketrough-gfm-extension"><span class="anchorsign" aria-hidden="true"></span></a>6.5 Striketrough GFM extension</h2><p><a href="https://github.github.com/gfm/#example-491" rel="noopener">Example GMF 491</a></p><p>~~Hi~~ Hello, ~there~ world!</p></div>',
+  messages: {},
 }
 `;
 
@@ -279,5 +280,6 @@ etc.).</p></div>
 </li>
 </ol>
 </section>\`,
+  messages: {},
 }
 `;

@@ -6,6 +6,7 @@ import { crypto } from '$std/crypto/mod.ts'
 import { encodeHex } from '$std/encoding/hex.ts'
 import { BlogOptions } from '../mod.ts'
 import { PageFrontmatter } from 'https://esm.sh/v135/myst-frontmatter@1.1.23'
+import { Messages } from './utils/processor.ts'
 
 export interface Post {
   /** slug of the post, derived from the filename */
@@ -13,6 +14,7 @@ export interface Post {
   frontmatter: PageFrontmatter
   /** HTML content of the post */
   content: string
+  messages: Messages
 }
 
 type Hash = string
@@ -134,11 +136,12 @@ export async function getPost(
   }
 
   const text = await Deno.readTextFile(join(options.contentDir, `${slug}.md`))
-  const { frontmatter, html } = await processor(text, options)
+  const { frontmatter, html, messages } = await processor(text, options)
 
   const metadata: Omit<Post, 'content'> = {
     slug,
     frontmatter,
+    messages,
   }
 
   // Cleanup outdated cache file if any

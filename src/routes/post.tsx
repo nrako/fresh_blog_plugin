@@ -1,13 +1,16 @@
 import { type BlogOptions } from '../../mod.ts'
-import { Handlers, PageProps } from '$fresh/server.ts'
+import { FreshContext, Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
 import { getPost, type Post } from '../data.ts'
 import Time from '../components/Time.tsx'
 import Footer from '../components/Footer.tsx'
 import ReadTime from '../components/ReadTime.tsx'
+import DialogMessages from '../components/DialogMessages.tsx'
+import { PostfixUnaryExpression } from 'https://deno.land/x/ts_morph@20.0.0/ts_morph.js'
 
 interface Data {
   post: Post
+  displayMessages: boolean
 }
 
 export function createPostHandler(
@@ -17,14 +20,23 @@ export function createPostHandler(
     async GET(_req, ctx) {
       const post = await getPost(ctx.params.slug, options)
       if (!post) return ctx.renderNotFound()
-      return ctx.render({ post })
+      return ctx.render({
+        post,
+        displayMessages: options.dev || ctx.config.dev,
+      })
     },
   }
 }
 
 export function createPostPage(options: Required<BlogOptions>) {
   return function PostPage(props: PageProps<Data>) {
-    const { post } = props.data
+    const { post, displayMessages } = props.data
+
+    post.messages.errors?.forEach((error) => console.error(post.slug, error))
+    post.messages.warnings?.forEach((warning) =>
+      console.warn(post.slug, warning)
+    )
+
     return (
       <>
         <Head>
@@ -42,6 +54,13 @@ export function createPostPage(options: Required<BlogOptions>) {
             href='https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css'
           />
         </Head>
+        {displayMessages &&
+          (
+            <DialogMessages
+              slug={post.slug}
+              messages={post.messages}
+            />
+          )}
         <main class='max-w-screen-md px-4 pt-16 mx-auto'>
           <h1 class='text-5xl font-bold'>{post.frontmatter.title}</h1>
           <div class='text-gray-500 space-x-8'>

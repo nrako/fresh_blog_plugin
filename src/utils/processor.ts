@@ -22,12 +22,19 @@ import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
 import { BlogOptions, defaultOptions } from '../../mod.ts'
-import {
-  unnestKernelSpec,
-  validatePageFrontmatter,
-} from 'https://esm.sh/myst-frontmatter@1.1.23'
+import { validatePageFrontmatter } from 'https://esm.sh/myst-frontmatter@1.1.23'
 
 export type ParseOptions = Required<Pick<BlogOptions, 'highlighter'>>
+
+interface Message {
+  property: string
+  message: string
+}
+
+export interface Messages {
+  errors?: Message[]
+  warnings?: Message[]
+}
 
 async function parse(text: string, options: ParseOptions) {
   const file = new VFile()
@@ -36,16 +43,14 @@ async function parse(text: string, options: ParseOptions) {
     vfile: file,
   })
 
-  const frontMatterMessages = {}
+  const messages: Messages = {}
   const vfile = new VFile()
   const { frontmatter: rawPageFrontmatter } = getFrontmatter(vfile, mdast, {
     propagateTargets: true,
   })
-  unnestKernelSpec(rawPageFrontmatter)
   const frontmatter = validatePageFrontmatter(
     rawPageFrontmatter,
-    // TODO handle `messages`
-    { property: 'frontmatter', messages: frontMatterMessages },
+    { property: 'frontmatter', messages },
   )
 
   const linkTransforms = [
@@ -99,13 +104,12 @@ async function parse(text: string, options: ParseOptions) {
 
   const html = r.value
 
-  return { frontmatter, html }
+  return { frontmatter, html, messages }
 }
 
 export default async function processor(
   content: string,
   options: ParseOptions = defaultOptions,
 ) {
-  const { frontmatter, html } = await parse(content, options)
-  return { frontmatter, html }
+  return await parse(content, options)
 }

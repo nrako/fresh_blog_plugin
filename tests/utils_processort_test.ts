@@ -1,6 +1,7 @@
 import processor from '../src/utils/processor.ts'
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
 import { assertStringIncludes } from '$std/assert/assert_string_includes.ts'
+import { assertEquals } from '$std/assert/assert_equals.ts'
 
 const commonmarkMD = await Deno.readTextFile(
   './tests/fixture/specs/markdown_features.md',
@@ -15,6 +16,22 @@ Deno.test('produce the expected metadata & HTML result for CommonMark markdown',
 Deno.test('produce the expected metadata & HTML result for MyST markdown', async (t) => {
   const result = await processor(mystMD)
   await assertSnapshot(t, result)
+})
+
+Deno.test('return validation errors and warning messages of frontmatter', async () => {
+  const src = `---
+  date: invalid
+  ---`
+  const { messages } = await processor(src)
+  assertEquals(messages, {
+    errors: [
+      {
+        message:
+          `'date' invalid date "invalid" - must be ISO 8601 format or IETF timestamp (at frontmatter)`,
+        property: 'date',
+      },
+    ],
+  })
 })
 
 // TODO fix thix test, right now the link is not automatically formatted
