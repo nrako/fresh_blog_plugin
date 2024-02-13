@@ -4,12 +4,13 @@ import { mystParse } from 'https://esm.sh/myst-parser@1.0.22'
 import {
   basicTransformationsPlugin,
   DOITransformer,
+  getFrontmatter,
   GithubTransformer,
   inlineMathSimplificationPlugin,
   linksPlugin,
   RRIDTransformer,
   WikiTransformer,
-} from 'https://esm.sh/myst-transforms@1.1.19'
+} from 'https://esm.sh/myst-transforms@1.2.1'
 import { unified } from 'https://esm.sh/unified@10'
 import { visit } from 'https://esm.sh/unist-util-visit@5'
 import { mystToHtml } from 'https://esm.sh/myst-to-html@1.0.22'
@@ -21,6 +22,10 @@ import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
 import { BlogOptions, defaultOptions } from '../../mod.ts'
+import {
+  unnestKernelSpec,
+  validatePageFrontmatter,
+} from 'https://esm.sh/myst-frontmatter@1.1.23'
 
 export type ParseOptions = Required<Pick<BlogOptions, 'highlighter'>>
 
@@ -30,6 +35,18 @@ async function parse(text: string, options: ParseOptions) {
     markdownit: { linkify: true },
     vfile: file,
   })
+
+  const frontMatterMessages = {}
+  const vfile = new VFile()
+  const { frontmatter: rawPageFrontmatter } = getFrontmatter(vfile, mdast, {
+    propagateTargets: true,
+  })
+  unnestKernelSpec(rawPageFrontmatter)
+  const frontmatter = validatePageFrontmatter(
+    rawPageFrontmatter,
+    // TODO handle `messages`
+    { property: 'frontmatter', messages: frontMatterMessages },
+  )
 
   const linkTransforms = [
     new WikiTransformer(),
@@ -82,13 +99,13 @@ async function parse(text: string, options: ParseOptions) {
 
   const html = r.value
 
-  return { html }
+  return { frontmatter, html }
 }
 
 export default async function processor(
   content: string,
   options: ParseOptions = defaultOptions,
 ) {
-  const { html } = await parse(content, options)
-  return html
+  const { frontmatter, html } = await parse(content, options)
+  return { frontmatter, html }
 }

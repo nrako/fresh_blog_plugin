@@ -15,8 +15,8 @@ export default function createBlog(options: Required<BlogOptions>) {
             {!posts.length && "There's no posts yet."}
             {posts.map((post) => (
               <PostCard
-                url={options.path}
-                post={post}
+                url={`${options.path}/${post.slug}`}
+                frontmatter={post.frontmatter}
                 language={options.language}
               />
             ))}

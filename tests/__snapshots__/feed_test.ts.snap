@@ -10,7 +10,7 @@ snapshot[`Atom 1.0 feed match snapshot 1`] = `
           "#text": "<!-- HTML CONTENT -->",
           "@type": "html",
         },
-        id: "http://127.0.0.1/Post X",
+        id: "http://127.0.0.1/post_x",
         link: {
           "#text": null,
           "@href": "http://127.0.0.1/blog/post_x",
@@ -32,7 +32,7 @@ snapshot[`Atom 1.0 feed match snapshot 1`] = `
           "#text": "<!-- HTML CONTENT -->",
           "@type": "html",
         },
-        id: "http://127.0.0.1/Hello World",
+        id: "http://127.0.0.1/hello_world",
         link: {
           "#text": null,
           "@href": "http://127.0.0.1/blog/hello_world",
@@ -87,7 +87,7 @@ snapshot[`JSON Feed 1.0 feed match snapshot 1`] = `
       content_html: "<!-- HTML CONTENT -->",
       date_modified: "2024-01-06T22:38:45.000Z",
       date_published: "2024-01-06T22:38:45.000Z",
-      id: "http://127.0.0.1/Post X",
+      id: "http://127.0.0.1/post_x",
       summary: "desc",
       title: "Post X",
       url: "http://127.0.0.1/blog/post_x",
@@ -96,7 +96,7 @@ snapshot[`JSON Feed 1.0 feed match snapshot 1`] = `
       content_html: "<!-- HTML CONTENT -->",
       date_modified: "2024-01-02T22:38:45.000Z",
       date_published: "2024-01-02T22:38:45.000Z",
-      id: "http://127.0.0.1/Hello World",
+      id: "http://127.0.0.1/hello_world",
       summary: "yello, description",
       title: "Hello World",
       url: "http://127.0.0.1/blog/hello_world",
@@ -129,7 +129,7 @@ snapshot[`RSS 2.0 feed match snapshot 1`] = `
         {
           "content:encoded": "<!-- HTML CONTENT -->",
           description: "desc",
-          guid: "http://127.0.0.1/Post X",
+          guid: "http://127.0.0.1/post_x",
           link: "http://127.0.0.1/blog/post_x",
           pubDate: "Sat, 06 Jan 2024 22:38:45 GMT",
           title: "Post X",
@@ -137,7 +137,7 @@ snapshot[`RSS 2.0 feed match snapshot 1`] = `
         {
           "content:encoded": "<!-- HTML CONTENT -->",
           description: "yello, description",
-          guid: "http://127.0.0.1/Hello World",
+          guid: "http://127.0.0.1/hello_world",
           link: "http://127.0.0.1/blog/hello_world",
           pubDate: "Tue, 02 Jan 2024 22:38:45 GMT",
           title: "Hello World",

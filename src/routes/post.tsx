@@ -28,7 +28,7 @@ export function createPostPage(options: Required<BlogOptions>) {
     return (
       <>
         <Head>
-          <title>{`${post.title} - ${options.title}`}</title>
+          <title>{`${post.frontmatter.title} - ${options.title}`}</title>
           {/* TODO use post.attrs.enableTwitterEmbed ? */}
           <script
             async
@@ -43,9 +43,10 @@ export function createPostPage(options: Required<BlogOptions>) {
           />
         </Head>
         <main class='max-w-screen-md px-4 pt-16 mx-auto'>
-          <h1 class='text-5xl font-bold'>{post.title}</h1>
+          <h1 class='text-5xl font-bold'>{post.frontmatter.title}</h1>
           <div class='text-gray-500 space-x-8'>
-            <Time date={post.date} language={options.language} />
+            {post.frontmatter.date &&
+              <Time date={post.frontmatter.date} language={options.language} />}
             <ReadTime content={post.content} />
           </div>
           <div

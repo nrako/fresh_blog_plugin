@@ -1,21 +1,18 @@
 // Importing two new std lib functions to help with parsing front matter and joining file paths.
-import { extract } from '$std/front_matter/yaml.ts'
 import { extname, join } from '$std/path/mod.ts'
 import processor from './utils/processor.ts'
 import { ensureDir, exists } from '$std/fs/mod.ts'
 import { crypto } from '$std/crypto/mod.ts'
 import { encodeHex } from '$std/encoding/hex.ts'
 import { BlogOptions } from '../mod.ts'
+import { PageFrontmatter } from 'https://esm.sh/v135/myst-frontmatter@1.1.23'
 
 export interface Post {
   /** slug of the post, derived from the filename */
   slug: string
-  title: string
-  date: Date
-
+  frontmatter: PageFrontmatter
   /** HTML content of the post */
   content: string
-  description: string
 }
 
 type Hash = string
@@ -90,7 +87,9 @@ export async function getPosts(
     promises.push(getPost(slug, options))
   }
   const posts = await Promise.all(promises) as Post[]
-  posts.sort((a, b) => b.date.getTime() - a.date.getTime())
+  posts.sort((a, b) =>
+    Date.parse(b.frontmatter.date ?? '') - Date.parse(a.frontmatter.date ?? '')
+  )
   return posts
 }
 
@@ -129,21 +128,17 @@ export async function getPost(
       const metadata = JSON.parse(json)
       return {
         ...metadata,
-        date: new Date(metadata.date),
         content: html,
       }
     }
   }
 
   const text = await Deno.readTextFile(join(options.contentDir, `${slug}.md`))
-  const { attrs, body } = extract<Partial<Post>>(text)
-  const content = await processor(body, options)
+  const { frontmatter, html } = await processor(text, options)
 
-  const metadata = {
+  const metadata: Omit<Post, 'content'> = {
     slug,
-    title: attrs.title ?? '',
-    date: new Date(attrs.date ?? ''),
-    description: attrs.description ?? '',
+    frontmatter,
   }
 
   // Cleanup outdated cache file if any
@@ -154,7 +149,7 @@ export async function getPost(
   await ensureDir(cacheDir) // Ensure cache directory exists
   await Deno.writeTextFile(
     join(cacheDir, `${slug}-${currentHash}.html`),
-    content,
+    html,
   )
   await Deno.writeTextFile(
     join(cacheDir, `${slug}-${currentHash}.json`),
@@ -167,6 +162,6 @@ export async function getPost(
 
   return {
     ...metadata,
-    content,
+    content: html,
   }
 }

@@ -1,10 +1,13 @@
 export const snapshot = {};
 
-snapshot[`produce the expected HTML result for CommonMark markdown 1`] = `
-'<div class="block"><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#E53935;--shiki-dark:#F07178">title</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> Markdown Features</span></span>
-<span class="line"><span style="color:#E53935;--shiki-dark:#F07178">description</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> catalogue of markdown features</span></span>
-<span class="line"><span style="color:#E53935;--shiki-dark:#F07178">date</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 2024-01-01 22:40:45 +0002</span></span>
-<span class="line"></span></code></pre><!-- deno-fmt-ignore-file --><p>This file demo all Markdown features which should be supported by the processor.</p><h1 id="id-1-commonmark"><a aria-hidden="true" tabindex="-1" href="#id-1-commonmark"><span class="anchorsign" aria-hidden="true"></span></a>1 CommonMark</h1><p>First of all the processor supports the <a href="https://commonmark.org" rel="noopener">CommonMark</a> specss.</p><h2 id="id-1-2-preliminaries"><a aria-hidden="true" tabindex="-1" href="#id-1-2-preliminaries"><span class="anchorsign" aria-hidden="true"></span></a>1.2 Preliminaries</h2><h3 id="id-1-2-4-backslashes-escapes"><a aria-hidden="true" tabindex="-1" href="#id-1-2-4-backslashes-escapes"><span class="anchorsign" aria-hidden="true"></span></a>1.2.4 Backslashes escapes</h3><p>Any ASCII punctuation character may be backslash-escaped:</p><p><a href="https://spec.commonmark.org/0.30/#example-12" rel="noopener">Example 12</a></p><p>NOTE: actually this example seems to create bugs in most markdown libs.</p><p>backslashes:</p><p><a href="https://spec.commonmark.org/0.30/#example-13" rel="noopener">Example 13</a></p><p>\\\\→\\\\A\\\\a\\\\ \\\\3\\\\φ\\\\«</p><p>Escaped characters are treated as regular characters and do not have their usual Markdown meanings:</p><p><a href="https://spec.commonmark.org/0.30/#example-14" rel="noopener">Example 14</a></p><p>*not emphasized*
+snapshot[`produce the expected metadata & HTML result for CommonMark markdown 1`] = `
+{
+  frontmatter: {
+    date: "2024-01-01 22:40:45 +0002",
+    description: "catalogue of markdown features",
+    title: "Markdown Features",
+  },
+  html: '<div class="block"><!-- deno-fmt-ignore-file --><p>This file demo all Markdown features which should be supported by the processor.</p><h1 id="id-1-commonmark"><a aria-hidden="true" tabindex="-1" href="#id-1-commonmark"><span class="anchorsign" aria-hidden="true"></span></a>1 CommonMark</h1><p>First of all the processor supports the <a href="https://commonmark.org" rel="noopener">CommonMark</a> specss.</p><h2 id="id-1-2-preliminaries"><a aria-hidden="true" tabindex="-1" href="#id-1-2-preliminaries"><span class="anchorsign" aria-hidden="true"></span></a>1.2 Preliminaries</h2><h3 id="id-1-2-4-backslashes-escapes"><a aria-hidden="true" tabindex="-1" href="#id-1-2-4-backslashes-escapes"><span class="anchorsign" aria-hidden="true"></span></a>1.2.4 Backslashes escapes</h3><p>Any ASCII punctuation character may be backslash-escaped:</p><p><a href="https://spec.commonmark.org/0.30/#example-12" rel="noopener">Example 12</a></p><p>NOTE: actually this example seems to create bugs in most markdown libs.</p><p>backslashes:</p><p><a href="https://spec.commonmark.org/0.30/#example-13" rel="noopener">Example 13</a></p><p>\\\\→\\\\A\\\\a\\\\ \\\\3\\\\φ\\\\«</p><p>Escaped characters are treated as regular characters and do not have their usual Markdown meanings:</p><p><a href="https://spec.commonmark.org/0.30/#example-14" rel="noopener">Example 14</a></p><p>*not emphasized*
 &#x3C;br/> not a tag
 [not a link](/foo)
 \`not code\`
@@ -164,14 +167,18 @@ baz
 <p><input type="checkbox" disabled></p>
 bim
 </li>
-</ul><h2 id="id-6-5-striketrough-gfm-extension"><a aria-hidden="true" tabindex="-1" href="#id-6-5-striketrough-gfm-extension"><span class="anchorsign" aria-hidden="true"></span></a>6.5 Striketrough GFM extension</h2><p><a href="https://github.github.com/gfm/#example-491" rel="noopener">Example GMF 491</a></p><p>~~Hi~~ Hello, ~there~ world!</p></div>'
+</ul><h2 id="id-6-5-striketrough-gfm-extension"><a aria-hidden="true" tabindex="-1" href="#id-6-5-striketrough-gfm-extension"><span class="anchorsign" aria-hidden="true"></span></a>6.5 Striketrough GFM extension</h2><p><a href="https://github.github.com/gfm/#example-491" rel="noopener">Example GMF 491</a></p><p>~~Hi~~ Hello, ~there~ world!</p></div>',
+}
 `;
 
-snapshot[`produce the expected HTML result for MyST markdown 1`] = `
-\`<div class="block"><pre class="shiki shiki-themes material-theme-lighter material-theme-darker" style="background-color:#FAFAFA;--shiki-dark-bg:#212121;color:#90A4AE;--shiki-dark:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#E53935;--shiki-dark:#F07178">title</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> MyST Features</span></span>
-<span class="line"><span style="color:#E53935;--shiki-dark:#F07178">description</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> catalogue of MyST features</span></span>
-<span class="line"><span style="color:#E53935;--shiki-dark:#F07178">date</span><span style="color:#39ADB5;--shiki-dark:#89DDFF">:</span><span style="color:#91B859;--shiki-dark:#C3E88D"> 2024-01-23 22:40:45 +0002</span></span>
-<span class="line"></span></code></pre><!-- deno-fmt-ignore-file --><h2 id="typography"><a aria-hidden="true" tabindex="-1" href="#typography"><span class="anchorsign" aria-hidden="true"></span></a>Typography</h2><h3 id="inline-text-formatting"><a aria-hidden="true" tabindex="-1" href="#inline-text-formatting"><span class="anchorsign" aria-hidden="true"></span></a>Inline Text Formatting</h3><!-- Note sure why but we can't use double backticks as in MyST doc else this
+snapshot[`produce the expected metadata & HTML result for MyST markdown 1`] = `
+{
+  frontmatter: {
+    date: "2024-01-23 22:40:45 +0002",
+    description: "catalogue of MyST features",
+    title: "MyST Features",
+  },
+  html: \`<div class="block"><!-- deno-fmt-ignore-file --><h2 id="typography"><a aria-hidden="true" tabindex="-1" href="#typography"><span class="anchorsign" aria-hidden="true"></span></a>Typography</h2><h3 id="inline-text-formatting"><a aria-hidden="true" tabindex="-1" href="#inline-text-formatting"><span class="anchorsign" aria-hidden="true"></span></a>Inline Text Formatting</h3><!-- Note sure why but we can't use double backticks as in MyST doc else this
 adds double backslages before all double quotes --><dl><dt>strikethrough</dt><dd>Use the <code>del</code> or <code>strike</code> role, for example, "{del}<code>text</code> " yields <del>text</del></dd></dl><h3 id="line-breaks"><a aria-hidden="true" tabindex="-1" href="#line-breaks"><span class="anchorsign" aria-hidden="true"></span></a>Line Breaks</h3><p>Fleas<br>
 Adam<br>
 Had 'em.</p><p>By Strickland Gillilan</p><h3 id="subscript-superscript"><a aria-hidden="true" tabindex="-1" href="#subscript-superscript"><span class="anchorsign" aria-hidden="true"></span></a>Subscript &#x26; Superscript</h3><p>H<sub>2</sub>O, and 4<sup>th</sup> of July</p><h3 id="abbreviations"><a aria-hidden="true" tabindex="-1" href="#abbreviations"><span class="anchorsign" aria-hidden="true"></span></a>Abbreviations</h3><p>Well <abbr title="Markedly Structured Text">MyST</abbr> is cool!</p><h3 id="quotations"><a aria-hidden="true" tabindex="-1" href="#quotations"><span class="anchorsign" aria-hidden="true"></span></a>Quotations</h3><figure class="numbered"><blockquote>
@@ -271,5 +278,6 @@ etc.).</p></div>
 <p>This is a manually-numbered footnote definition. <a href="#user-content-fnref-3" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
 </li>
 </ol>
-</section>\`
+</section>\`,
+}
 `;
