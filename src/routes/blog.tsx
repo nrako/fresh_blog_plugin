@@ -8,18 +8,16 @@ export default function createBlog(options: Required<BlogOptions>) {
     const posts = await getPosts(options)
     return (
       <>
-        <main class='max-w-screen-md px-4 pt-16 mx-auto'>
-          <h1 class='text-5xl font-bold'>{options.title}</h1>
-          <div class='mt-8'>
-            {!posts.length && "There's no posts yet."}
-            {posts.map((post) => (
-              <PostCard
-                url={`${options.path}/${post.slug}`}
-                frontmatter={post.frontmatter}
-                language={options.language}
-              />
-            ))}
-          </div>
+        <main class='fresh-blog'>
+          <h1>{options.title}</h1>
+          {!posts.length && "There's no posts yet."}
+          {posts.map((post) => (
+            <PostCard
+              url={`${options.path}/${post.slug}`}
+              frontmatter={post.frontmatter}
+              language={options.language}
+            />
+          ))}
         </main>
         <Footer feedPathPrefix={options.feedPathPrefix} />
       </>

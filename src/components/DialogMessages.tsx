@@ -14,10 +14,10 @@ export default function DialogMessages(
     <dialog
       role='alertdialog'
       open
-      className='max-w-screen-md mx-auto bg-red-50 p-4 shadow-lg mt-4'
+      class='fresh-blog-dialogMessages'
     >
       {messages.errors && (
-        <dl class='text-red-600'>
+        <dl class="fresh-blog-dialogMessages-errors">
           {messages.errors?.map((error) => (
             <>
               <dt>🚫 {error.property}</dt>
@@ -27,7 +27,7 @@ export default function DialogMessages(
         </dl>
       )}
       {messages.warnings && (
-        <dl class='text-yellow-800'>
+        <dl>
           {messages.warnings?.map((warning) => (
             <>
               <dt>⚠️ {warning.property}</dt>
