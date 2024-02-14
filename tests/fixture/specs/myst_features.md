@@ -1,6 +1,7 @@
 ---
 title: MyST Features
-description: catalogue of MyST features
+subtitle: Catalogue of key MyST capabilities
+description: A page listing some of the MyST features
 date: 2024-01-23 22:40:45 +0002
 ---
 <!-- deno-fmt-ignore-file -->

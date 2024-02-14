@@ -61,20 +61,32 @@ export function createPostPage(options: Required<BlogOptions>) {
               messages={post.messages}
             />
           )}
-        <main class='max-w-screen-md px-4 pt-16 mx-auto'>
-          <h1 class='text-5xl font-bold'>{post.frontmatter.title}</h1>
-          <div class='text-gray-500 space-x-8'>
-            {post.frontmatter.date &&
-              <Time date={post.frontmatter.date} language={options.language} />}
-            <ReadTime content={post.content} />
-          </div>
+        <article class='max-w-screen-md px-4 pt-16 mx-auto'>
+          <header>
+            <h1 class='text-5xl font-bold'>{post.frontmatter.title}</h1>
+            {post.frontmatter.subtitle && (
+              <p class='mt-2 text-gray-500 text-lg'>
+                {post.frontmatter.subtitle}
+              </p>
+            )}
+            <div class='text-gray-500 space-x-8 mt-2'>
+              {post.frontmatter.date &&
+                (
+                  <Time
+                    date={post.frontmatter.date}
+                    language={options.language}
+                  />
+                )}
+              <ReadTime content={post.content} />
+            </div>
+          </header>
           <div
             class='mt-8 prose'
             data-light-theme='light'
             data-dark-theme='dark'
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
-        </main>
+        </article>
         <Footer feedPathPrefix={options.feedPathPrefix} />
       </>
     )

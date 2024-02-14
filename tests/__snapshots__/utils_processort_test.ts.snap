@@ -176,7 +176,8 @@ snapshot[`produce the expected metadata & HTML result for MyST markdown 1`] = `
 {
   frontmatter: {
     date: "2024-01-23 22:40:45 +0002",
-    description: "catalogue of MyST features",
+    description: "A page listing some of the MyST features",
+    subtitle: "Catalogue of key MyST capabilities",
     title: "MyST Features",
   },
   html: \`<div class="block"><!-- deno-fmt-ignore-file --><h2 id="typography"><a aria-hidden="true" tabindex="-1" href="#typography"><span class="anchorsign" aria-hidden="true"></span></a>Typography</h2><h3 id="inline-text-formatting"><a aria-hidden="true" tabindex="-1" href="#inline-text-formatting"><span class="anchorsign" aria-hidden="true"></span></a>Inline Text Formatting</h3><!-- Note sure why but we can't use double backticks as in MyST doc else this

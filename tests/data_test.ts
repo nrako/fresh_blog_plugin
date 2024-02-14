@@ -19,8 +19,9 @@ Deno.test('returns post with the transformed HTML content and metadata', async (
     slug: 'myst_features',
     frontmatter: {
       title: 'MyST Features',
+      subtitle: 'Catalogue of key MyST capabilities',
       date: '2024-01-23 22:40:45 +0002',
-      description: 'catalogue of MyST features',
+      description: 'A page listing some of the MyST features',
     },
     messages: {},
   })
@@ -36,8 +37,9 @@ Deno.test('returns all posts', async () => {
     slug: 'myst_features',
     frontmatter: {
       title: 'MyST Features',
+      subtitle: 'Catalogue of key MyST capabilities',
       date: '2024-01-23 22:40:45 +0002',
-      description: 'catalogue of MyST features',
+      description: 'A page listing some of the MyST features',
     },
     messages: {},
   }, {

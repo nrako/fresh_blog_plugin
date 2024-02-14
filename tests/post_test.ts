@@ -7,11 +7,17 @@ const blogOptions: BlogOptions = {
 }
 
 Deno.test('render frontmatter metadata', async () => {
-  const handler = await createFreshBlogHandler(blogOptions)
-  const doc = await docForPath(handler, '/blog/hello_world')
+  const handler = await createFreshBlogHandler({
+    contentDir: './tests/fixture/frontmatter/',
+  })
+  const doc = await docForPath(handler, '/blog/supported')
 
-  assertEquals(doc?.querySelector('h1')?.textContent, 'Hello World')
-  assertEquals(doc?.querySelector('time')?.textContent, 'January 2, 2024')
+  assertEquals(doc?.querySelector('header h1')?.textContent, 'Hello World')
+  assertEquals(doc?.querySelector('header p')?.textContent, 'A subtitle')
+  assertEquals(
+    doc?.querySelector('header time')?.textContent,
+    'January 2, 2024',
+  )
 })
 
 Deno.test('render markdown', async () => {
