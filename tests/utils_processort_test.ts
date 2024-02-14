@@ -34,6 +34,23 @@ Deno.test('return validation errors and warning messages of frontmatter', async 
   })
 })
 
+Deno.test('prevents duplication of the title when set in both frontmatter and the content', async () => {
+  const src = `---
+  title: Title
+  ---
+
+  # Title
+
+  Start of content.
+  `
+  const { frontmatter, html } = await processor(src)
+  assertEquals(frontmatter, {
+    title: 'Title',
+    content_includes_title: false,
+  })
+  assertEquals(html, '<div class="block"><p>Start of content.</p></div>')
+})
+
 // TODO fix thix test, right now the link is not automatically formatted
 // In the myst-cli this is handled here https://github.com/executablebooks/mystmd/blob/4d4116c59479f717bff456f5e3117584df9e1553/packages/myst-cli/src/transforms/dois.ts#L19-L32
 Deno.test('transforms doi links for citations', { ignore: true }, async () => {
