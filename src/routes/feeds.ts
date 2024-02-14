@@ -15,6 +15,14 @@ export function createFeedHandler(options: Required<BlogOptions>): Handlers {
 
       const posts = await getPosts(options)
 
+      let updated: Date | undefined = undefined
+      if (posts[0].frontmatter.date) {
+        updated = new Date(posts[0].frontmatter.date)
+        if (!(updated instanceof Date) || !isFinite(+updated)) {
+          updated = undefined
+        }
+      }
+
       const feed = new Feed({
         title: options.title,
         description: options.description,
@@ -29,18 +37,18 @@ export function createFeedHandler(options: Required<BlogOptions>): Handlers {
           rss: `${origin}${options.feedPathPrefix}/rss`,
           json: `${origin}${options.feedPathPrefix}/json`,
         },
-        updated: posts[0].date,
+        updated,
       })
 
       posts.map((post) => {
         const item: FeedItem = {
-          id: `${origin}/${post.title}`,
-          title: post.title,
-          description: post.description,
-          date: post.date,
+          id: `${origin}/${post.slug}`,
+          title: post.frontmatter.title ?? post.slug,
+          description: post.frontmatter.description,
+          date: new Date(post.frontmatter.date ?? ''),
           link: `${origin}${options.path}/${post.slug}`,
           copyright,
-          published: post.date,
+          published: new Date(post.frontmatter.date ?? ''),
           content: post.content,
         }
         feed.addItem(item)

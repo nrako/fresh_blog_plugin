@@ -1,4 +1,6 @@
-export default function Time(props: { date: Date; language?: string }) {
+export default function Time(
+  props: { date: Date | string; language?: string },
+) {
   const { date, language } = props
   return (
     <time>

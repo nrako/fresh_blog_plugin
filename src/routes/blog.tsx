@@ -1,11 +1,10 @@
 import { type BlogOptions } from '../../mod.ts'
-import { FreshContext } from '$fresh/server.ts'
 import { getPosts } from '../data.ts'
 import PostCard from '../components/PostCard.tsx'
 import Footer from '../components/Footer.tsx'
 
 export default function createBlog(options: Required<BlogOptions>) {
-  return async function Blog(_req: Request, ctx: FreshContext) {
+  return async function Blog(_req: Request) {
     const posts = await getPosts(options)
     return (
       <>
@@ -15,8 +14,8 @@ export default function createBlog(options: Required<BlogOptions>) {
             {!posts.length && "There's no posts yet."}
             {posts.map((post) => (
               <PostCard
-                url={options.path}
-                post={post}
+                url={`${options.path}/${post.slug}`}
+                frontmatter={post.frontmatter}
                 language={options.language}
               />
             ))}

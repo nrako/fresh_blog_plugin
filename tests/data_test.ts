@@ -17,9 +17,13 @@ Deno.test('returns post with the transformed HTML content and metadata', async (
 
   assertEquals(metadata, {
     slug: 'myst_features',
-    title: 'MyST Features',
-    date: new Date('2024-01-23T22:38:45.000Z'),
-    description: 'catalogue of MyST features',
+    frontmatter: {
+      title: 'MyST Features',
+      subtitle: 'Catalogue of key MyST capabilities',
+      date: '2024-01-23 22:40:45 +0002',
+      description: 'A page listing some of the MyST features',
+    },
+    messages: {},
   })
 })
 
@@ -31,14 +35,21 @@ Deno.test('returns all posts', async () => {
 
   assertEquals(metadatas, [{
     slug: 'myst_features',
-    title: 'MyST Features',
-    date: new Date('2024-01-23T22:38:45.000Z'),
-    description: 'catalogue of MyST features',
+    frontmatter: {
+      title: 'MyST Features',
+      subtitle: 'Catalogue of key MyST capabilities',
+      date: '2024-01-23 22:40:45 +0002',
+      description: 'A page listing some of the MyST features',
+    },
+    messages: {},
   }, {
     slug: 'markdown_features',
-    title: 'Markdown Features',
-    date: new Date('2024-01-01T22:38:45.000Z'),
-    description: 'catalogue of markdown features',
+    frontmatter: {
+      title: 'Markdown Features',
+      date: '2024-01-01 22:40:45 +0002',
+      description: 'catalogue of markdown features',
+    },
+    messages: {},
   }])
 })
 

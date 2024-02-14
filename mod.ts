@@ -65,7 +65,7 @@ export interface BlogOptions {
    * @default { 'freshblog.css' }
    */
   cssFilename?: string
-  /**
+  /** This is used to mock a dev environement in tests do not use this
    * @ignore
    */
   dev?: boolean

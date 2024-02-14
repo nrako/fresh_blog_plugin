@@ -4,12 +4,13 @@ import { mystParse } from 'https://esm.sh/myst-parser@1.0.22'
 import {
   basicTransformationsPlugin,
   DOITransformer,
+  getFrontmatter,
   GithubTransformer,
   inlineMathSimplificationPlugin,
   linksPlugin,
   RRIDTransformer,
   WikiTransformer,
-} from 'https://esm.sh/myst-transforms@1.1.19'
+} from 'https://esm.sh/myst-transforms@1.2.1'
 import { unified } from 'https://esm.sh/unified@10'
 import { visit } from 'https://esm.sh/unist-util-visit@5'
 import { mystToHtml } from 'https://esm.sh/myst-to-html@1.0.22'
@@ -21,8 +22,19 @@ import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
 import { BlogOptions, defaultOptions } from '../../mod.ts'
+import { validatePageFrontmatter } from 'https://esm.sh/myst-frontmatter@1.1.23'
 
 export type ParseOptions = Required<Pick<BlogOptions, 'highlighter'>>
+
+interface Message {
+  property: string
+  message: string
+}
+
+export interface Messages {
+  errors?: Message[]
+  warnings?: Message[]
+}
 
 async function parse(text: string, options: ParseOptions) {
   const file = new VFile()
@@ -30,6 +42,16 @@ async function parse(text: string, options: ParseOptions) {
     markdownit: { linkify: true },
     vfile: file,
   })
+
+  const messages: Messages = {}
+  const vfile = new VFile()
+  const { frontmatter: rawPageFrontmatter } = getFrontmatter(vfile, mdast, {
+    propagateTargets: true,
+  })
+  const frontmatter = validatePageFrontmatter(
+    rawPageFrontmatter,
+    { property: 'frontmatter', messages },
+  )
 
   const linkTransforms = [
     new WikiTransformer(),
@@ -82,13 +104,12 @@ async function parse(text: string, options: ParseOptions) {
 
   const html = r.value
 
-  return { html }
+  return { frontmatter, html, messages }
 }
 
 export default async function processor(
   content: string,
   options: ParseOptions = defaultOptions,
 ) {
-  const { html } = await parse(content, options)
-  return html
+  return await parse(content, options)
 }
