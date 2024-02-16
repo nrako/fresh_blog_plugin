@@ -4,14 +4,21 @@ import { createPostHandler, createPostPage } from './src/routes/post.tsx'
 import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
 
-
-const postcssProcess = async (css: string) => {
+export const postcssProcess = async (css: string) => {
   const { default: postcss } = await import('https://esm.sh/postcss@8.4.24')
-  const { default: postcssNesting } = await import('https://esm.sh/postcss-nesting@12.0.2')
+  const { default: postcssNesting } = await import(
+    'https://esm.sh/postcss-nesting@12.0.2'
+  )
+  const { default: atImport } = await import('npm:postcss-import')
   // @ts-ignore somehow no overload match the plugin
-  return (await postcss([postcssNesting({})]).process(css)).css
+  return (await postcss([postcssNesting({})])
+    .use(atImport({
+      path: path.join(path.dirname(path.fromFileUrl(import.meta.url)), 'src'),
+    }))
+    .process(css, {
+      from: './src',
+    })).css
 }
-
 
 export interface BlogOptions {
   /**
@@ -156,8 +163,10 @@ export default function blogPlugin(
 
         if (!cache) {
           const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
-          const css = await Deno.readTextFile(path.join(__dirname, 'styles.css'))
-          cache = await postcssProcess(css);
+          const css = await Deno.readTextFile(
+            path.join(__dirname, 'src', 'styles.css'),
+          )
+          cache = await postcssProcess(css)
         }
 
         return new Response(cache, {
@@ -194,10 +203,10 @@ export default function blogPlugin(
       }
 
       const css = await Deno.readTextFile(
-        path.join(__dirname, 'styles.css'),
+        path.join(__dirname, 'src', 'styles.css'),
       )
 
-      const cssProcessed = await postcssProcess(css);
+      const cssProcessed = await postcssProcess(css)
       await Deno.writeTextFile(outPath, cssProcessed)
     },
     middlewares,

@@ -24,6 +24,7 @@ functionalities with markdown files powered by [MyST](https://mystmd.org)**.
   craft your routes with your custom components. You can still leverage the data
   and processed HTML content from each markdown file.
 
+
 ## How It Works
 
 This plugin exposes multiple configurable routes:
@@ -34,13 +35,15 @@ This plugin exposes multiple configurable routes:
 - Atom 1.0 Feed Route (default `/blog/atom`)
 - JSON Feed 1.0 Feed Route (default `/blog/json`)
 - RSS 2.0 Feed Route (default `/blog/rss`)
+- Provide an optional and minimal CSS (default `/freshblog.css`)
 
-This plugin doesn't assume any assumption about your layout (i.e
-`routes/_app.tsx`).
+This plugin doesn't make any assumption about your layouts (i.e `_layout.tsx`)
+or your App Wrapper (i.e `routes/_app.tsx`).
 
-For customization of the default routes, please refer to the
+For customization of the default routes and other options, please refer to the
 "[Options](https://github.com/nrako/fresh_blog_plugin?tab=readme-ov-file#options)"
 section below.
+
 
 ## Getting Started
 
@@ -51,22 +54,40 @@ fresh.config.ts file as follows:
 
 ```typescript
 import { defineConfig } from '$fresh/server.ts'
-import tailwind from '$fresh/plugins/tailwind.ts'
 import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
 
 export default defineConfig({
-  plugins: [tailwind(), blogPlugin()],
+  plugins: [blogPlugin()],
 })
 ```
 
-**Note**: The use of TailwindCSS plugin `tailwind()` is optional. You are free
-to omit `tailwind()` if you choose to use your own components.
+That's it, by default your blog is now accessible on the `/blog` path.
 
-### TailwindCSS Configuration
+### Include Default Styles (optional)
 
-When opting for the default route handlers, components and TailwindCSS setup,
-ensure your `tailwind.config.ts` file includes the following `content` rules to
-ensure the necessary TailwindCSS utilities aren't pruned.
+Some minimal CSS is included with this plugin which you're free to adopt or use as the basis for your own CSS.
+
+This include styles for various components and the code syntax highlighting.
+
+```html
+<!-- Add to your App Wrapper `routes/_app.tsx` -->
+<link rel="stylesheet" href="/freshblog.css" />
+```
+
+The `/freshblog.css` file is served during development and automatically
+exported to your static files at build time. You can inspect its content in
+[`./styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/styles.css).
+
+### TailwindCSS Configuration & Gotchas (optional)
+
+TailwinCSS's plugin `@tailwindcss/typography` can be of great use to easily
+style the content of your posts.
+
+By default the post content is wrapped with the `.prose` CSS class and can be
+changed with other size variants, color scale or modifiers from the [Typography
+plugin](https://tailwindcss.com/docs/typography-plugin).
+
+#### Example of a `tailwind.config.ts`:
 
 ```typescript
 import { type Config } from 'tailwindcss'
@@ -76,31 +97,27 @@ export default {
   plugins: [typographyPlugin],
   content: [
     '{routes,islands,components}/**/*.{ts,tsx}',
-
-    // For Fresh Blog Plugin
-    'node_modules/.deno/fresh_blog_plugin/components/**/*.tsx',
-    'node_modules/.deno/fresh_blog_plugin/routes/**/*.tsx',
     'posts/*.md', // this must match `options.contentDir`
   ],
 } satisfies Config
 ```
 
-**Note**: It's advisable to align the last rule with `options.contentDir` to
-enable the use of TailwindCSS utilities within your markdown files.
+**Gotcha**: It's advisable to align the last rule with your
+*`options.contentDir`(s)
+to ensure any TailwindCSS utilities used within your markdown files don't get
+pruned.
 
-### Additional Styling
+As a reminder here's the `fresh.config.ts` config for TailwindCSS:
 
-To apply CSS rules specific to code syntax highlighting and various MyST
-features, include `/freshblog.css` in your layout files:
+```typescript
+import { defineConfig } from '$fresh/server.ts'
+import tailwind from '$fresh/plugins/tailwind.ts'
+import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
 
-```html
-<!-- Add to your routes/_app.tsx -->
-<link rel="stylesheet" href="/freshblog.css" />
+export default defineConfig({
+  plugins: [tailwind(), blogPlugin()],
+})
 ```
-
-The `/freshblog.css` file is served during development and automatically
-exported to your static files at build time. You can inspect its content in
-[`./styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/styles.css).
 
 ## Options
 

@@ -6,8 +6,8 @@ export default function PostCard(
 ) {
   const { url, frontmatter, language } = props
   return (
-    <a className="fresh-blog-postCard" href={url}>
-      <article class='py-8 border(t gray-200)'>
+    <a className='freshBlog-postCard' href={url}>
+      <article>
         <header>
           <h2>
             {frontmatter.title}

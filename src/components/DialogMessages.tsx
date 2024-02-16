@@ -1,10 +1,7 @@
 import { Messages } from '../utils/processor.ts'
 
 export default function DialogMessages(
-  { slug, messages }: {
-    slug: string
-    messages: Messages
-  },
+  { messages }: { messages: Messages },
 ) {
   if (
     !messages.errors?.length && !messages.warnings?.length
@@ -14,10 +11,10 @@ export default function DialogMessages(
     <dialog
       role='alertdialog'
       open
-      class='fresh-blog-dialogMessages'
+      class='freshBlog-dialogMessages'
     >
       {messages.errors && (
-        <dl class="fresh-blog-dialogMessages-errors">
+        <dl class='freshBlog-dialogMessages-errors'>
           {messages.errors?.map((error) => (
             <>
               <dt>🚫 {error.property}</dt>

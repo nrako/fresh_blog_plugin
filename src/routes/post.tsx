@@ -1,5 +1,5 @@
 import { type BlogOptions } from '../../mod.ts'
-import { FreshContext, Handlers, PageProps } from '$fresh/server.ts'
+import { Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
 import { getPost, type Post } from '../data.ts'
 import Time from '../components/Time.tsx'
@@ -56,11 +56,10 @@ export function createPostPage(options: Required<BlogOptions>) {
         {displayMessages &&
           (
             <DialogMessages
-              slug={post.slug}
               messages={post.messages}
             />
           )}
-        <article class='fresh-blog-post'>
+        <article class='freshBlog-post'>
           <header>
             <h1>{post.frontmatter.title}</h1>
             {post.frontmatter.subtitle && (
@@ -68,7 +67,7 @@ export function createPostPage(options: Required<BlogOptions>) {
                 {post.frontmatter.subtitle}
               </p>
             )}
-            <div class='fresh-blog-post-meta' aria-label="Post Metadata">
+            <div class='freshBlog-post-meta' aria-label='Post Metadata'>
               {post.frontmatter.date &&
                 (
                   <Time
@@ -80,7 +79,7 @@ export function createPostPage(options: Required<BlogOptions>) {
             </div>
           </header>
           <div
-            class='prose'
+            class='freshBlog-post-content'
             data-light-theme='light'
             data-dark-theme='dark'
             dangerouslySetInnerHTML={{ __html: post.content }}
