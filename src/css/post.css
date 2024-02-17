@@ -1,0 +1,106 @@
+.freshBlog-post {
+  header {
+    margin-bottom: 2rem;
+
+    h1 {
+      margin: 0;
+    }
+
+    /* subtitle */
+    p {
+      margin: 0.5rem 0;
+      color: #6b7280;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .freshBlog-post-meta {
+      color: #6b7280;
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+  }
+}
+
+.freshBlog-post-content {
+  /* Style for Callouts */
+  .footnotes #footnote-label {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  .footnotes .data-footnote-backref {
+    font-family: monospace;
+  }
+
+  .footnotes ol :target {
+    background: yellow;
+  }
+
+  .footnotes li,
+  .footnotes p {
+    margin: 0;
+    font-size: 0.9em;
+  }
+
+  /* # anchor prepending headings */
+  .anchorsign {
+    color: gray;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .anchorsign::before {
+    content: "#";
+    position: absolute;
+    left: -1.1rem;
+    top: 0;
+    transition: opacity 0.3s, color 0.3s;
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6):hover .anchorsign {
+    opacity: 1;
+    color: inherit;
+  }
+
+  /* Style for Callouts */
+  .admonition {
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    background-color: rgba(249, 250, 251, 0.1);
+    overflow: hidden;
+    border-radius: 0.25rem;
+    border-left-width: 4px;
+    border-color: #3B82F6;
+  }
+
+  .admonition p {
+    padding: 0.25rem;
+    margin: 0;
+  }
+
+  .admonition-title {
+    font-weight: 500;
+    display: flex;
+    min-width: 0;
+    font-size: 1.125rem;
+    /* Equivalent to 'lg' in Tailwind */
+    color: #2563EB;
+    /* Tailwind's blue-600 */
+    background-color: #EFF6FF;
+    /* Tailwind's blue-50 */
+  }
+
+  /* Style for image alignement */
+  .align-center {
+    margin: 0 auto;
+  }
+
+  .align-right {
+    margin: 0 0 0 auto;
+  }
+}

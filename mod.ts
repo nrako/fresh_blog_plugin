@@ -4,6 +4,22 @@ import { createPostHandler, createPostPage } from './src/routes/post.tsx'
 import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
 
+export const postcssProcess = async (css: string) => {
+  const { default: postcss } = await import('https://esm.sh/postcss@8.4.24')
+  const { default: postcssNesting } = await import(
+    'https://esm.sh/postcss-nesting@12.0.2'
+  )
+  const { default: atImport } = await import('npm:postcss-import')
+  // @ts-ignore somehow no overload match the plugin
+  return (await postcss([postcssNesting({})])
+    .use(atImport({
+      path: path.join(path.dirname(path.fromFileUrl(import.meta.url)), 'src'),
+    }))
+    .process(css, {
+      from: './src',
+    })).css
+}
+
 export interface BlogOptions {
   /**
    * Title of the blog
@@ -147,7 +163,10 @@ export default function blogPlugin(
 
         if (!cache) {
           const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
-          cache = await Deno.readTextFile(path.join(__dirname, 'styles.css'))
+          const css = await Deno.readTextFile(
+            path.join(__dirname, 'src', 'styles.css'),
+          )
+          cache = await postcssProcess(css)
         }
 
         return new Response(cache, {
@@ -175,10 +194,6 @@ export default function blogPlugin(
       const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
       const outPath = path.join(outDir, options.cssFilename)
 
-      const content = await Deno.readTextFile(
-        path.join(__dirname, 'styles.css'),
-      )
-
       try {
         await Deno.mkdir(path.dirname(outPath), { recursive: true })
       } catch (err) {
@@ -187,7 +202,12 @@ export default function blogPlugin(
         }
       }
 
-      await Deno.writeTextFile(outPath, content)
+      const css = await Deno.readTextFile(
+        path.join(__dirname, 'src', 'styles.css'),
+      )
+
+      const cssProcessed = await postcssProcess(css)
+      await Deno.writeTextFile(outPath, cssProcessed)
     },
     middlewares,
     routes: [

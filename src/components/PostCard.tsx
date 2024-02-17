@@ -6,17 +6,19 @@ export default function PostCard(
 ) {
   const { url, frontmatter, language } = props
   return (
-    <div class='py-8 border(t gray-200)'>
-      <a class='sm:col-span-2' href={url}>
-        <h3 class='text(3xl gray-900) font-bold'>
-          {frontmatter.title}
-        </h3>
-        {frontmatter.date &&
-          <Time date={frontmatter.date} language={language} />}
-        <div class='mt-4 text-gray-900'>
+    <a className='freshBlog-postCard' href={url}>
+      <article>
+        <header>
+          <h2>
+            {frontmatter.title}
+          </h2>
+          {frontmatter.date &&
+            <Time date={frontmatter.date} language={language} />}
+        </header>
+        <section>
           {frontmatter.description}
-        </div>
-      </a>
-    </div>
+        </section>
+      </article>
+    </a>
   )
 }

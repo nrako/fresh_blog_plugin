@@ -1,12 +1,11 @@
 import { type BlogOptions } from '../../mod.ts'
-import { FreshContext, Handlers, PageProps } from '$fresh/server.ts'
+import { Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
 import { getPost, type Post } from '../data.ts'
 import Time from '../components/Time.tsx'
 import Footer from '../components/Footer.tsx'
 import ReadTime from '../components/ReadTime.tsx'
 import DialogMessages from '../components/DialogMessages.tsx'
-import { PostfixUnaryExpression } from 'https://deno.land/x/ts_morph@20.0.0/ts_morph.js'
 
 interface Data {
   post: Post
@@ -57,19 +56,18 @@ export function createPostPage(options: Required<BlogOptions>) {
         {displayMessages &&
           (
             <DialogMessages
-              slug={post.slug}
               messages={post.messages}
             />
           )}
-        <article class='max-w-screen-md px-4 pt-16 mx-auto'>
+        <article class='freshBlog-post'>
           <header>
-            <h1 class='text-5xl font-bold'>{post.frontmatter.title}</h1>
+            <h1>{post.frontmatter.title}</h1>
             {post.frontmatter.subtitle && (
-              <p class='mt-2 text-gray-500 text-lg'>
+              <p>
                 {post.frontmatter.subtitle}
               </p>
             )}
-            <div class='text-gray-500 space-x-8 mt-2'>
+            <div class='freshBlog-post-meta' aria-label='Post Metadata'>
               {post.frontmatter.date &&
                 (
                   <Time
@@ -81,7 +79,7 @@ export function createPostPage(options: Required<BlogOptions>) {
             </div>
           </header>
           <div
-            class='mt-8 prose'
+            class='freshBlog-post-content'
             data-light-theme='light'
             data-dark-theme='dark'
             dangerouslySetInnerHTML={{ __html: post.content }}

@@ -6,23 +6,23 @@ contribute at your own risk.
 **A [🍋 Fresh](https://fresh.deno.dev) plugin designed to add blog
 functionalities with markdown files powered by [MyST](https://mystmd.org)**.
 
-## Features
+## Core Features
 
-- **[MyST](https://mystmd.org) Markdown syntax**: Offers an extended and richer
-  Markdown syntax that caters not only to technical and scientific writing but
-  also perfectly suits any kind of authoring and blogging. Naturally, it fully
-  supports the standard Markdown, also known as
-  [CommonMark](https://mystmd.org/guide/commonmark).
-- **Code & Math**: Features code syntax highlighting and Tex Math rendering
-  support out of the box, thanks to [Shiki](https://shiki.style) and
-  [Katex](https://www.npmjs.com/package/rehype-katex).
-- **Automatic Feed Syndication**: Seamlessly generates feeds for JSON Feed 1.0,
-  Atom 1.0 and RSS 2.0. Ensures your content is readily consumable through any
-  feed syndicate readers.
-- **Modular Design**: Minimal, re-usable, ESM, functional components. If the
-  default TailwindCSS component doesn't suit your taste, you have the freedom to
-  craft your routes with your custom components. You can still leverage the data
-  and processed HTML content from each markdown file.
+- **Robust [MyST Markdown Syntax](https://mystmd.org)**: Expands authoring
+  capabilities with a syntax that caters to technical and scientific authoring
+  as well as any other blogging needs. Fully compatible with
+  [CommonMark](https://mystmd.org/guide/commonmark), the most known and used
+  Markdown specification.
+
+- **Code & Math**: Integrates [Shiki](https://shiki.style) for code highlighting
+  and [Katex](https://www.npmjs.com/package/rehype-katex) for Tex Math,
+  delivering out-of-the-box functionality for technical content.
+
+- **Feed Syndication**: Automatically generates feeds for JSON, Atom, and RSS,
+  making content easily accessible and ensuring wide reach.
+
+- **Modular Components**: Offers minimal, reusable components for custom route
+  and layout design, providing unmatched flexibility in blog presentation.
 
 ## How It Works
 
@@ -34,39 +34,66 @@ This plugin exposes multiple configurable routes:
 - Atom 1.0 Feed Route (default `/blog/atom`)
 - JSON Feed 1.0 Feed Route (default `/blog/json`)
 - RSS 2.0 Feed Route (default `/blog/rss`)
+- Provide an optional and minimal CSS (default `/freshblog.css`)
 
-This plugin doesn't assume any assumption about your layout (i.e
-`routes/_app.tsx`).
+This plugin is meant to integrate into any existing Fresh website, it doesn't
+make any assumption about your styles, layouts (i.e `_layout.tsx`) or your App
+Wrapper (i.e `routes/_app.tsx`).
 
-For customization of the default routes, please refer to the
+For customization of the default routes path and other options, please refer to
+the
 "[Options](https://github.com/nrako/fresh_blog_plugin?tab=readme-ov-file#options)"
-section below.
+section below or browse the
+[`./example/`](https://github.com/nrako/fresh_blog_plugin/tree/main/example)
+directory.
 
 ## Getting Started
 
-### Installation
+### Quick Setup
 
-To incorporate the Fresh Blog Plugin into your Fresh website, update your
-fresh.config.ts file as follows:
+Incorporate the plugin with a simple update to `fresh.config.ts`. Starting a
+blog is a matter of adding a few lines of code to an existing Fresh project.
 
 ```typescript
 import { defineConfig } from '$fresh/server.ts'
-import tailwind from '$fresh/plugins/tailwind.ts'
 import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
 
 export default defineConfig({
-  plugins: [tailwind(), blogPlugin()],
+  plugins: [blogPlugin()],
 })
 ```
 
-**Note**: The use of TailwindCSS plugin `tailwind()` is optional. You are free
-to omit `tailwind()` if you choose to use your own components.
+✨ That's it, by default your blog is now accessible on the `/blog` path and
+markdown files can be added to the `./posts/` directory.
 
-### TailwindCSS Configuration
+### Include Default Styles (Optional)
 
-When opting for the default route handlers, components and TailwindCSS setup,
-ensure your `tailwind.config.ts` file includes the following `content` rules to
-ensure the necessary TailwindCSS utilities aren't pruned.
+Minimal CSS is included with this plugin which you're free to adopt or use as
+the basis for your own CSS.
+
+This include styles for various components and the code syntax highlighting.
+
+```html
+<!-- Add to your App Wrapper `routes/_app.tsx` -->
+<link rel="stylesheet" href="/freshblog.css" />
+```
+
+The `/freshblog.css` file is served during development and automatically
+exported to your static files at build time. You can inspect its content in
+[`./styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/styles.css).
+
+### TailwindCSS: Configuration & Gotchas (Optional)
+
+[TailwinCSS)(https://fresh.deno.dev/docs/examples/migrating-to-tailwind) and in
+particular its
+[`@tailwindcss/typography`](https://tailwindcss.com/docs/typography-plugin)
+plugin offer a straighforward path to visually style the content of your posts.
+
+The [`./example/`](https://github.com/nrako/fresh_blog_plugin/tree/main/example)
+folder demonstrate the usage of TailwindCSS and the `.prose` CSS utilities
+classes; size variants, color scale or modifiers.
+
+#### Example of a `tailwind.config.ts`:
 
 ```typescript
 import { type Config } from 'tailwindcss'
@@ -76,31 +103,14 @@ export default {
   plugins: [typographyPlugin],
   content: [
     '{routes,islands,components}/**/*.{ts,tsx}',
-
-    // For Fresh Blog Plugin
-    'node_modules/.deno/fresh_blog_plugin/components/**/*.tsx',
-    'node_modules/.deno/fresh_blog_plugin/routes/**/*.tsx',
     'posts/*.md', // this must match `options.contentDir`
   ],
 } satisfies Config
 ```
 
-**Note**: It's advisable to align the last rule with `options.contentDir` to
-enable the use of TailwindCSS utilities within your markdown files.
-
-### Additional Styling
-
-To apply CSS rules specific to code syntax highlighting and various MyST
-features, include `/freshblog.css` in your layout files:
-
-```html
-<!-- Add to your routes/_app.tsx -->
-<link rel="stylesheet" href="/freshblog.css" />
-```
-
-The `/freshblog.css` file is served during development and automatically
-exported to your static files at build time. You can inspect its content in
-[`./styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/styles.css).
+**Gotcha**: It's advisable to align the last rule with your
+*`options.contentDir`(s) to ensure any TailwindCSS utilities used within your
+markdown files don't get pruned.
 
 ## Options
 
@@ -108,12 +118,12 @@ https://github.com/nrako/fresh_blog_plugin/blob/8c065f16088328e9e3f43300d2bafea9
 
 ## API
 
-The API documentation available on https://nrako.github.io/fresh_blog_plugin/
+The API documentation is available on https://nrako.github.io/fresh_blog_plugin/
 
 ## Example
 
 Explore the
-[`/example`](https://github.com/nrako/fresh_blog_plugin/tree/main/example)
+[`./example/`](https://github.com/nrako/fresh_blog_plugin/tree/main/example)
 directory to understand how `blogPlugin()` can be implemented. The example
 demonstrates that a Fresh website can host multiple blogs.
 

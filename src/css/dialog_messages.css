@@ -1,0 +1,25 @@
+.freshBlog-dialogMessages {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fef2f2;
+  padding: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* shadow-lg */
+  margin-top: 1rem;
+
+  color: rgb(162, 94, 10);
+
+  dt {
+    font-weight: 600;
+  }
+
+  .freshBlog-dialogMessages-errors {
+    color: red;
+  }
+
+  button {
+    font-weight: bold;
+    float: right;
+    color: black;
+  }
+}

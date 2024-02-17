@@ -9,7 +9,7 @@ export default function App({ Component }: PageProps) {
         <link rel='stylesheet' href='/styles.css' />
         <link rel='stylesheet' href='/freshblog.css' />
       </head>
-      <body>
+      <body class='bg-slate-100'>
         <Component />
       </body>
     </html>
