@@ -1,9 +1,11 @@
-import { type BlogOptions } from '../../mod.ts'
+import { type InternalOptions } from '../../mod.ts'
 import { getPosts } from '../data.ts'
 import PostCard from '../components/PostCard.tsx'
 import Footer from '../components/Footer.tsx'
+import { getFeedPathPrefix } from '../utils/index.ts'
 
-export default function createBlog(options: Required<BlogOptions>) {
+export default function createBlog(options: InternalOptions) {
+  const feedPathPrefix = getFeedPathPrefix(options)
   return async function Blog(_req: Request) {
     const posts = await getPosts(options)
     return (
@@ -19,7 +21,7 @@ export default function createBlog(options: Required<BlogOptions>) {
             />
           ))}
         </main>
-        <Footer feedPathPrefix={options.feedPathPrefix} />
+        <Footer feedPathPrefix={feedPathPrefix} />
       </>
     )
   }

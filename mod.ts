@@ -3,6 +3,7 @@ import createBlog from './src/routes/blog.tsx'
 import { createPostHandler, createPostPage } from './src/routes/post.tsx'
 import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
+import { getFeedPathPrefix } from './src/utils/index.ts'
 
 export const postcssProcess = async (css: string) => {
   const { default: postcss } = await import('https://esm.sh/postcss@8.4.24')
@@ -20,57 +21,60 @@ export const postcssProcess = async (css: string) => {
     })).css
 }
 
-export interface BlogOptions {
+export type BlogOptions = Partial<InternalOptions>
+
+export interface InternalOptions {
   /**
    * Title of the blog
    * @default { 'Blog' }
    */
-  title?: string
+  title: string
   /**
    * Description of the blog content, this is used in the syndicate feeds
    * @default { 'This is a Fresh Blog' }
    */
-  description?: string
+  description: string
   /**
    * Language code BCP 47, currently used to format date and time format
    * @default { 'en' }
    */
-  language?: string
+  language: string
   /**
    * Path to folder containing the markdown (*.md) files
    * @default { './posts' }
    */
-  contentDir?: string
+  contentDir: string
   /**
    * URL path of the blog index page
    * @default { '/blog' }
    */
-  path?: string
+  path: string
   /**
    * URL path prefix for the blog feeds (rss, atom, json), default will use the same as `path` but it can be set to empty i.e `''` to have feeds on `/rss`, `/atom`, `/json`
+   * @default { undefined }
    */
   feedPathPrefix?: string
   /**
    * Path of the favicon, this is used in the feeds
    * @default { '/favicon.ico' }
    */
-  favicon?: string
+  favicon: string
   /**
    * Copyright text, `{{year}}` and `{{url}}` can be used for automatic replacement
    * @default { 'Copryright {{year}} {{url}}' }
    */
-  copyright?: string
+  copyright: string
   /**
    * A string used in RSS 2.0 feed to indicate the program used to generate the channel.
    * @default { 'Feed (https://github.com/jpmonette/feed) for Deno' }
    */
-  generator?: string
+  generator: string
   /**
    * Configuration passed to the code highlighter Shiki where `light` and `dark`
    * themes can be set. See https://shiki.style/themes for supported themes.
    * @default { { themes: { light: 'material-theme-lighter', dark: 'material-theme-darker' } } }
    */
-  highlighter?: {
+  highlighter: {
     themes: {
       light: string
       dark: string
@@ -116,7 +120,7 @@ export const defaultOptions = {
  * static file generation for production, and sets up routes for blog content,
  * including posts and feeds.
  *
- * @param {BlogOptions} [partialOptions=defaultOption] - Optional configuration
+ * @param {BlogOptions} - Optional configuration
  * options for the blog plugin. If not provided, defaults will be used. The
  * options allow for customization of paths, filenames, and blog attributes.
  * @returns {Plugin} An object conforming to the [🍋
@@ -143,8 +147,6 @@ export default function blogPlugin(
   partialOptions: BlogOptions = defaultOptions,
 ): Plugin {
   const options = {
-    feedPathPrefix: partialOptions.feedPathPrefix ??
-      `${partialOptions.path ?? defaultOptions.path}`,
     ...defaultOptions,
     ...partialOptions,
   }
@@ -181,6 +183,7 @@ export default function blogPlugin(
   }
 
   const middlewares: Plugin['middlewares'] = []
+  const feedPathPrefix = getFeedPathPrefix(options)
 
   return {
     name: 'fresh-blog-plugin',
@@ -216,15 +219,15 @@ export default function blogPlugin(
         component: createBlog(options),
       },
       {
-        path: `${options.feedPathPrefix}/atom`,
+        path: `${feedPathPrefix}/atom`,
         handler: createFeedHandler(options),
       },
       {
-        path: `${options.feedPathPrefix}/json`,
+        path: `${feedPathPrefix}/json`,
         handler: createFeedHandler(options),
       },
       {
-        path: `${options.feedPathPrefix}/rss`,
+        path: `${feedPathPrefix}/rss`,
         handler: createFeedHandler(options),
       },
       {

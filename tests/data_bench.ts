@@ -1,7 +1,7 @@
-import { type BlogOptions, defaultOptions } from '../mod.ts'
+import { defaultOptions, type InternalOptions } from '../mod.ts'
 import { getPost, getPosts } from '../src/data.ts'
 
-const blogOptions: Required<BlogOptions> = {
+const blogOptions: InternalOptions = {
   ...defaultOptions,
   contentDir: './tests/fixture/specs/',
   feedPathPrefix: '',

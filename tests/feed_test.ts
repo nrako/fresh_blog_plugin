@@ -1,9 +1,9 @@
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
-import { type BlogOptions } from '../mod.ts'
+import { type InternalOptions } from '../mod.ts'
 import { createFreshBlogHandler } from './utils.ts'
 import { parse, type ParserOptions } from '../deps.ts'
 
-const blogOptions: BlogOptions = {
+const blogOptions: Partial<InternalOptions> = {
   contentDir: './tests/fixture/posts/',
 }
 

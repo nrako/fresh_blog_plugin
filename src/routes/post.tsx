@@ -1,4 +1,4 @@
-import { type BlogOptions } from '../../mod.ts'
+import { type InternalOptions } from '../../mod.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
 import { getPost, type Post } from '../data.ts'
@@ -6,6 +6,7 @@ import Time from '../components/Time.tsx'
 import Footer from '../components/Footer.tsx'
 import ReadTime from '../components/ReadTime.tsx'
 import DialogMessages from '../components/DialogMessages.tsx'
+import { getFeedPathPrefix } from '../utils/index.ts'
 
 interface Data {
   post: Post
@@ -13,7 +14,7 @@ interface Data {
 }
 
 export function createPostHandler(
-  options: Required<BlogOptions>,
+  options: InternalOptions,
 ): Handlers<Data> {
   return {
     async GET(_req, ctx) {
@@ -27,7 +28,8 @@ export function createPostHandler(
   }
 }
 
-export function createPostPage(options: Required<BlogOptions>) {
+export function createPostPage(options: InternalOptions) {
+  const feedPathPrefix = getFeedPathPrefix(options)
   return function PostPage(props: PageProps<Data>) {
     const { post, displayMessages } = props.data
 
@@ -85,7 +87,7 @@ export function createPostPage(options: Required<BlogOptions>) {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
-        <Footer feedPathPrefix={options.feedPathPrefix} />
+        <Footer feedPathPrefix={feedPathPrefix} />
       </>
     )
   }

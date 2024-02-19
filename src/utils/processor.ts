@@ -21,10 +21,10 @@ import rehypeExternalLinks from 'https://esm.sh/rehype-external-links@3'
 import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
-import { BlogOptions, defaultOptions } from '../../mod.ts'
+import { defaultOptions, type InternalOptions } from '../../mod.ts'
 import { validatePageFrontmatter } from 'https://esm.sh/myst-frontmatter@1.1.23'
 
-export type ParseOptions = Required<Pick<BlogOptions, 'highlighter'>>
+export type ParseOptions = Pick<InternalOptions, 'highlighter'>
 
 interface Message {
   property: string

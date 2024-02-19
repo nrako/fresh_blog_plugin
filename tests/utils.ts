@@ -1,12 +1,12 @@
 import { createHandler, ServeHandlerInfo } from '$fresh/server.ts'
 import { DOMParser } from '../deps.ts'
-import blogPlugin, { type BlogOptions } from '../mod.ts'
+import blogPlugin, { type InternalOptions } from '../mod.ts'
 import * as colors from '$std/fmt/colors.ts'
 
 type Handler = (req: Request, connInfo?: ServeHandlerInfo) => Promise<Response>
 
 export async function createFreshBlogHandler(
-  blogOptions: BlogOptions,
+  blogOptions: Partial<InternalOptions>,
 ): Promise<Handler> {
   const handler = await createHandler({
     routes: {},
