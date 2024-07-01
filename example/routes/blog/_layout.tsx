@@ -1,7 +1,7 @@
 import { PageProps } from '$fresh/server.ts'
 import Navigation from '../../components/Navigation.tsx'
 
-export default function BlogLayout({ Component, state }: PageProps) {
+export default function BlogLayout({ Component }: PageProps) {
   // do something with state here
   return (
     <>
