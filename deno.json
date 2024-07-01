@@ -15,7 +15,12 @@
     "indentWidth": 2,
     "semiColons": false,
     "singleQuote": true,
-    "exclude": ["./docs"]
+    "exclude": [
+      "./docs",
+      "./example/_fresh",
+      "**/**/.cache",
+      "./.vscode"
+    ]
   },
   "compilerOptions": {
     "jsx": "react-jsx",

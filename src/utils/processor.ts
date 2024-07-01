@@ -81,6 +81,7 @@ async function parse(text: string, options: ParseOptions) {
 
   const r = await unified()
     .use(rehypeParse, { fragment: true })
+    // @ts-ignore required until unified can be upgrade to v11 when mystmd plays fair
     .use(rehypeShiki, {
       ...options.highlighter,
       transformers: [
