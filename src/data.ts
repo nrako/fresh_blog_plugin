@@ -4,8 +4,8 @@ import processor from './utils/processor.ts'
 import { ensureDir, exists } from '$std/fs/mod.ts'
 import { crypto } from '$std/crypto/mod.ts'
 import { encodeHex } from '$std/encoding/hex.ts'
-import { BlogOptions } from '../mod.ts'
-import { PageFrontmatter } from 'https://esm.sh/v135/myst-frontmatter@1.1.23'
+import { type InternalOptions } from '../mod.ts'
+import { type PageFrontmatter } from '../deps.ts'
 import { Messages } from './utils/processor.ts'
 
 export interface Post {
@@ -73,11 +73,11 @@ async function cleanupCacheFiles(
  *
  * @export
  * @async
- * @param {Required<BlogOptions>} options
+ * @param {InternalOptions} options
  * @returns {Promise<Post[]>}
  */
 export async function getPosts(
-  options: Required<BlogOptions>,
+  options: InternalOptions,
 ): Promise<Post[]> {
   const files = Deno.readDir(options.contentDir)
   const promises = []
@@ -101,12 +101,12 @@ export async function getPosts(
  * @export
  * @async
  * @param {string} slug
- * @param {Required<BlogOptions>} options
+ * @param {InternalOptions} options
  * @returns {Promise<Post | null>}
  */
 export async function getPost(
   slug: string,
-  options: Required<BlogOptions>,
+  options: InternalOptions,
 ): Promise<Post | null> {
   const cacheDir = join(options.contentDir, '.cache')
   const filePath = join(options.contentDir, `${slug}.md`)

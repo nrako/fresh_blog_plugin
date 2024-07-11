@@ -1,9 +1,11 @@
 import { Handlers } from '$fresh/server.ts'
 import { Feed, type Item as FeedItem } from 'https://esm.sh/feed@4.2.2'
 import { getPosts } from '../data.ts'
-import { BlogOptions } from '../../mod.ts'
+import { InternalOptions } from '../../mod.ts'
+import { getFeedPathPrefix } from '../utils/index.ts'
 
-export function createFeedHandler(options: Required<BlogOptions>): Handlers {
+export function createFeedHandler(options: InternalOptions): Handlers {
+  const feedPathPrefix = getFeedPathPrefix(options)
   return {
     async GET(req, _ctx) {
       const url = new URL(req.url)
@@ -33,9 +35,9 @@ export function createFeedHandler(options: Required<BlogOptions>): Handlers {
         copyright,
         generator: options.generator,
         feedLinks: {
-          atom: `${origin}${options.feedPathPrefix}/atom`,
-          rss: `${origin}${options.feedPathPrefix}/rss`,
-          json: `${origin}${options.feedPathPrefix}/json`,
+          atom: `${origin}${feedPathPrefix}/atom`,
+          rss: `${origin}${feedPathPrefix}/rss`,
+          json: `${origin}${feedPathPrefix}/json`,
         },
         updated,
       })

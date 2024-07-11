@@ -2,6 +2,7 @@ import processor from '../src/utils/processor.ts'
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
 import { assertStringIncludes } from '$std/assert/assert_string_includes.ts'
 import { assertEquals } from '$std/assert/assert_equals.ts'
+import { defaultOptions } from '../mod.ts'
 
 const commonmarkMD = await Deno.readTextFile(
   './tests/fixture/specs/markdown_features.md',
@@ -49,6 +50,50 @@ Deno.test('prevents duplication of the title when set in both frontmatter and th
     content_includes_title: false,
   })
   assertEquals(html, '<div class="block"><p>Start of content.</p></div>')
+})
+
+Deno.test('returns `options.defaultAuthors` or frontmatter `authors` if set', async () => {
+  const options = {
+    ...defaultOptions,
+    defaultAuthors: [
+      {
+        name: 'Henri Li',
+      },
+    ],
+  }
+  const { frontmatter: emptyFrontmatter } = await processor('', options)
+  assertEquals(emptyFrontmatter, {
+    authors: [
+      {
+        id: 'contributors-generated-uid-0',
+        name: 'Henri Li',
+        nameParsed: {
+          family: 'Li',
+          given: 'Henri',
+          literal: 'Henri Li',
+        },
+      },
+    ],
+  })
+  const src = `---
+  authors:
+    - name: Abdoulaye Schmidt
+  ---
+  `
+  const { frontmatter } = await processor(src, options)
+  assertEquals(frontmatter, {
+    authors: [
+      {
+        id: 'contributors-generated-uid-0',
+        name: 'Abdoulaye Schmidt',
+        nameParsed: {
+          family: 'Schmidt',
+          given: 'Abdoulaye',
+          literal: 'Abdoulaye Schmidt',
+        },
+      },
+    ],
+  })
 })
 
 // TODO fix thix test, right now the link is not automatically formatted

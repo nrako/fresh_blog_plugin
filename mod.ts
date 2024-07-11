@@ -3,6 +3,8 @@ import createBlog from './src/routes/blog.tsx'
 import { createPostHandler, createPostPage } from './src/routes/post.tsx'
 import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
+import { getFeedPathPrefix } from './src/utils/index.ts'
+import { type PageFrontmatter } from './deps.ts'
 
 export const postcssProcess = async (css: string) => {
   const { default: postcss } = await import('https://esm.sh/postcss@8.4.24')
@@ -20,57 +22,60 @@ export const postcssProcess = async (css: string) => {
     })).css
 }
 
-export interface BlogOptions {
+export type BlogOptions = Partial<InternalOptions>
+
+export interface InternalOptions {
   /**
    * Title of the blog
    * @default { 'Blog' }
    */
-  title?: string
+  title: string
   /**
    * Description of the blog content, this is used in the syndicate feeds
    * @default { 'This is a Fresh Blog' }
    */
-  description?: string
+  description: string
   /**
    * Language code BCP 47, currently used to format date and time format
    * @default { 'en' }
    */
-  language?: string
+  language: string
   /**
    * Path to folder containing the markdown (*.md) files
    * @default { './posts' }
    */
-  contentDir?: string
+  contentDir: string
   /**
    * URL path of the blog index page
    * @default { '/blog' }
    */
-  path?: string
+  path: string
   /**
    * URL path prefix for the blog feeds (rss, atom, json), default will use the same as `path` but it can be set to empty i.e `''` to have feeds on `/rss`, `/atom`, `/json`
+   * @default { undefined }
    */
   feedPathPrefix?: string
   /**
    * Path of the favicon, this is used in the feeds
    * @default { '/favicon.ico' }
    */
-  favicon?: string
+  favicon: string
   /**
    * Copyright text, `{{year}}` and `{{url}}` can be used for automatic replacement
    * @default { 'Copryright {{year}} {{url}}' }
    */
-  copyright?: string
+  copyright: string
   /**
    * A string used in RSS 2.0 feed to indicate the program used to generate the channel.
    * @default { 'Feed (https://github.com/jpmonette/feed) for Deno' }
    */
-  generator?: string
+  generator: string
   /**
    * Configuration passed to the code highlighter Shiki where `light` and `dark`
    * themes can be set. See https://shiki.style/themes for supported themes.
    * @default { { themes: { light: 'material-theme-lighter', dark: 'material-theme-darker' } } }
    */
-  highlighter?: {
+  highlighter: {
     themes: {
       light: string
       dark: string
@@ -80,7 +85,27 @@ export interface BlogOptions {
    * Name of the CSS file which will be exported by the plugin for the blog
    * @default { 'freshblog.css' }
    */
-  cssFilename?: string
+  cssFilename: string
+  /**
+   * Name of the JavaScript file (polyfill) which will be exported by the plugin for the blog
+   * @default { 'freshblog.js' }
+   */
+  jsFilename: string
+  /** Determine the author(s) to display for all posts when the `authors` entry
+   * is not defined in frontmatter. Useful for personal blog when the author is
+   * often the same and rarely need to be overridden.
+   * @default { undefined }
+   */
+  defaultAuthors?: PageFrontmatter['authors']
+  /** Determines when to show authors
+   * ```
+   * 'always' - always show authors in both the listing of blog posts and in the post
+   * 'only_in_posts' - only show authors in the post
+   * 'never' - never show authors
+   * ```
+   *  @default 'only_in_posts'
+   */
+  showAuthors: 'always' | 'only_in_posts' | 'never'
   /** This is used to mock a dev environement in tests do not use this
    * @ignore
    */
@@ -106,17 +131,19 @@ export const defaultOptions = {
     },
   },
   cssFilename: 'freshblog.css',
+  jsFilename: 'freshblog.js',
+  showAuthors: 'only_in_posts' as 'always' | 'only_in_posts' | 'never',
   dev: false,
 }
 
 /**
  * Fresh `blogPlugin` factory function to add blogging functionalities on a [🍋
  * Fresh](https://fresh.deno.dev) Deno website with customizable options. The
- * plugin provides middleware for serving CSS files during development, handles
- * static file generation for production, and sets up routes for blog content,
- * including posts and feeds.
+ * plugin provides middleware for serving CSS and JS files during development,
+ * handles static file generation for production, and sets up routes for blog
+ * content, including posts and feeds.
  *
- * @param {BlogOptions} [partialOptions=defaultOption] - Optional configuration
+ * @param {BlogOptions} - Optional configuration
  * options for the blog plugin. If not provided, defaults will be used. The
  * options allow for customization of paths, filenames, and blog attributes.
  * @returns {Plugin} An object conforming to the [🍋
@@ -143,8 +170,6 @@ export default function blogPlugin(
   partialOptions: BlogOptions = defaultOptions,
 ): Plugin {
   const options = {
-    feedPathPrefix: partialOptions.feedPathPrefix ??
-      `${partialOptions.path ?? defaultOptions.path}`,
     ...defaultOptions,
     ...partialOptions,
   }
@@ -157,30 +182,45 @@ export default function blogPlugin(
       handler: async (_req, ctx) => {
         const pathname = ctx.url.pathname
 
-        if (!pathname.endsWith(`/${options.cssFilename}`)) {
-          return ctx.next()
+        const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
+
+        if (pathname.endsWith(`/${options.cssFilename}`)) {
+          if (!cache) {
+            const css = await Deno.readTextFile(
+              path.join(__dirname, 'src', 'styles.css'),
+            )
+            cache = await postcssProcess(css)
+          }
+
+          return new Response(cache, {
+            status: 200,
+            headers: {
+              'Content-Type': 'text/css',
+              'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+            },
+          })
         }
 
-        if (!cache) {
-          const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
-          const css = await Deno.readTextFile(
-            path.join(__dirname, 'src', 'styles.css'),
+        if (pathname.endsWith(`/${options.jsFilename}`)) {
+          const jsContent = await Deno.readTextFile(
+            path.join(__dirname, 'src', 'client.js'),
           )
-          cache = await postcssProcess(css)
+          return new Response(jsContent, {
+            status: 200,
+            headers: {
+              'Content-Type': 'text/javascript',
+              'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+            },
+          })
         }
 
-        return new Response(cache, {
-          status: 200,
-          headers: {
-            'Content-Type': 'text/css',
-            'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
-          },
-        })
+        return ctx.next()
       },
     },
   }
 
   const middlewares: Plugin['middlewares'] = []
+  const feedPathPrefix = getFeedPathPrefix(options)
 
   return {
     name: 'fresh-blog-plugin',
@@ -192,10 +232,10 @@ export default function blogPlugin(
     async buildStart(config) {
       const outDir = path.join(config.build.outDir, 'static')
       const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
-      const outPath = path.join(outDir, options.cssFilename)
+      const cssOutPath = path.join(outDir, options.cssFilename)
 
       try {
-        await Deno.mkdir(path.dirname(outPath), { recursive: true })
+        await Deno.mkdir(path.dirname(cssOutPath), { recursive: true })
       } catch (err) {
         if (!(err instanceof Deno.errors.AlreadyExists)) {
           throw err
@@ -207,7 +247,11 @@ export default function blogPlugin(
       )
 
       const cssProcessed = await postcssProcess(css)
-      await Deno.writeTextFile(outPath, cssProcessed)
+      await Deno.writeTextFile(cssOutPath, cssProcessed)
+      await Deno.copyFile(
+        path.join(__dirname, 'src', 'client.js'),
+        path.join(outDir, options.jsFilename),
+      )
     },
     middlewares,
     routes: [
@@ -216,15 +260,15 @@ export default function blogPlugin(
         component: createBlog(options),
       },
       {
-        path: `${options.feedPathPrefix}/atom`,
+        path: `${feedPathPrefix}/atom`,
         handler: createFeedHandler(options),
       },
       {
-        path: `${options.feedPathPrefix}/json`,
+        path: `${feedPathPrefix}/json`,
         handler: createFeedHandler(options),
       },
       {
-        path: `${options.feedPathPrefix}/rss`,
+        path: `${feedPathPrefix}/rss`,
         handler: createFeedHandler(options),
       },
       {

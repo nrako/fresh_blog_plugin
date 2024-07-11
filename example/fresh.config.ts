@@ -7,6 +7,7 @@ export default defineConfig({
     tailwind(),
     blogPlugin({
       contentDir: '../tests/fixture/posts',
+      showAuthors: 'always',
     }),
     blogPlugin({
       title: 'Markdown Specs',

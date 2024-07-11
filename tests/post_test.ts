@@ -24,7 +24,10 @@ Deno.test('render markdown', async () => {
   const handler = await createFreshBlogHandler(blogOptions)
   const doc = await docForPath(handler, '/blog/post_x')
 
-  assertEquals(doc?.querySelector('h2')?.textContent, 'Heading 2')
+  assertEquals(
+    doc?.querySelector('.freshBlog-post-content h2')?.textContent,
+    'Heading 2',
+  )
   assertEquals(
     doc?.querySelector('blockquote')?.textContent,
     '\nThis is a blockquote\n',

@@ -66,6 +66,20 @@ export default defineConfig({
 ✨ That's it, by default your blog is now accessible on the `/blog` path and
 markdown files can be added to the `./posts/` directory.
 
+### Include Client-Side Javascript (Recommended)
+
+A minimal Javascript used for progressive enhancement providing polyfill for
+future HTML/CSS features not yet available on all modern browsers.
+
+```html
+<!-- Add to your App Wrapper `routes/_app.tsx` -->
+<script src='/freshblog.js' type='module' defer />
+```
+
+The `/freshblog.js` file is served during development and automatically exported
+to your static files at build time. You can inspect its content in
+[`./src/client.js`](https://github.com/nrako/fresh_blog_plugin/blob/main/src/client.js).
+
 ### Include Default Styles (Optional)
 
 Minimal CSS is included with this plugin which you're free to adopt or use as
@@ -80,7 +94,7 @@ This include styles for various components and the code syntax highlighting.
 
 The `/freshblog.css` file is served during development and automatically
 exported to your static files at build time. You can inspect its content in
-[`./styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/styles.css).
+[`./src/styles.css`](https://github.com/nrako/fresh_blog_plugin/blob/main/src/styles.css).
 
 ### TailwindCSS: Configuration & Gotchas (Optional)
 
