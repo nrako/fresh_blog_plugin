@@ -24,7 +24,10 @@ import { h } from 'https://esm.sh/hastscript@9'
 import { defaultOptions, type InternalOptions } from '../../mod.ts'
 import { validatePageFrontmatter } from 'https://esm.sh/myst-frontmatter@1.1.23'
 
-export type ParseOptions = Pick<InternalOptions, 'highlighter'>
+export type ParseOptions = Pick<
+  InternalOptions,
+  'highlighter' | 'defaultAuthors'
+>
 
 interface Message {
   property: string
@@ -49,7 +52,10 @@ async function parse(text: string, options: ParseOptions) {
     propagateTargets: true,
   })
   const frontmatter = validatePageFrontmatter(
-    rawPageFrontmatter,
+    {
+      authors: options.defaultAuthors,
+      ...rawPageFrontmatter,
+    },
     { property: 'frontmatter', messages },
   )
 

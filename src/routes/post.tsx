@@ -6,6 +6,7 @@ import Time from '../components/Time.tsx'
 import Footer from '../components/Footer.tsx'
 import ReadTime from '../components/ReadTime.tsx'
 import DialogMessages from '../components/DialogMessages.tsx'
+import { Authors } from '../components/Authors.tsx'
 import { getFeedPathPrefix } from '../utils/index.ts'
 
 interface Data {
@@ -70,6 +71,13 @@ export function createPostPage(options: InternalOptions) {
               </p>
             )}
             <div class='freshBlog-post-meta' aria-label='Post Metadata'>
+              {options.showAuthors !== 'never' && post.frontmatter.authors && (
+                <Authors
+                  authors={post.frontmatter.authors}
+                  affiliations={post.frontmatter.affiliations}
+                  showLinks={true}
+                />
+              )}
               {post.frontmatter.date &&
                 (
                   <Time

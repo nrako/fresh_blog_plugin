@@ -5,7 +5,7 @@ import { ensureDir, exists } from '$std/fs/mod.ts'
 import { crypto } from '$std/crypto/mod.ts'
 import { encodeHex } from '$std/encoding/hex.ts'
 import { type InternalOptions } from '../mod.ts'
-import { type PageFrontmatter } from 'https://esm.sh/v135/myst-frontmatter@1.1.23'
+import { type PageFrontmatter } from '../deps.ts'
 import { Messages } from './utils/processor.ts'
 
 export interface Post {

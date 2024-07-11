@@ -1,10 +1,15 @@
 import Time from './Time.tsx'
-import { PageFrontmatter } from 'https://esm.sh/v135/myst-frontmatter@1.1.23'
+import { type PageFrontmatter } from '../../deps.ts'
+import { Authors } from '../components/Authors.tsx'
 
 export default function PostCard(
-  props: { url: string; frontmatter: PageFrontmatter; language: string },
+  { url, frontmatter, language, showAuthors }: {
+    url: string
+    frontmatter: PageFrontmatter
+    language: string
+    showAuthors?: boolean
+  },
 ) {
-  const { url, frontmatter, language } = props
   return (
     <a className='freshBlog-postCard' href={url}>
       <article>
@@ -12,6 +17,12 @@ export default function PostCard(
           <h2>
             {frontmatter.title}
           </h2>
+          {showAuthors && frontmatter.authors && (
+            <Authors
+              authors={frontmatter.authors}
+              affiliations={frontmatter.affiliations}
+            />
+          )}
           {frontmatter.date &&
             <Time date={frontmatter.date} language={language} />}
         </header>

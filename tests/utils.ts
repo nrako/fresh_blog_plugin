@@ -1,5 +1,5 @@
 import { createHandler, ServeHandlerInfo } from '$fresh/server.ts'
-import { DOMParser } from '../deps.ts'
+import { DOMParser, Element, HTMLDocument } from '../deps.ts'
 import blogPlugin, { type InternalOptions } from '../mod.ts'
 import * as colors from '$std/fmt/colors.ts'
 
@@ -72,4 +72,57 @@ export function getStdOutput(
   const stderr = colors.stripAnsiCode(decoderErr.decode(out.stderr))
 
   return { stdout, stderr }
+}
+
+type DefinitionTuple = [string, string]
+
+export function getDefinitionList(
+  element: HTMLDocument | Element,
+  selector: string,
+): DefinitionTuple[] {
+  const dlElement = element.querySelector(selector)
+
+  if (!dlElement) {
+    console.warn(`No element found for selector: ${selector}`)
+    return []
+  }
+
+  const dtElements = dlElement.querySelectorAll('dt')
+  const ddElements = dlElement.querySelectorAll('dd')
+
+  if (dtElements.length !== ddElements.length) {
+    throw new Error(
+      `Mismatch in number of <dt> (${dtElements.length}) and <dd> (${ddElements.length}) elements`,
+    )
+  }
+
+  const result: DefinitionTuple[] = []
+
+  for (let i = 0; i < dtElements.length; i++) {
+    const dt = dtElements[i]
+    const dd = ddElements[i]
+    result.push([
+      dt.textContent?.trim() || '',
+      dd.textContent?.trim() || '',
+    ])
+  }
+
+  return result
+}
+
+export function findPopoverByHeadingText(doc: HTMLDocument, text: string) {
+  const popovers = doc.querySelectorAll('div[popover]')
+
+  for (const popover of popovers) {
+    const headings =
+      popover.parentElement?.querySelectorAll('h1, h2, h3, h4, h5, h6') || []
+
+    for (const heading of headings) {
+      if (heading.textContent?.trim() === text) {
+        return popover.parentElement
+      }
+    }
+  }
+
+  return null
 }

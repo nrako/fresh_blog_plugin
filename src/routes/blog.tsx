@@ -18,6 +18,7 @@ export default function createBlog(options: InternalOptions) {
               url={`${options.path}/${post.slug}`}
               frontmatter={post.frontmatter}
               language={options.language}
+              showAuthors={options.showAuthors === 'always'}
             />
           ))}
         </main>
