@@ -1,4 +1,16 @@
 {
+  "name": "@nrako/fresh-blog-plugin",
+  "version": "0.0.1",
+  "exports": "./mod.ts",
+  "publish": {
+    "include": [
+      "LICENSE.md",
+      "README.md",
+      "deps.ts",
+      "mod.ts",
+      "src/**/*.*"
+    ]
+  },
   "tasks": {
     "example": "cd example && deno run -A --watch=static/,routes/,../styles.css dev.ts",
     "check": "deno check src/**/*.ts src/**/*.tsx tests/**/*.ts",
@@ -6,9 +18,14 @@
   },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.6.3/",
+    "$std/": "https://deno.land/std@0.211.0/",
+    "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.47",
+    "@libs/xml": "jsr:@libs/xml@^5.4.12",
+    "myst-frontmatter": "npm:myst-frontmatter@^1.4.7",
+    "postcss": "npm:postcss@^8.4.39",
+    "postcss-import": "npm:postcss-import@^16.1.0",
     "preact": "https://esm.sh/preact@10.19.2",
-    "preact/": "https://esm.sh/preact@10.19.2/",
-    "$std/": "https://deno.land/std@0.211.0/"
+    "preact/": "https://esm.sh/preact@10.19.2/"
   },
   "fmt": {
     "lineWidth": 80,

@@ -1,5 +1,5 @@
-import { createHandler, ServeHandlerInfo } from '$fresh/server.ts'
-import { DOMParser, Element, HTMLDocument } from '../deps.ts'
+import { createHandler, type ServeHandlerInfo } from '$fresh/server.ts'
+import { DOMParser, type Element, type HTMLDocument } from '@b-fuze/deno-dom'
 import blogPlugin, { type InternalOptions } from '../mod.ts'
 import * as colors from '$std/fmt/colors.ts'
 

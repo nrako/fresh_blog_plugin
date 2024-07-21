@@ -1,4 +1,4 @@
-import { DOMParser } from '../../deps.ts'
+import { DOMParser } from '@b-fuze/deno-dom'
 
 // 200 word-per-minute is on the lower range of the average reading speed 200-300 wpm
 const WPM = 200

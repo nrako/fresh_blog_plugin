@@ -20,7 +20,10 @@
     "tailwindcss": "npm:tailwindcss@3.3.5",
     "tailwindcss/": "npm:/tailwindcss@3.3.5/",
     "tailwindcss/plugin": "npm:/tailwindcss@3.3.5/plugin.js",
-    "$std/": "https://deno.land/std@0.211.0/"
+    "$std/": "https://deno.land/std@0.211.0/",
+    "@libs/xml": "jsr:@libs/xml@^5.4.12",
+    "myst-frontmatter": "npm:myst-frontmatter@^1.4.7",
+    "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.47"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
   "nodeModulesDir": true,

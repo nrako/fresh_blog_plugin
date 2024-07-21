@@ -1,5 +1,5 @@
 import RorIcon from './icons/Ror.tsx'
-import { type PageFrontmatter } from '../../deps.ts'
+import type { PageFrontmatter } from 'myst-frontmatter'
 
 type Affiliations = Required<PageFrontmatter>['affiliations']
 type Affiliation = Affiliations[0]

@@ -1,7 +1,8 @@
 import { assertSnapshot } from '$fresh/src/server/deps.ts'
-import { type InternalOptions } from '../mod.ts'
+import type { InternalOptions } from '../mod.ts'
 import { createFreshBlogHandler } from './utils.ts'
-import { parse, type ParserOptions } from '../deps.ts'
+import { parse } from 'https://deno.land/x/xml@2.1.3/mod.ts'
+import type { ParserOptions } from 'https://deno.land/x/xml@2.1.3/utils/types.ts'
 
 const blogOptions: Partial<InternalOptions> = {
   contentDir: './tests/fixture/posts/',

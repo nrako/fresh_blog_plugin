@@ -1,17 +1,17 @@
-import { Plugin, type PluginMiddleware } from '$fresh/server.ts'
+import type { Plugin, PluginMiddleware } from '$fresh/server.ts'
+import type { PageFrontmatter } from 'myst-frontmatter'
 import createBlog from './src/routes/blog.tsx'
 import { createPostHandler, createPostPage } from './src/routes/post.tsx'
 import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
 import { getFeedPathPrefix } from './src/utils/index.ts'
-import { type PageFrontmatter } from './deps.ts'
 
 export const postcssProcess = async (css: string) => {
-  const { default: postcss } = await import('https://esm.sh/postcss@8.4.24')
+  const { default: postcss } = await import('npm:postcss@8')
   const { default: postcssNesting } = await import(
     'https://esm.sh/postcss-nesting@12.0.2'
   )
-  const { default: atImport } = await import('npm:postcss-import')
+  const { default: atImport } = await import('npm:postcss-import@16')
   // @ts-ignore somehow no overload match the plugin
   return (await postcss([postcssNesting({})])
     .use(atImport({
