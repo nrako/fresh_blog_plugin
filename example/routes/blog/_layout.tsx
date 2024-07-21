@@ -1,4 +1,4 @@
-import { PageProps } from '$fresh/server.ts'
+import type { PageProps } from '$fresh/server.ts'
 import Navigation from '../../components/Navigation.tsx'
 
 export default function BlogLayout({ Component }: PageProps) {

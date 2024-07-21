@@ -1,4 +1,4 @@
-import { type Config } from 'npm:tailwindcss'
+import type { Config } from 'npm:tailwindcss'
 import typographyPlugin from 'npm:@tailwindcss/typography'
 
 export default {

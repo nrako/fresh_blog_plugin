@@ -6,7 +6,7 @@ import { createFeedHandler } from './src/routes/feeds.ts'
 import * as path from '$std/path/mod.ts'
 import { getFeedPathPrefix } from './src/utils/index.ts'
 
-export const postcssProcess = async (css: string) => {
+export const postcssProcess = async (css: string): Promise<string> => {
   const { default: postcss } = await import('npm:postcss@8')
   const { default: postcssNesting } = await import(
     'https://esm.sh/postcss-nesting@12.0.2'

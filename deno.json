@@ -44,6 +44,6 @@
     "jsxImportSource": "preact"
   },
   "lint": {
-    "exclude": ["./example/_fresh", "./docs"]
+    "exclude": ["./example/_fresh", "./docs", "**/*.gen.ts"]
   }
 }

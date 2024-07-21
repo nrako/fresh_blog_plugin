@@ -1,4 +1,4 @@
-import { type InternalOptions } from '../../mod.ts'
+import type { InternalOptions } from '../../mod.ts'
 import { getPosts } from '../data.ts'
 import PostCard from '../components/PostCard.tsx'
 import Footer from '../components/Footer.tsx'
