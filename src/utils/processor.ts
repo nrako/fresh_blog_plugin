@@ -22,7 +22,7 @@ import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
 import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
 import { h } from 'https://esm.sh/hastscript@9'
 import { defaultOptions, type InternalOptions } from '../../mod.ts'
-import { validatePageFrontmatter } from 'https://esm.sh/myst-frontmatter@1.1.23'
+import { validatePageFrontmatter } from 'myst-frontmatter'
 
 export type ParseOptions = Pick<
   InternalOptions,

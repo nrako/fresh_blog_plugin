@@ -1,5 +1,5 @@
 import Time from './Time.tsx'
-import { type PageFrontmatter } from '../../deps.ts'
+import type { PageFrontmatter } from 'myst-frontmatter'
 import { Authors } from '../components/Authors.tsx'
 
 export default function PostCard(

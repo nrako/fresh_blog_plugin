@@ -1,4 +1,4 @@
-import { type PageFrontmatter } from '../../deps.ts'
+import type { PageFrontmatter } from 'myst-frontmatter'
 import OrcidIcon from './icons/Orcid.tsx'
 import EmailIcon from 'https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/mail-filled.tsx'
 import TwitterIcon from 'https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/brand-twitter-filled.tsx'

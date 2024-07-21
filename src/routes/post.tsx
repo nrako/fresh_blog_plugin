@@ -1,5 +1,5 @@
-import { type InternalOptions } from '../../mod.ts'
-import { Handlers, PageProps } from '$fresh/server.ts'
+import type { InternalOptions } from '../../mod.ts'
+import type { Handlers, PageProps } from '$fresh/server.ts'
 import { Head } from '$fresh/runtime.ts'
 import { getPost, type Post } from '../data.ts'
 import Time from '../components/Time.tsx'

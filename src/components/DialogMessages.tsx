@@ -1,4 +1,4 @@
-import { Messages } from '../utils/processor.ts'
+import type { Messages } from '../utils/processor.ts'
 
 export default function DialogMessages(
   { messages }: { messages: Messages },

@@ -1,4 +1,4 @@
-import { type InternalOptions } from '../../mod.ts'
+import type { InternalOptions } from '../../mod.ts'
 
 export function getFeedPathPrefix(
   blogOptions: InternalOptions,
