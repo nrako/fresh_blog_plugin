@@ -1,7 +1,9 @@
 import type { PageFrontmatter } from 'myst-frontmatter'
 import OrcidIcon from './icons/Orcid.tsx'
-import EmailIcon from 'https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/mail-filled.tsx'
-import TwitterIcon from 'https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/brand-twitter-filled.tsx'
+import {
+  TbBrandTwitterFilled as TwitterIcon,
+  TbMailFilled as EmailIcon,
+} from '@preact-icons/tb'
 import { Affiliation } from './Affiliations.tsx'
 
 export function Author({ author, affiliations, showLinks = false }: {
@@ -47,6 +49,7 @@ export function Author({ author, affiliations, showLinks = false }: {
             /* @ts-ignore-next-line */
             popover
             id={`author-popover-${author.id}`}
+            /* @ts-ignore-next-line */
             anchor={`author-${author.id}`}
           >
             <h3>{author.name}</h3>
