@@ -3,7 +3,7 @@ import type { PageFrontmatter } from 'myst-frontmatter'
 import createBlog from './src/routes/blog.tsx'
 import { createPostHandler, createPostPage } from './src/routes/post.tsx'
 import { createFeedHandler } from './src/routes/feeds.ts'
-import * as path from '$std/path/mod.ts'
+import * as path from '@std/path'
 import { getFeedPathPrefix } from './src/utils/index.ts'
 
 export const postcssProcess = async (css: string): Promise<string> => {

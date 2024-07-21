@@ -1,5 +1,4 @@
-import { assertEquals } from '$std/assert/assert_equals.ts'
-import { assert } from '$std/assert/assert.ts'
+import { assert, assertEquals } from '@std/assert'
 import { defaultOptions, type InternalOptions } from '../mod.ts'
 import { getPost, getPosts } from '../src/data.ts'
 

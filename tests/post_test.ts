@@ -1,5 +1,5 @@
 import type { BlogOptions } from '../mod.ts'
-import { assertEquals } from '$std/assert/assert_equals.ts'
+import { assertEquals } from '@std/assert'
 import { createFreshBlogHandler, docForPath } from './utils.ts'
 
 const blogOptions: BlogOptions = {
