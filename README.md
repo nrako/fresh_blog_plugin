@@ -73,7 +73,7 @@ future HTML/CSS features not yet available on all modern browsers.
 
 ```html
 <!-- Add to your App Wrapper `routes/_app.tsx` -->
-<script src='/freshblog.js' type='module' defer />
+<script src="/freshblog.js" type="module" defer />
 ```
 
 The `/freshblog.js` file is served during development and automatically exported

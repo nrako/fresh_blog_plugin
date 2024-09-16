@@ -38,12 +38,12 @@
   }
 
   .diff.add:before {
-    content: "+";
+    content: '+';
     color: green;
   }
 
   .diff.remove:before {
-    content: "-";
+    content: '-';
     color: red;
   }
 }
