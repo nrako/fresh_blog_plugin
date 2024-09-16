@@ -53,5 +53,10 @@
   },
   "lint": {
     "exclude": ["./example/_fresh", "./docs", "**/*.gen.ts"]
-  }
+  },
+  "unstable": [
+    "fmt-html",
+    "fmt-css",
+    "fmt-yaml"
+  ]
 }
