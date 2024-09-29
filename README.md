@@ -56,10 +56,10 @@ blog is a matter of adding a few lines of code to an existing Fresh project.
 
 ```typescript
 import { defineConfig } from '$fresh/server.ts'
-import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
+// TODO import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
 
 export default defineConfig({
-  plugins: [blogPlugin()],
+  // TODO plugins: [blogPlugin()],
 })
 ```
 
@@ -110,16 +110,15 @@ classes; size variants, color scale or modifiers.
 #### Example of a `tailwind.config.ts`:
 
 ```typescript
-import { type Config } from 'tailwindcss'
+import { type Config } from 'npm:tailwindcss'
 import typographyPlugin from 'npm:@tailwindcss/typography'
 
-export default {
+const config = {
   plugins: [typographyPlugin],
-  content: [
-    '{routes,islands,components}/**/*.{ts,tsx}',
-    'posts/*.md', // this must match `options.contentDir`
-  ],
+  content: [],
 } satisfies Config
+
+export default config
 ```
 
 **Gotcha**: It's advisable to align the last rule with your

@@ -150,7 +150,6 @@ export const defaultOptions = {
  * Fresh](https://fresh.deno.dev) plugin interface
  *
  * @example Simple Example
- * ```ts
  * import { defineConfig } from '$fresh/server.ts'
  * import tailwind from '$fresh/plugins/tailwind.ts'
  * import blogPlugin from 'https://deno.land/x/fresh_blog_plugin/mod.ts'
@@ -164,7 +163,6 @@ export const defaultOptions = {
  *        description: 'A collection of my thoughts',
  *      }),
  * })
- * ```
  */
 export default function blogPlugin(
   partialOptions: BlogOptions = defaultOptions,

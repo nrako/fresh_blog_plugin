@@ -32,8 +32,7 @@ jobs:
         run: deno task check
 
       - name: Run tests
-        run: deno test -A --no-check --coverage
-        # run: deno test -A --no-check --coverage
+        run: deno task test --no-check --coverage
 
       # - name: Generate coverage
       #   run: deno coverage --lcov coverage/ > cov.lcov
@@ -43,3 +42,21 @@ jobs:
       #   with:
       #     github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
       #     path-to-lcov: cov.lcov
+
+  doc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.0.0-rc.10
+
+      - name: Check types in doc
+        run: deno task check --doc
+
+      - name: Run tests in doc
+        run: deno task test --no-check --coverage --doc
