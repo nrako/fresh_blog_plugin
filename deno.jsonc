@@ -3,13 +3,7 @@
   "version": "0.0.1",
   "exports": "./mod.ts",
   "publish": {
-    "include": [
-      "LICENSE.md",
-      "README.md",
-      "deps.ts",
-      "mod.ts",
-      "src/**/*.*"
-    ]
+    "include": ["LICENSE.md", "README.md", "deps.ts", "mod.ts", "src/**/*.*"]
   },
   "tasks": {
     "example": "cd example && deno run -A --watch=static/,routes/,../styles.css dev.ts",
@@ -38,12 +32,7 @@
     "indentWidth": 2,
     "semiColons": false,
     "singleQuote": true,
-    "exclude": [
-      "./docs",
-      "./example/_fresh",
-      "**/**/.cache",
-      "./.vscode"
-    ]
+    "exclude": ["./docs", "./example/_fresh", "**/**/.cache", "./.vscode"]
   },
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -51,10 +40,5 @@
   },
   "lint": {
     "exclude": ["./example/_fresh", "./docs", "**/*.gen.ts"]
-  },
-  "unstable": [
-    "fmt-html",
-    "fmt-css",
-    "fmt-yaml"
-  ]
+  }
 }
