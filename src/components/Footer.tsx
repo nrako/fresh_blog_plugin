@@ -1,4 +1,4 @@
-import IconRss from 'https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/rss.tsx'
+import { TbRss as IconRss } from '@preact-icons/tb'
 
 export default function Footer({ feedPathPrefix }: { feedPathPrefix: string }) {
   return (

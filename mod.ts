@@ -8,9 +8,7 @@ import { getFeedPathPrefix } from './src/utils/index.ts'
 
 export const postcssProcess = async (css: string): Promise<string> => {
   const { default: postcss } = await import('npm:postcss@8')
-  const { default: postcssNesting } = await import(
-    'https://esm.sh/postcss-nesting@12.0.2'
-  )
+  const { default: postcssNesting } = await import('npm:postcss-nesting@12.0.2')
   const { default: atImport } = await import('npm:postcss-import@16')
   // @ts-ignore somehow no overload match the plugin
   return (await postcss([postcssNesting({})])

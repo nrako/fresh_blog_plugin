@@ -1,6 +1,6 @@
 import { transformerNotationDiff } from 'npm:shikiji-transformers@0.9'
-import { VFile } from 'https://esm.sh/vfile@5'
-import { mystParse } from 'https://esm.sh/myst-parser@1.0.22'
+import { VFile } from 'npm:vfile@5'
+import { mystParse } from 'npm:myst-parser@1.0.22'
 import {
   basicTransformationsPlugin,
   DOITransformer,
@@ -10,17 +10,17 @@ import {
   linksPlugin,
   RRIDTransformer,
   WikiTransformer,
-} from 'https://esm.sh/myst-transforms@1.2.1'
-import { unified } from 'https://esm.sh/unified@10'
-import { visit } from 'https://esm.sh/unist-util-visit@5'
-import { mystToHtml } from 'https://esm.sh/myst-to-html@1.0.22'
-import rehypeShiki from 'https://esm.sh/@shikijs/rehype@1.0.0-beta.3'
-import rehypeStringify from 'https://esm.sh/v135/rehype-stringify@8'
-import rehypeParse from 'https://esm.sh/rehype-parse@8'
-import rehypeExternalLinks from 'https://esm.sh/rehype-external-links@3'
-import rehypeKatex from 'https://esm.sh/v135/rehype-katex@7.0.0/lib/index.js'
-import rehypeAutolinkHeadings from 'https://esm.sh/rehype-autolink-headings@7'
-import { h } from 'https://esm.sh/hastscript@9'
+} from 'npm:myst-transforms@1.2.1'
+import { unified } from 'npm:unified@10'
+import { visit } from 'npm:unist-util-visit@5'
+import { mystToHtml } from 'npm:myst-to-html@1.0.22'
+import rehypeShiki from 'npm:@shikijs/rehype@1.0.0-beta.3'
+import rehypeStringify from 'npm:rehype-stringify@8'
+import rehypeParse from 'npm:rehype-parse@8'
+import rehypeExternalLinks from 'npm:rehype-external-links@3'
+import rehypeKatex from 'npm:rehype-katex@7.0.0'
+import rehypeAutolinkHeadings from 'npm:rehype-autolink-headings@7'
+import { h } from 'npm:hastscript@9'
 import { defaultOptions, type InternalOptions } from '../../mod.ts'
 import { validatePageFrontmatter } from 'myst-frontmatter'
 

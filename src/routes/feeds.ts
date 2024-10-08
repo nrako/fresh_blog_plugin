@@ -1,6 +1,6 @@
 import type { Handlers } from '$fresh/server.ts'
 import type { InternalOptions } from '../../mod.ts'
-import { Feed, type Item as FeedItem } from 'https://esm.sh/feed@4.2.2'
+import { Feed, type Item as FeedItem } from 'npm:feed@4.2.2'
 import { getPosts } from '../data.ts'
 import { getFeedPathPrefix } from '../utils/index.ts'
 
