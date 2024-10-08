@@ -20,7 +20,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.0.0-rc.10
 
       - name: Verify formatting
         run: deno fmt --check
@@ -43,3 +43,22 @@ jobs:
       #   with:
       #     github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
       #     path-to-lcov: cov.lcov
+
+  doc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.0.0-rc.10
+
+      - name: Check types in doc
+        run: deno task check --doc
+
+      # TODO enable once the plugin is published and all examples are functional
+      # - name: Run tests in doc
+# run: deno task test --no-check --coverage --doc

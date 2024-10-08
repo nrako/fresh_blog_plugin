@@ -14,7 +14,9 @@
   "tasks": {
     "example": "cd example && deno run -A --watch=static/,routes/,../styles.css dev.ts",
     "check": "deno check src/**/*.ts src/**/*.tsx tests/**/*.ts",
-    "docs": "deno doc --html --name='Fresh Blog Plugin' ./mod.ts src/**/*.ts src/**/*.tsx"
+    "docs": "deno doc --html --name='Fresh Blog Plugin' ./mod.ts src/**/*.ts src/**/*.tsx",
+    "docs:serve": "deno run --allow-net --allow-read --allow-sys https://deno.land/std/http/file_server.ts docs",
+    "test": "deno test -A"
   },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.6.3/",
@@ -53,10 +55,5 @@
   },
   "lint": {
     "exclude": ["./example/_fresh", "./docs", "**/*.gen.ts"]
-  },
-  "unstable": [
-    "fmt-html",
-    "fmt-css",
-    "fmt-yaml"
-  ]
+  }
 }
