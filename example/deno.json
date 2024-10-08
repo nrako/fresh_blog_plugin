@@ -32,7 +32,7 @@
     "tailwindcss/plugin": "npm:/tailwindcss@3.3.5/plugin.js"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
-  "nodeModulesDir": "auto",
+  "nodeModulesDir": true,
   "fmt": {
     "lineWidth": 80,
     "indentWidth": 2,
