@@ -20,7 +20,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v2.0.0-rc.10
+          deno-version: v2.0.0
 
       - name: Verify formatting
         run: deno fmt --check
@@ -54,7 +54,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v2.0.0-rc.10
+          deno-version: v2.0.0
 
       - name: Check types in doc
         run: deno task check --doc
